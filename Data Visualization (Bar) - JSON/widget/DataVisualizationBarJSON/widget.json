@@ -1,0 +1,11 @@
+{
+  "name": "Data Visualization (Bar) - JSON",
+  "availableToAllPages": true,
+  "javascript": "DataVisualizationBarJSON",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "DataVisualizationBarJSON",
+  "widgetType": "DataVisualizationBarJSON"
+}

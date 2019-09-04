@@ -1,0 +1,4 @@
+<div class="DataVisualizationPie" style="width:100%">
+	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.widgetId()}"></canvas>
+</div>
+<div id="chartjs-tooltip"></div>

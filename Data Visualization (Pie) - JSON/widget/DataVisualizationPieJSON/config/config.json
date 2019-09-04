@@ -1,0 +1,44 @@
+{
+  "widgetDescriptorName": "DataVisualizationPie",
+  "properties": [
+    {
+        "id": "chartTitle",
+        "type": "stringType",
+        "name": "chartTitle",
+        "helpTextResourceId": "chartTitleHelpText",
+        "labelResourceId": "chartTitleLabel",
+        "defaultValue": "",
+        "required": true
+    },
+    {
+        "id": "chartType",
+        "type": "optionType",
+        "name": "chartType",
+        "helpTextResourceId": "chartTypeHelpText",
+        "labelResourceId": "chartTypeLabel",
+        "defaultValue": "Pie",
+        "required": true,
+        "options": [
+            {
+                "id": "pieChartType",
+                "value": "Pie",
+                "labelResourceId": "pieChartTypeLabel"
+            },
+            {
+                "id": "doughnutChartType",
+                "value": "Doughnut",
+                "labelResourceId": "doughnutChartTypeLabel"
+            }
+        ]
+    },
+    {
+        "id": "jsonURL",
+        "type": "stringType",
+        "name": "jsonURL",
+        "helpTextResourceId": "jsonURLHelpText",
+        "labelResourceId": "jsonURLLabel",
+        "defaultValue": "",
+        "required": true
+    }  
+  ]
+}

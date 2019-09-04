@@ -1,0 +1,11 @@
+{
+  "name": "Data Visualization (Pie) - JSON",
+  "availableToAllPages": true,
+  "javascript": "DataVisualizationPieJSON",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "DataVisualizationPieJSON",
+  "widgetType": "DataVisualizationPieJSON"
+}

@@ -1,0 +1,12 @@
+{"resources":
+	{
+	"chartTypeHelpText":"Choose the chart type",
+	"chartTypeLabel":"Choose the chart type",
+	"pieChartTypeLabel":"Pie",
+	"doughnutChartTypeLabel":"Doughnut",
+	"chartTitleHelpText":"Enter a title",
+    "chartTitleLabel":"Enter a title",
+ 	"jsonURLHelpText":"Enter URL for data (JSON)",
+    "jsonURLLabel":"Enter URL for data (JSON)"
+	}
+}
