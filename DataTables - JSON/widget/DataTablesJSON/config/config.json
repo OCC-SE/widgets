@@ -1,0 +1,23 @@
+{
+  "widgetDescriptorName": "DataTablesJSON",
+  "properties": [
+    {
+        "id": "ordersJsonUrl",
+        "type": "stringType",
+        "name": "ordersJsonUrl",
+        "helpTextResourceId": "ordersJsonUrlHelpText",
+        "labelResourceId": "ordersJsonUrlLabel",
+        "defaultValue": "",
+        "required": true
+    },
+    {
+        "id": "invoicesJsonUrl",
+        "type": "stringType",
+        "name": "invoicesJsonUrl",
+        "helpTextResourceId": "ordersJsonUrlHelpText",
+        "labelResourceId": "ordersJsonUrlLabel",
+        "defaultValue": "",
+        "required": true
+    }         
+  ]
+}

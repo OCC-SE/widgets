@@ -1,0 +1,11 @@
+{
+  "name": "Data Tables - JSON",
+  "availableToAllPages": true,
+  "javascript": "DataTablesJSON",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "DataTablesJSON",
+  "widgetType": "DataTablesJSON"
+}

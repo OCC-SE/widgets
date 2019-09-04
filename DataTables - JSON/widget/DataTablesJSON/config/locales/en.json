@@ -1,0 +1,8 @@
+{"resources":
+	{
+    "ordersJsonUrlHelpText":"Enter URL for orders (JSON)",
+    "ordersJsonUrlLabel":"Enter URL for orders (JSON)",
+    "invoicesJsonUrlHelpText":"Enter URL for invoices (JSON)",
+    "invoicesJsonUrlLabel":"Enter URL for invoices (JSON)"    
+	}
+}
