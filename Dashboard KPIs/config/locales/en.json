@@ -1,0 +1,17 @@
+{
+  "resources" : {     
+    "kpiWidgetTitleHelpText": "Displays key metrics for your business.",
+    "kpiWidgetTitleLabel": "Dashboard KPIs Widget",
+
+    "colorStyleLabel": "Select your color scheme.",
+    "colorStyleDarkLabel": "Dark",
+    "colorStyleLightLabel": "Light",
+
+    "kpiTitle1PropertyLabel": "KPI 1 title",
+    "kpiTitle2PropertyLabel": "KPI 2 title",
+    "kpiTitle3PropertyLabel": "KPI 3 title",
+    "kpiTitle4PropertyLabel": "KPI 4 title",
+    "kpiTitle5PropertyLabel": "KPI 5 title",
+    "kpiTitle6PropertyLabel": "KPI 6 title"
+  }
+}

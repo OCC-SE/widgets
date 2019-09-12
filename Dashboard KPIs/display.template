@@ -1,0 +1,40 @@
+<div id="kpi-widget" class="container">
+    <div class="row">
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[0].value"></div>
+                <div class="title" data-bind="text: kpiTitle1()"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[1].value"></div>
+                <div class="title" data-bind="text: kpiTitle2()"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[2].value"></div>
+                <div class="title" data-bind="text: kpiTitle3()"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[3].value"></div>
+                <div class="title" data-bind="text: kpiTitle4()"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[4].value"></div>
+                <div class="title" data-bind="text: kpiTitle5()"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+            <div class="box" data-bind="css: colorStyle">
+                <div class="value" data-bind="text: chartData()[5].value"></div>
+                <div class="title" data-bind="text: kpiTitle6()"></div>
+            </div>
+        </div>
+    </div>
+</div>
