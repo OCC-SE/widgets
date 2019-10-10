@@ -1,0 +1,20 @@
+<div class="loyalty_bar">
+  <div class="status_row">
+    <div class="status_text">
+        <div class="user_role" data-bind="text: $data.userRole "></div>
+      Tier: <span class="status_text_value" data-bind="text: $data.loyalTier() "></span>&nbsp;<span class="status_text_next" data-bind="text: '(' + $data.thisNeeded + ' points needed)'"></span>
+    </div>
+    <div class="status_points">
+      Points: <span class="status_points_value" data-bind="text: $data.loyalPoints() "></span>
+    </div>
+  </div>
+  <div class="status_bar">
+    <div class="level1"></div>
+    <div class="level2"></div>
+    <div class="level3"></div>
+  </div>
+  <div class="status_marker" data-bind="attr:{ style:'padding-left:'+$data.thisPercent}">
+    <img data-bind="attr: {src: $data.markerImage }">
+    <span class="status_value" data-bind="text: $data.thisPercent "></span>
+  </div>  
+</div>

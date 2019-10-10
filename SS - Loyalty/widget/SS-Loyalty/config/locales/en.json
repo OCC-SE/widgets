@@ -1,0 +1,13 @@
+{"resources":
+	{
+	"nextTierHelpText":"Points needed for next tier (total)",
+	"nextTierLabel":"Points needed for next tier (total)",
+	"loyalTierHelpText":"Current loyalty tier",
+	"loyalTierLabel":"Current loyalty tier",
+	"loyalPointsHelpText":"Current loyalty points",
+	"loyalPointsLabel":"Current loyalty points",
+	"goldTierLabel":"Gold",
+    "silverTierLabel":"Silver",
+    "platinumTierLabel":"Platinum" 
+	}
+}

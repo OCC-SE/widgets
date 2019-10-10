@@ -1,0 +1,49 @@
+{
+  "widgetDescriptorName": "SS-Loyalty",
+  "properties": [
+    {
+        "id": "loyalTier",
+        "type": "optionType",
+        "name": "loyalTier",
+        "helpTextResourceId": "loyalTierHelpText",
+        "labelResourceId": "loyalTierLabel",
+        "defaultValue": "Gold",
+        "required": true,
+        "options": [
+            {
+                "id": "goldTier",
+                "value": "Gold",
+                "labelResourceId": "goldTierLabel"
+            },
+            {
+                "id": "silverTier",
+                "value": "Silver",
+                "labelResourceId": "silverTierLabel"
+            },
+            {
+                "id": "platinumTier",
+                "value": "Platinum",
+                "labelResourceId": "platinumTierLabel"
+            }
+        ]
+    },
+    {
+        "id": "loyalPoints",
+        "type": "stringType",
+        "name": "loyalPoints",
+        "helpTextResourceId": "loyalPointsHelpText",
+        "labelResourceId": "loyalPointsLabel",
+        "defaultValue": "",
+        "required": true
+    },
+    {
+        "id": "nextTier",
+        "type": "stringType",
+        "name": "nextTier",
+        "helpTextResourceId": "nextTierHelpText",
+        "labelResourceId": "nextTierLabel",
+        "defaultValue": "",
+        "required": true
+    }   
+  ]
+}

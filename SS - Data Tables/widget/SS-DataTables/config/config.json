@@ -1,0 +1,354 @@
+{
+  "widgetDescriptorName": "SS-DataTables",
+  "properties": [
+		{
+		"id": "useImages",
+		"type": "booleanType",
+		"name": "useImages",
+		"helpTextResourceId": "useImagesHelpText",
+		"labelResourceId": "useImagesLabel",
+		"defaultValue": false
+		},
+  	    {
+        "id": "numberTables",
+        "type": "optionType",
+        "name": "numberTables",
+        "helpTextResourceId": "numberTablesHelpText",
+        "labelResourceId": "numberTablesLabel",
+        "defaultValue": "1",
+        "required": true,
+        "options": [
+            {
+                "id": "oneTable",
+                "value": "1",
+                "labelResourceId": "oneTableLabel"
+            },
+            {
+                "id": "twoTable",
+                "value": "2",
+                "labelResourceId": "twoTableLabel"
+            },
+            {
+                "id": "threeTable",
+                "value": "3",
+                "labelResourceId": "threeTableLabel"
+            },
+            {
+                "id": "fourTable",
+                "value": "4",
+                "labelResourceId": "fourTableLabel"
+            },
+            {
+                "id": "fiveTable",
+                "value": "5",
+                "labelResourceId": "fiveTableLabel"
+            },
+            {
+                "id": "sixTable",
+                "value": "6",
+                "labelResourceId": "sixTableLabel"
+            }                                                
+        ]
+    },
+    {
+        "id": "tabOne",
+        "type": "optionType",
+        "name": "tabOne",
+        "helpTextResourceId": "tabOneHelpText",
+        "labelResourceId": "tabOneLabel",
+        "defaultValue": "",
+        "required": true,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }                                                
+        ]
+    },
+    {
+        "id": "tabOneURL",
+        "type": "stringType",
+        "name": "tabOneURL",
+        "helpTextResourceId": "tabOneURLHelpText",
+        "labelResourceId": "tabOneURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/repeat.txt",
+        "required": false
+    },
+    {
+        "id": "tabTwo",
+        "type": "optionType",
+        "name": "tabTwo",
+        "helpTextResourceId": "tabTwoHelpText",
+        "labelResourceId": "tabTwoLabel",
+        "defaultValue": "",
+        "required": false,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }   
+        ]
+    },
+    {
+        "id": "tabTwoURL",
+        "type": "stringType",
+        "name": "tabTwoURL",
+        "helpTextResourceId": "tabTwoURLHelpText",
+        "labelResourceId": "tabTwoURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/installbase.txt",
+        "required": false
+    },
+    {
+        "id": "tabThree",
+        "type": "optionType",
+        "name": "tabThree",
+        "helpTextResourceId": "tabThreeHelpText",
+        "labelResourceId": "tabThreeLabel",
+        "defaultValue": "",
+        "required": false,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }   
+        ]
+    },
+    {
+        "id": "tabThreeURL",
+        "type": "stringType",
+        "name": "tabThreeURL",
+        "helpTextResourceId": "tabThreeURLHelpText",
+        "labelResourceId": "tabThreeURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/orders.txt",
+        "required": false
+    },
+    {
+        "id": "tabFour",
+        "type": "optionType",
+        "name": "tabFour",
+        "helpTextResourceId": "tabFourHelpText",
+        "labelResourceId": "tabFourLabel",
+        "defaultValue": "",
+        "required": false,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }   
+        ]
+    },
+    {
+        "id": "tabFourURL",
+        "type": "stringType",
+        "name": "tabFourURL",
+        "helpTextResourceId": "tabFourURLHelpText",
+        "labelResourceId": "tabFourURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/invoices.txt",
+        "required": false
+    },
+    {
+        "id": "tabFive",
+        "type": "optionType",
+        "name": "tabFive",
+        "helpTextResourceId": "tabFiveHelpText",
+        "labelResourceId": "tabFiveLabel",
+        "defaultValue": "",
+        "required": false,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }   
+        ]
+    },
+    {
+        "id": "tabFiveURL",
+        "type": "stringType",
+        "name": "tabFiveURL",
+        "helpTextResourceId": "tabFiveURLHelpText",
+        "labelResourceId": "tabFiveURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/subscriptions.txt",
+        "required": false
+    },
+    {
+        "id": "tabSix",
+        "type": "optionType",
+        "name": "tabSix",
+        "helpTextResourceId": "tabSixHelpText",
+        "labelResourceId": "tabSixLabel",
+        "defaultValue": "",
+        "required": false,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            }   
+        ]
+    },
+    {
+        "id": "tabSixURL",
+        "type": "stringType",
+        "name": "tabSixURL",
+        "helpTextResourceId": "tabSixURLHelpText",
+        "labelResourceId": "tabSixURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/quotes.txt",
+        "required": false
+    }                    
+  ]
+}

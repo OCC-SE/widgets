@@ -1,0 +1,11 @@
+{
+  "name": "SS - Data Visualization (Pie)",
+  "availableToAllPages": true,
+  "javascript": "SS-DataVisualizationPie",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-DataVisualizationPie",
+  "widgetType": "SS-DataVisualizationPie"
+}

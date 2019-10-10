@@ -1,0 +1,3 @@
+<div id="SS-DataVisualizationPie" class="data_viz_pie">
+	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.widgetId()}"></canvas>
+</div>

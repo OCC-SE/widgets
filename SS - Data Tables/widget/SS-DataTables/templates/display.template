@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<div id="SS-DataTables" class="container">
+<!-- ko if: $data.useImages() -->
+<div class="imglink_row">
+    <!-- ko if: $data.numTables >= 1 -->
+      <div class="imglink" id="tabOne"><img data-bind="attr: {src: $data.tabOneImage, alt: $data.tabOne }"><br><span class="imglabel" data-bind="text: $data.tabOne "></span></div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 2 -->
+      <div class="imglink" id="tabTwo"><img data-bind="attr: {src: $data.tabTwoImage, alt: $data.tabTwo }"><br><span class="imglabel" data-bind="text: $data.tabTwo "></span></div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 3 -->
+      <div class="imglink" id="tabThree"><img data-bind="attr: {src: $data.tabThreeImage, alt: $data.tabThree }"><br><span class="imglabel" data-bind="text: $data.tabThree "></span></div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 4 -->
+      <div class="imglink" id="tabFour"><img data-bind="attr: {src: $data.tabFourImage, alt: $data.tabFour }"><br><span class="imglabel" data-bind="text: $data.tabFour "></span></div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 5 -->
+      <div class="imglink" id="tabFive"><img data-bind="attr: {src: $data.tabFiveImage, alt: $data.tabFive }"><br><span class="imglabel" data-bind="text: $data.tabFive "></span></div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 6 -->
+      <div class="imglink" id="tabSix"><img data-bind="attr: {src: $data.tabSixImage, alt: $data.tabSix  }"><br><span class="imglabel" data-bind="text: $data.tabSix "></span></div>
+    <!-- /ko -->
+</div>    
+<!-- /ko -->
+<!-- ko ifnot: $data.useImages() -->
+<div class="row">
+    <!-- ko if: $data.numTables >= 1 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabOne"><span data-bind="text: $data.tabOne "></span></div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $data.numTables >= 2 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabTwo"><span data-bind="text: $data.tabTwo "></span></div>
+    </div>      
+    <!-- /ko -->    
+    <!-- ko if: $data.numTables >= 3 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabThree"><span data-bind="text: $data.tabThree "></span></div>
+    </div>      
+    <!-- /ko -->    
+    <!-- ko if: $data.numTables >= 4 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabFour"><span data-bind="text: $data.tabFour "></span></div>
+    </div>      
+    <!-- /ko -->    
+    <!-- ko if: $data.numTables >= 5 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabFive"><span data-bind="text: $data.tabFive "></span></div>
+    </div>      
+    <!-- /ko -->    
+    <!-- ko if: $data.numTables >= 6 -->
+    <div class="col-sm-2 col-lg-2">
+      <div class="tablink" id="tabSix"><span data-bind="text: $data.tabSix "></span></div>
+    </div>
+    <!-- /ko --> 
+  </div>    
+<!-- /ko -->
+  <div class="row">
+    <div class="col-sm-12 col-lg-12"><table id="listing" class="display"></table></div>
+  </div>
+</div>

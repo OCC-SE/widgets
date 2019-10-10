@@ -1,0 +1,18 @@
+{"resources":
+	{
+	"chartTypeHelpText":"Choose the chart type",
+	"chartTypeLabel":"Choose the chart type",
+	"barVertChartTypeLabel":"Vertical",
+	"barHorizChartTypeLabel":"Horizontal",
+	"chartTitleHelpText":"Enter a title",
+    "chartTitleLabel":"Enter a title",
+    "chartDataHelpText":"Enter URL for data (JSON)",
+    "chartDataLabel":"Enter URL for data (JSON)",
+    "datasetColor1HelpText":"Enter color in RGB format - rgb(#,#,#)",
+    "datasetColor1Label":"Dataset #1 color",
+    "datasetColor2HelpText":"Enter color in RGB format - rgb(#,#,#)",
+    "datasetColor2Label":"Dataset #2 color",    
+    "datasetColor3HelpText":"Enter color in RGB format - rgb(#,#,#)",
+    "datasetColor3Label":"Dataset #3 color" 
+	}
+}
