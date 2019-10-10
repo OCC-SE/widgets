@@ -1,3 +1,0 @@
-<div class="DataVisualizationBar">
-	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.widgetId()}"></canvas>
-</div>
