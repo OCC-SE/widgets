@@ -1,0 +1,68 @@
+{
+  "widgetDescriptorName": "SS-Tab-JSON",
+  "properties": [
+		{
+		"id": "useImages",
+		"type": "booleanType",
+		"name": "useImages",
+		"helpTextResourceId": "useImagesHelpText",
+		"labelResourceId": "useImagesLabel",
+		"defaultValue": false
+		},
+    	{
+        "id": "tabName",
+        "type": "optionType",
+        "name": "tabName",
+        "helpTextResourceId": "tabNameHelpText",
+        "labelResourceId": "tabNameLabel",
+        "defaultValue": "Invoices",
+        "required": true,
+        "options": [
+            {
+                "id": "repeatTable",
+                "value": "Repeat",
+                "labelResourceId": "repeatTableLabel"
+            },
+            {
+                "id": "installTable",
+                "value": "Install Base",
+                "labelResourceId": "installTableLabel"
+            },
+            {
+                "id": "ordersTable",
+                "value": "Orders",
+                "labelResourceId": "ordersTableLabel"
+            },
+            {
+                "id": "invoicesTable",
+                "value": "Invoices",
+                "labelResourceId": "invoicesTableLabel"
+            },
+            {
+                "id": "subscriptionsTable",
+                "value": "Subscriptions",
+                "labelResourceId": "subscriptionsTableLabel"
+            },
+            {
+                "id": "quotesTable",
+                "value": "Quotes",
+                "labelResourceId": "quotesTableLabel"
+            },
+            {
+                "id": "leadsTable",
+                "value": "Leads",
+                "labelResourceId": "leadsTableLabel"
+            }                                                                                               
+        ]
+    	},
+        {
+        "id": "jsonURL",
+        "type": "stringType",
+        "name": "jsonURL",
+        "helpTextResourceId": "jsonURLHelpText",
+        "labelResourceId": "jsonURLLabel",
+        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/invoices.txt",
+        "required": true
+        }        
+  ]
+}

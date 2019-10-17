@@ -1,0 +1,11 @@
+{
+  "name": "SS - Tab (Salesforce)",
+  "availableToAllPages": true,
+  "javascript": "SS-Tab-Salesforce",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-Tab-Salesforce",
+  "widgetType": "SS-Tab-Salesforce"
+}

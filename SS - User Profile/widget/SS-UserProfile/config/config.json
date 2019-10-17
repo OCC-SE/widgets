@@ -1,0 +1,31 @@
+{
+  "widgetDescriptorName": "SS-UserProfile",
+  "properties": [
+    {
+        "id": "userType",
+        "type": "optionType",
+        "name": "userType",
+        "helpTextResourceId": "userTypeHelpText",
+        "labelResourceId": "userTypeLabel",
+        "defaultValue": "Buyer",
+        "required": true,
+        "options": [
+            {
+                "id": "buyerUserType",
+                "value": "Buyer",
+                "labelResourceId": "buyerUserTypeLabel"
+            },
+            {
+                "id": "customerUserType",
+                "value": "Customer",
+                "labelResourceId": "customerUserTypeLabel"
+            },
+            {
+                "id": "partnerUserType",
+                "value": "Partner",
+                "labelResourceId": "partnerUserTypeLabel"
+            }
+        ]
+    }   
+  ]
+}

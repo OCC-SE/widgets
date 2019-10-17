@@ -1,0 +1,18 @@
+<div id="SS-UserProfile" class="user_profile">
+  <!-- ko if: user().loggedIn -->
+  <div class="user_picture">
+    <img data-bind="attr: {src: $data.userImage }">
+  </div>
+  <div class="user_info">
+    <div class="user_name"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></div>
+    <div class="user_role" data-bind="text: $data.userRole "></div>
+    <div class="user_company" data-bind="text: $data.user().currentOrganization().description "></div>
+    <div class="user_email" data-bind="text: $data.user().emailAddress "></div>
+    <div class="user_phone" data-bind="text: $data.userPhone "></div>
+    <div class="user_history">Customer since:&nbsp;<span data-bind="text: $data.firstVisit "></span></div>
+  </div>
+  <!-- /ko -->
+  <!-- ko ifnot: user().loggedIn -->
+    User profile not found (login required) 
+  <!-- /ko -->
+</div>

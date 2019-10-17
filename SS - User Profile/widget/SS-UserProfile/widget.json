@@ -1,0 +1,11 @@
+{
+  "name": "SS - User Profile",
+  "availableToAllPages": true,
+  "javascript": "SS-UserProfile",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-UserProfile",
+  "widgetType": "SS-UserProfile"
+}

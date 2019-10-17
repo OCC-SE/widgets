@@ -1,0 +1,11 @@
+{
+  "name": "SS - Data Tables",
+  "availableToAllPages": true,
+  "javascript": "SS-DataTables",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-DataTables",
+  "widgetType": "SS-DataTables"
+}

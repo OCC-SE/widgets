@@ -1,0 +1,11 @@
+{
+  "name": "SS - Loyalty",
+  "availableToAllPages": true,
+  "javascript": "SS-Loyalty",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-Loyalty",
+  "widgetType": "SS-Loyalty"
+}
