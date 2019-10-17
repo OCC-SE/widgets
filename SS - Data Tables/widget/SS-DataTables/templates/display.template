@@ -1,5 +1,0 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<style>.dataTables_wrapper {font-size:14px}</style>
-<div class="datatable" data-bind="attr:{ id:'SS-DataTables-'+ $data.id()}" style="margin-top:-25px">
-    <table id="listing" class="display"></table>
-</div>
