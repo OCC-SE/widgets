@@ -2,12 +2,12 @@
   "widgetDescriptorName": "SS-DataTables",
   "properties": [
 		{
-		"id": "useImages",
-		"type": "booleanType",
-		"name": "useImages",
-		"helpTextResourceId": "useImagesHelpText",
-		"labelResourceId": "useImagesLabel",
-		"defaultValue": false
-		}
+		"id": "topMargin",
+		"type": "stringType",
+		"name": "topMargin",
+		"helpTextResourceId": "topMarginHelpText",
+		"labelResourceId": "topMarginLabel",
+		"defaultValue": "-30"
+		}		
   ]
 }

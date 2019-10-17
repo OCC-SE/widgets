@@ -43,7 +43,9 @@ define(
                             "language": {
                                 "emptyTable": "No orders found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                                 
                         });
             return table;                
         }

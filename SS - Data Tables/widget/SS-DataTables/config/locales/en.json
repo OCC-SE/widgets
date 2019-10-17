@@ -1,6 +1,6 @@
 {"resources":
 	{
-    "useImagesHelpText":"Display images instead of text",
-    "useImagesLabel":"Display images instead of text"
+    "topMarginHelpText":"Distance from top of widget to table (default is -30px)",
+    "topMarginLabel":"Distance from top of widget to table (default is -30px)"
 	}
 }

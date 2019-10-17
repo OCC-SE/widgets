@@ -26,9 +26,6 @@ define(
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
 
-            beforeAppear: function(page) {
-
-            }
         };
     }
 );

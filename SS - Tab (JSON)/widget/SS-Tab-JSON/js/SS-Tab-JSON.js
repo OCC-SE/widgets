@@ -44,7 +44,9 @@ define(
                             "language": {
                                 "emptyTable": "No orders found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                            
                         });
             } else if (tab == 'InstallBase') {
                     table = $('#listing').DataTable({
@@ -60,7 +62,9 @@ define(
                             "language": {
                                 "emptyTable": "No equipment found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                            
                         });                
             } else if (tab == 'Orders') {
                     table = $('#listing').DataTable( {
@@ -89,7 +93,9 @@ define(
                             "language": {
                                 "emptyTable": "No orders found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                            
                         });
             } else if (tab == 'Invoices') {
                         table = $('#listing').DataTable({
@@ -117,8 +123,21 @@ define(
                             "language": {
                                 "emptyTable": "No invoices found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true
+                            //paging: false,
+                            //bSort: false,
+                            //bFilter: false,
+                            //bInfo: false,
+                            //fixedColumns:   {
+                            //    leftColumns: 0,1,2,3,4,5
+                            //}                            
                         });                
+                        
+            
+                        
+                        
             } else if (tab == 'Subscriptions') {
                         table = $('#listing').DataTable({
                             "order": [[ 3, "desc" ]],
@@ -143,7 +162,9 @@ define(
                             "language": {
                                 "emptyTable": "No subscriptions found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true
                         });                
             } else if (tab == 'Quotes') {
                         table = $('#listing').DataTable({
@@ -167,7 +188,9 @@ define(
                             "language": {
                                 "emptyTable": "No quotes found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                            
                         });  
             } else if (tab == 'Leads') {
                     table = $('#listing').DataTable( {
@@ -192,7 +215,9 @@ define(
                             "language": {
                                 "emptyTable": "No leads found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                            
                         });            
             } else {
                 console.log('No table config found');

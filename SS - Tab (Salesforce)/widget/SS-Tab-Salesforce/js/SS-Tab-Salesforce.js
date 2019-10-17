@@ -60,7 +60,9 @@ define(
                             "language": {
                                 "emptyTable": "No " + tab.toLowerCase() + " found"
                             },                            
-                            destroy: true
+                            destroy: true,
+                            scrollX: true,
+                            scrollCollapse: true                                 
                         });  
             } else if (tab == 'Contacts') {
                 //Name,Title,Account.Name,Phone,Email
