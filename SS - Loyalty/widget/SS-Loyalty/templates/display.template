@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<style>.dataTables_wrapper {font-size:14px}</style>
 <div class="loyalty_bar">
   <div class="status_row">
     <div class="status_text">
@@ -18,3 +20,14 @@
     <span class="status_value" data-bind="text: $data.thisPercent "></span>
   </div>  
 </div>
+
+<!-- ko if: $data.displayOrders() -->
+    <!-- ko if: user().loggedIn -->
+        <div style="font-weight:bold;margin-top:0px;margin-bottom:-15px">Loyalty Points History</div>
+        <table id="loyalty-listing" class="display" style="width:100%;margin-top:-15px"></table>
+    <!-- /ko -->
+    <!-- ko ifnot: user().loggedIn -->
+        User profile not found (login required) 
+    <!-- /ko -->    
+<!-- /ko -->
+

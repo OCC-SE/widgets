@@ -8,6 +8,8 @@
 	"loyalPointsLabel":"Current loyalty points",
 	"goldTierLabel":"Gold",
     "silverTierLabel":"Silver",
-    "platinumTierLabel":"Platinum" 
+    "platinumTierLabel":"Platinum",
+    "displayOrdersLabel":"Display recent orders with points",
+    "displayOrdersHelpText":"Display recent orders with points"
 	}
 }

@@ -2,6 +2,14 @@
   "widgetDescriptorName": "SS-Loyalty",
   "properties": [
     {
+        "id": "displayOrders",
+        "type": "booleanType",
+        "name": "displayOrders",
+        "helpTextResourceId": "displayOrdersHelpText",
+        "labelResourceId": "displayOrdersLabel",
+        "defaultValue": false
+    },    
+    {
         "id": "loyalTier",
         "type": "optionType",
         "name": "loyalTier",

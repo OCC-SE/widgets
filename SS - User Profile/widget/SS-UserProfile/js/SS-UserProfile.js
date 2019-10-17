@@ -17,7 +17,7 @@ define(
     "use strict";
     
     var widget;
-    var widgetName;
+    var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
 
     return {
 
@@ -28,18 +28,13 @@ define(
         
         onLoad: function(widgetModel) {                             
             widget = widgetModel;
-            widgetName = widget.displayName();
-            console.log("-- " + widgetName + " onLoad --");
 
             var user = widget.user();
             if (user.loggedIn()) {
-                //var img = "/images/" + user.firstName() + ".jpg"; - Getting n.assetMappings[i] is not a function ERROR
-                widget.userImage = "https://raw.githubusercontent.com/occ-janning/images/master/" + user.firstName().toLowerCase() + ".jpg";
+                widget.userImage = widgetRepository + "images/master/" + user.firstName().toLowerCase() + ".jpg";
                 if (user.firstName() == 'Wendy') { //phone number not found in profile so hard coded
-                //    widget.userImage=widget.assetMappings["/images/wendy.jpg"]();
                     widget.userPhone="555-555-1234";
                 } else {
-                //    widget.userImage=widget.assetMappings["/images/jeff.jpg"]();
                     widget.userPhone="555-555-5678";
                 }
                 widget.firstVisit = user.firstVisitDate().substring(0, 4);
@@ -48,12 +43,8 @@ define(
                 console.log("No user logged in");
             }
             
-            console.log("-- " + widgetName + " onLoad END --");
-        },
-        
-        beforeAppear: function(page) {
-
-        }
+            console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
+        },  
     };
   }
 );
