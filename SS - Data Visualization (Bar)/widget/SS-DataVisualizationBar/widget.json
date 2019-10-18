@@ -1,0 +1,11 @@
+{
+  "name": "SS - Data Visualization (Bar)",
+  "availableToAllPages": true,
+  "javascript": "SS-DataVisualizationBar",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-DataVisualizationBar",
+  "widgetType": "SS-DataVisualizationBar"
+}
