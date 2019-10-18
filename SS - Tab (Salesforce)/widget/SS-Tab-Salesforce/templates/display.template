@@ -1,8 +1,3 @@
 <div class="tabs" data-bind="attr:{ id:'SS-Tab-Salesforce-'+ $data.id()}">
-    <!-- ko if: $data.useImages() -->
-        <div class="imglink" data-bind="attr:{ id:'tab-'+ $data.tabName()}"><img data-bind="attr: {src: $data.tabImage, alt: $data.tabName }"><br><span class="imglabel" data-bind="text: $data.tabName "></span></div>
-    <!-- /ko -->
-    <!-- ko ifnot: $data.useImages() -->
-        <div class="tablink" data-bind="attr:{ id:'tab-'+ $data.tabName()}"><span data-bind="text: $data.tabName "></span></div>
-    <!-- /ko -->
+	<div class="imglink" data-bind="attr:{ id:'tab-'+ $data.tabName()}"><img data-bind="attr: {src: $data.tabImage, alt: $data.tabName }"><br><span class="imglabel" data-bind="text: $data.tabName "></span></div>
 </div>

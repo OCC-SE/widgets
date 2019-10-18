@@ -62,9 +62,9 @@ define(
             onLoad: function(widgetModel) {
                 widget = widgetModel;
                 
-                if (widget.useImages()) {
-                    widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
-                }
+                //if (widget.useImages()) {
+                widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
+                //}
 
                 var data = {};
                 data["sort"] = "creationDate:desc";

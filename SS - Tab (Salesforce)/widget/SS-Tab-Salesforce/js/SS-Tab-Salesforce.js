@@ -151,9 +151,7 @@ define(
             onLoad: function(widgetModel) {
                 widget = widgetModel;
                 
-                if (widget.useImages()) {
-                    widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
-                }
+                widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
                 
                 var t = widget.tabName();
                 if (!queryRun.includes(t)) {

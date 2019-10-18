@@ -1,14 +1,6 @@
 {
   "widgetDescriptorName": "SS-TableTab-OCCOrders",
   "properties": [
-		{
-		"id": "useImages",
-		"type": "booleanType",
-		"name": "useImages",
-		"helpTextResourceId": "useImagesHelpText",
-		"labelResourceId": "useImagesLabel",
-		"defaultValue": false
-		},
         {
         "id": "tabName",
         "type": "stringType",

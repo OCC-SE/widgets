@@ -4,8 +4,6 @@
     "tabNameLabel":"Enter a name for the table",  
     "jsonURLHelpText":"JSON location",
     "jsonURLLabel":"JSON location",
-    "useImagesHelpText":"Display images instead of text",
-    "useImagesLabel":"Display images instead of text",
     "repeatTableLabel":"Repeat",
     "installTableLabel":"Install Base",
     "ordersTableLabel":"Orders",

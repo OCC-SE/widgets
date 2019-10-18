@@ -240,9 +240,9 @@ define(
                 widget = widgetModel;
                 
                 widget.tabNameTrim(widget.tabName().replace(' ',''));
-                if (widget.useImages()) {
-                    widget.tabImage = widgetRepository + "images/master/" + widget.tabNameTrim().toLowerCase() + ".png";
-                }
+                //if (widget.useImages()) {
+                widget.tabImage = widgetRepository + "images/master/" + widget.tabNameTrim().toLowerCase() + ".png";
+                //}
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
 
