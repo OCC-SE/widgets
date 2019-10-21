@@ -243,20 +243,11 @@ define(
                 $(document).ready(function() {
                     var tab = widget.tabName();
                     if (!tabUsed.includes(tab)) {
-                        $('#tab-'+ tab).on('click', function() {
-                            if (!widget.useImages()) {
-                                $("#tab-"+tab).attr('class', 'tablink-selected');
-                                for (var b=0; b<tabTypes.length; b++) {
-                                    if (tabTypes[b]!=tab) {
-                                        $("#tab-"+tabTypes[b]).attr('class', 'tablink');
-                                    }
-                                }
-                            } else {
-                                $("#tab-"+tab).attr('class', 'imglink-selected');
-                                for (var i=0; i<tabTypes.length; i++) {
-                                    if (tabTypes[i]!=tab) {
-                                        $("#tab-"+tabTypes[i]).attr('class', 'imglink');
-                                    }
+                        $("#tab-"+ tab).on('click', function() {
+                            $("#tab-"+tab).attr('class', 'imglink-selected');
+                            for (var i=0; i<tabTypes.length; i++) {
+                                if (tabTypes[i]!=tab) {
+                                    $("#tab-"+tabTypes[i]).attr('class', 'imglink');
                                 }
                             }
                             if ($.fn.DataTable.isDataTable('#listing')) {
