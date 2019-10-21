@@ -1,14 +1,6 @@
 {
   "widgetDescriptorName": "SS-TableTab-Salesforce",
   "properties": [
-		{
-		"id": "useImages",
-		"type": "booleanType",
-		"name": "useImages",
-		"helpTextResourceId": "useImagesHelpText",
-		"labelResourceId": "useImagesLabel",
-		"defaultValue": false
-		},
     {
       "id": "tabName",
       "type": "optionType",
@@ -50,7 +42,7 @@
      "name": "sfToken",
      "helpTextResourceId": "sfTokenHelpText",
      "labelResourceId": "sfTokenLabel",
-     "defaultValue": "",
+     "defaultValue": "Generate token",
      "required": true
     }
   ]
