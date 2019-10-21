@@ -26,7 +26,5 @@
     <table id="loyalty-listing" class="display" style="width:100%;margin-top:-15px"></table>
 <!-- /ko -->
 <!-- /ko -->
-<!-- ko ifnot: user().loggedIn -->
-    Loyalty status not found (login required) 
-<!-- /ko -->  
+
 

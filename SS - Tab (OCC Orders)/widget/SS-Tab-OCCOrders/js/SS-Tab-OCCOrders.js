@@ -44,6 +44,8 @@ define(
                                 "emptyTable": "No orders found"
                             },                            
                             destroy: true
+                            //scrollX: true,
+                            //scrollCollapse: true                                 
                         });
             return table;                
         }
@@ -66,8 +68,8 @@ define(
 
                 var data = {};
                 data["sort"] = "creationDate:desc";
-                var errorCallback = function(){
-                    console.log("Error-" + widget.displayName() + "-(" + widget.id() + ")");
+                var errorCallback = function(response){
+                    console.log("ERROR: " + widget.displayName() + "-(" + widget.id() + ")-" + response.errorCode + "-" + response.message);
                 };
                 var successCallback = function(dataSet){
                     widget.ordersDataset=dataSet.items;

@@ -13,6 +13,3 @@
   </div>
 </div>
 <!-- /ko -->
-<!-- ko ifnot: user().loggedIn -->
-User profile not found (login required) 
- <!-- /ko -->

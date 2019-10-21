@@ -97,7 +97,6 @@ define(
             } else {
                 window.myDoughnut = new Chart(ctx, widget.chartConfig());
             } 
-            console.log("-- Ending " + widget.displayName() + "(" + widget.id() + ")");
         }
     };
   }

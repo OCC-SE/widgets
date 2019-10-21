@@ -45,9 +45,10 @@ define(
                 data["limit"] = 3;
                 data["sort"] = "creationDate:desc";
 
-                var errorCallback = function(){
-                    console.log("errorCallback")
+                var errorCallback = function(response){
+                    console.log("ERROR: " + widget.displayName() + "-(" + widget.id() + ")-" + response.errorCode + "-" + response.message);
                 };
+                
                 var successCallback = function(response){
                     var dataSet = [];
                     for (var i=0; i<response.items.length; i++) {
