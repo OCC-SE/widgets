@@ -16,13 +16,14 @@ define(
 
         "use strict";
         
-        function getConfig(tab) {
+        function getConfig(tab,widget) {
             var table;
             if (tab == 'Repeat') {
                     table = $('#listing').DataTable({
-                        "order": [[ 0, "desc" ]],
+                        data: widget.repeatTable.data,
+                        order: [[ 0, "desc" ]],
                         columns: [{title: "ID"},{title: "Product Name"},{title: "Quantity"},{title: "Price"},{title: "Last Ordered"},{title: "New Quantity"},{title: ""},{title: ""}],
-                        "columnDefs": [{
+                        columnDefs: [{
                                 "targets": 7,
                                 "orderable": false,
                                 "data": "download_link",
@@ -41,25 +42,26 @@ define(
                                 "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}
                                 }                                      
                             ],
-                            "language": {
+                            language: {
                                 "emptyTable": "No orders found"
                             },                            
-                            destroy: true,
-                            scrollX: true,
-                            scrollCollapse: true                            
+                            destroy: true
+                            //scrollX: true,
+                            //scrollCollapse: true                            
                         });
-            } else if (tab == 'InstallBase') {
+            } else if (tab == 'Install Base') {
                     table = $('#listing').DataTable({
-                            "order": [[ 0, "desc" ]],
+                            data: widget.installTable.data,
+                            order: [[ 0, "desc" ]],
                             columns: [{title: "ID"},{title: "Product Name"},{title: "Purchase Date"},{title: "Last Serviced"},{title: "Average Usage (monthly)"},{title: "Recommended Usage (monthly)"},{title: "Status"},{title: "Toner Life"},{title: ""}],
-                            "columnDefs": [{
+                            columnDefs: [{
                                 "targets": 8,
                                 "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<input class="cc-button-primary" style="white-space: nowrap" type="button" value="Schedule Service">';}
+                                "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}
                                 },
                                 {"targets": [4,5,6,7,8],"orderable": false},  
                             ],
-                            "language": {
+                            language: {
                                 "emptyTable": "No equipment found"
                             },                            
                             destroy: true,
@@ -67,7 +69,8 @@ define(
                             scrollCollapse: true                            
                         });                
             } else if (tab == 'Orders') {
-                    table = $('#listing').DataTable( {
+                    /* REPLACED BY OCC Orders
+                    $('#listing').DataTable( {
                             "processing": true,
                             "data": widget.ordersDataset,
                             "columns": [
@@ -97,52 +100,44 @@ define(
                             scrollX: true,
                             scrollCollapse: true                            
                         });
+                        */
             } else if (tab == 'Invoices') {
-                        table = $('#listing').DataTable({
-                            "order": [[ 0, "desc" ]],
-                            columns: [ {title: "Date"},{title: "Invoice #"},{title: "Order #"},{title: "Total"},{title: "PO #"},{title: "Due Date"},{title: "Status"},{title: "PDF"},{title: ""}],
-                            "columnDefs": [{
-                                "targets": 6,
-                                "orderable": false,
-                                "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<a href="' + data + '"><u>Details</u></a>';}
-                                },
-                                {
-                                "targets": 7,
-                                "orderable": false,
-                                "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<img src="' + widgetRepository + "images/master/pdf.png" + '" height="20px" widgth="20px">';}
-                                },
-                                {
-                                "targets": 8,
-                                "orderable": false,
-                                "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Pay">';}                                    
-                                }                                
-                            ],
-                            "language": {
-                                "emptyTable": "No invoices found"
-                            },                            
-                            destroy: true,
-                            scrollX: true,
-                            scrollCollapse: true
-                            //paging: false,
-                            //bSort: false,
-                            //bFilter: false,
-                            //bInfo: false,
-                            //fixedColumns:   {
-                            //    leftColumns: 0,1,2,3,4,5
-                            //}                            
-                        });                
-                        
-            
-                        
-                        
+                    table = $('#listing').DataTable({
+                        data: widget.invoicesTable.data,
+                        order: [[ 0, "desc" ]],
+                        columns: [ {title: "Date"},{title: "Invoice #"},{title: "Order #"},{title: "Total"},{title: "PO #"},{title: "Due Date"},{title: "Status"},{title: "PDF"},{title: ""}],
+                        columnDefs: [{
+                            "targets": 6,
+                            "orderable": false,
+                            "data": "download_link",
+                            "render": function(data, type, row, meta) {return '<a href="' + data + '"><u>Details</u></a>';}
+                            },
+                            {
+                            "targets": 7,
+                            "orderable": false,
+                            "data": "download_link",
+                            "render": function(data, type, row, meta) {return '<img src="' + widgetRepository + "images/master/pdf.png" + '" height="20px" widgth="20px">';}
+                            },
+                            {
+                            "targets": 8,
+                            "orderable": false,
+                            "data": "download_link",
+                            "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Pay">';}                                    
+                            }                                
+                        ],
+                        language: {
+                            "emptyTable": "No invoices found"
+                        },                          
+                        destroy: true
+                        //scrollX: true
+                        //scrollCollapse: true
+                    });      
             } else if (tab == 'Subscriptions') {
-                        table = $('#listing').DataTable({
-                            "order": [[ 3, "desc" ]],
+                    table = $('#listing').DataTable({
+                            data: widget.subscriptionsTable.data,
+                            order: [[ 3, "desc" ]],
                             columns: [{title: "ID"},{title: "Product Name"},{title: "Amount"},{title: "Expires"},{title: "Status"}],
-                            "columnDefs": [{
+                            columnDefs: [{
                                 "targets": 4,
                                 "orderable": false,
                                 "data": "download_link",
@@ -159,127 +154,133 @@ define(
                                     return '<img alt="' + alt + '" src="' + image + '" height="20px" widgth="20px"> ' + alt;
                                 }
                             }],
-                            "language": {
+                            language: {
                                 "emptyTable": "No subscriptions found"
                             },                            
-                            destroy: true,
-                            scrollX: true,
-                            scrollCollapse: true
+                            destroy: true
+                            //scrollX: true,
+                            //scrollCollapse: true
                         });                
             } else if (tab == 'Quotes') {
-                        table = $('#listing').DataTable({
-                            "order": [[ 9, "desc" ]],
-                            columns: [{title: ""},{title: "Lock"},{title: "Transaction"},{title: "Version"},{title: "Account"},{title: "Description"},{title: "Status"},{title: "TCV"},{title: "Prepared By"},{title: "Created"},{title: "Updated"},{title: "ACV"}],
-                            "columnDefs": [{
-                                "targets": [0,3,5],
-                                "orderable": false
-                            },                                
-                            {
-                                "targets": 0,
-                                "orderable": false,
-                                "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<input type="checkbox" name="cpq_select" value="cpq_select">';}
-                            },
-                            {
-                                "targets": 2,
-                                "data": "download_link",
-                                "render": function(data, type, row, meta) {return '<a href=""><u>' + row[2] + '</u></a>';}
-                            }],
-                            "language": {
-                                "emptyTable": "No quotes found"
-                            },                            
-                            destroy: true,
-                            scrollX: true,
-                            scrollCollapse: true                            
-                        });  
-            } else if (tab == 'Leads') {
-                    table = $('#listing').DataTable( {
-                            "processing": true,
-                            "data": widget.leadsDataset,
-                            "columns": [
-                                {"title": "Name"}, 
-                                {"title": "Company"},
-                                {"title": "Title"},
-                                {"title": "Product Interest"},
-                                {"title": "Status"},
-                                {"title": "Email"},
-                                {"title": "Phone"},
-                                {"title": "Last Modified"},
-                            ],
-                            /*
-                            "columnDefs": [
-                                //{ "targets": 0, "render": function(d) {return moment(d).format("DD:MM:YYYY HH:mm:ss");}},
-                                //{ "type": "num-fmt", "targets": 2, "render": $.fn.dataTable.render.number( ',', '.', 2, '$' ) },
-                                {"targets": [3,4,5],"orderable": false},  
-                            ],*/
-                            "language": {
-                                "emptyTable": "No leads found"
-                            },                            
-                            destroy: true,
-                            scrollX: true,
-                            scrollCollapse: true                            
-                        });            
+                    table = $('#listing').DataTable({
+                        data: widget.quotesTable.data,
+                        order: [[ 9, "desc" ]],
+                        columns: [{title: ""},{title: "Lock"},{title: "Transaction"},{title: "Version"},{title: "Account"},{title: "Description"},{title: "Status"},{title: "TCV"},{title: "Prepared By"},{title: "Created"},{title: "Updated"},{title: "ACV"}],
+                        columnDefs: [{
+                            "targets": [0,3,5],
+                            "orderable": false
+                        },                                
+                        {
+                            "targets": 0,
+                            "orderable": false,
+                            "data": "download_link",
+                            "render": function(data, type, row, meta) {return '<input type="checkbox" name="cpq_select" value="cpq_select">';}
+                        },
+                        {
+                            "targets": 2,
+                            "data": "download_link",
+                            "render": function(data, type, row, meta) {return '<a href=""><u>' + row[2] + '</u></a>';}
+                        }],
+                        language: {
+                            "emptyTable": "No quotes found"
+                        },                            
+                        destroy: true,
+                        scrollX: true,
+                        scrollCollapse: true                            
+                    });  
             } else {
                 console.log('No table config found');
             }
             return table;                
         }
 
-        var widget;
         var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
-        var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Customers','Opportunities','Install Base','Quotes'];
+        var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Customers','Opportunities','InstallBase','Quotes'];
         var tabUsed = [];
-        var tabJSON = [];
+        var jsonCalled = [];
 
         return {
 
-            tabClicked: ko.observable(''),
             tabNameTrim: ko.observable(''),
+            tabTotal: ko.observable(),
+            tabDisplay: ko.observable(''),
+            invoicesTable: ko.observable(),
+            quotesTable: ko.observable(),
+            subscriptionsTable: ko.observable(),
+            repeatTable: ko.observable(),
+            installTable: ko.observable(),
 
             onLoad: function(widgetModel) {
-                widget = widgetModel;
+                var widget = widgetModel;
                 
-                widget.tabNameTrim(widget.tabName().replace(' ',''));
-                //if (widget.useImages()) {
+                var tab = widget.tabName();
+                var tabTrim = widget.tabName().replace(' ','');
+                var url = widget.jsonURL();
+                
+                widget.tabNameTrim(tabTrim);
                 widget.tabImage = widgetRepository + "images/master/" + widget.tabNameTrim().toLowerCase() + ".png";
-                //}
+                                
+                //Create the tab collection
+                tabUsed.push(tab);
+                
+                var thisTotal = 0;
+
+                for (var i = 0; i < tabUsed.length; i++) {
+                  //Only retrieve JSON for tabs that are being used and haven't been requested yet
+                  if (tabUsed.includes(tab) && !jsonCalled.includes(tab)) {
+                    $.ajax({
+                      url: url,
+                      dataType: 'json',
+                      success: function(result) {
+                        if (tab == 'Invoices') {
+                            widget.invoicesTable = result;
+                        } else if (tab == 'Quotes') {
+                            widget.quotesTable = result;
+                        } else if (tab == 'Subscriptions') {
+                            widget.subscriptionsTable = result;
+                        } else if (tab == 'Repeat') {
+                            widget.repeatTable = result;
+                        } else if (tab == 'Install Base') {
+                            widget.installTable = result;
+                        }
+                        widget.tabTotal(result.data.length);
+                        widget.tabDisplay(tab + ' (' + result.data.length + ')');
+                      },
+                      error: function(jqXHR, textStatus, error) {
+                        console.log('ERROR:' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                      },
+                      complete: function() {
+                      }
+                    });
+                    jsonCalled.push(tab);
+                  }
+                }
+                
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
 
             beforeAppear: function(page) {
-
+                var widget = this;
                 $(document).ready(function() {
-                    var tab = widget.tabName().replace(' ','');
-                    var url = widget.jsonURL();
-                    if (!tabUsed.includes(tab)) {
-                        $('#tab-'+ tab).on('click', function() {
-                            //if (!widget.useImages()) {
-                            //    $("#tab-"+tab).attr('class', 'tablink-selected');
-                            //    for (var b=0; b<tabTypes.length; b++) {
-                            //        if (tabTypes[b]!=tab) {
-                            //            $("#tab-"+tabTypes[b]).attr('class', 'tablink');
-                            //        }
-                            //    }
-                            //} else {
-                                $("#tab-"+tab).attr('class', 'imglink-selected');
-                                for (var i=0; i<tabTypes.length; i++) {
-                                    if (tabTypes[i]!=tab) {
-                                        $("#tab-"+tabTypes[i]).attr('class', 'imglink');
-                                    }
+                    var tab = widget.tabName();
+                    var tabTrim = widget.tabName().replace(' ','');
+                    if (tabUsed.includes(tab)) {
+                       $('#tab-'+ tabTrim).on('click', function() {
+                            $("#tab-"+tabTrim).attr('class', 'imglink-selected');
+                            for (var i=0; i<tabTypes.length; i++) {
+                                if (tabTypes[i]!=tab) {
+                                    $("#tab-"+tabTypes[i]).attr('class', 'imglink');
                                 }
-                            //}
+                            }
                             if ($.fn.DataTable.isDataTable('#listing')) {
                                 $('#listing').DataTable().clear().destroy();
                                 $('#listing').empty();
                             }      
-                            var table = getConfig(tab);
-                            table.ajax.url(url).load();
+                            getConfig(tab,widget);
                         });
-                        tabUsed.push(tab);
                     }
                 });
             }
-            
         };
     }
 );
