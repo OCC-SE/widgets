@@ -16,13 +16,13 @@ define(
 
         "use strict";
         
-        function getConfig(tab) {
+        function getConfig(tab,widget) {
             var table;
             if (tab == 'Leads') {
                 table = $('#listing').DataTable( {
-                            "processing": true,
-                            "data": widget.leadsDataset,
-                            "columns": [
+                            processing: true,
+                            data: widget.leadsTable,
+                            columns: [
                                 {"title": "Name"}, 
                                 {"title": "Company"},
                                 {"title": "Title"},
@@ -33,7 +33,7 @@ define(
                                 {"title": "Last Modified"},
                                 {"title": ""}
                             ],
-                            "columnDefs": [{
+                            columnDefs: [{
                                 "targets": 8,
                                 "orderable": false,
                                 "data": "download_link",
@@ -57,7 +57,7 @@ define(
                                 "orderable": false
                                 },
                             ],
-                            "language": {
+                            language: {
                                 "emptyTable": "No " + tab.toLowerCase() + " found"
                             },                            
                             destroy: true,
@@ -65,11 +65,10 @@ define(
                             scrollCollapse: true                                 
                         });  
             } else if (tab == 'Contacts') {
-                //Name,Title,Account.Name,Phone,Email
                 table = $('#listing').DataTable( {
-                            "processing": true,
-                            "data": widget.contactsDataset,
-                            "columns": [
+                            processing: true,
+                            data: widget.contactsTable,
+                            columns: [
                                 {"title": "Name"}, 
                                 {"title": "Title"},
                                 {"title": "Account"},
@@ -77,7 +76,7 @@ define(
                                 {"title": "Email"},
                                 {"title": ""}
                             ],
-                            "columnDefs": [{
+                            columnDefs: [{
                                 "targets": 5,
                                 "orderable": false,
                                 "data": "download_link",
@@ -88,16 +87,16 @@ define(
                                 "orderable": false
                                 },
                             ],
-                            "language": {
+                            language: {
                                 "emptyTable": "No " + tab.toLowerCase() + " found"
                             },                            
                             destroy: true
                         });                  
             } else {
                 table = $('#listing').DataTable( {
-                            "processing": true,
-                            "data": widget.oppsDataset,
-                            "columns": [
+                            processing: true,
+                            data: widget.oppsTable,
+                            columns: [
                                 {"title": "Name"}, 
                                 {"title": "Account"},
                                 {"title": "Amount"},
@@ -105,7 +104,7 @@ define(
                                 {"title": "Close Date"},
                                 {"title": ""}
                             ],
-                            "columnDefs": [{
+                            columnDefs: [{
                                 "targets": 5,
                                 "orderable": false,
                                 "data": "download_link",
@@ -126,7 +125,7 @@ define(
                                             }
                                 },                                
                             ],                            
-                            "language": {
+                            language: {
                                 "emptyTable": "No " + tab.toLowerCase() + " found"
                             },                            
                             destroy: true
@@ -135,7 +134,6 @@ define(
             return table;                
         }
 
-        var widget;
         var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
         var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Contacts','Opportunities','Install Base','Quotes'];
         var tabUsed = [];
@@ -143,23 +141,25 @@ define(
 
         return {
 
-            tabClicked: ko.observable(''),
-            leadsDataset: ko.observable(),
-            oppsDataset: ko.observable(),
-            contactsDataset: ko.observable(),
+            tabTotal: ko.observable(),
+            tabDisplay: ko.observable(''),
+            leadsTable: ko.observable(),
+            oppsTable: ko.observable(),
+            contactsTable: ko.observable(),
 
             onLoad: function(widgetModel) {
-                widget = widgetModel;
+                var widget = widgetModel;
+                
+                var tab = widget.tabName();
                 
                 widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
-                
-                var t = widget.tabName();
-                if (!queryRun.includes(t)) {
+
+                if (!queryRun.includes(tab)) {
                     
                     var q;
-                    if (t == 'Leads') {
+                    if (tab == 'Leads') {
                         q = "q=SELECT+Name,Company,Title,ProductInterest__c,Status,Email,Phone,LastModifiedDate+FROM+Lead";
-                    } else if (t == 'Contacts') {
+                    } else if (tab == 'Contacts') {
                         q = "q=SELECT+Name,Title,Account.Name,Phone,Email+FROM+Contact";
                     } else {
                         q = "q=SELECT+Name,Account.Name,Amount,StageName,CloseDate+FROM+Opportunity";
@@ -173,21 +173,19 @@ define(
                       "method": "GET",
                       "headers": {
                         "Authorization": "Bearer " + sfdcToken,
-                        "User-Agent": "PostmanRuntime/7.17.1",
                         "Accept": "*/*",
                         "Cache-Control": "no-cache",
                         "Postman-Token": "1c13b9c5-1b60-48e9-85fc-b41ed18a65aa,2c8b3bdc-5a91-45d3-bb04-25faf009e9e5",
-                        "Host": "na114.salesforce.com",
-                        "Accept-Encoding": "gzip, deflate",
-                        "Cookie": "BrowserId=5s80n3peSYeu7MrOU8Ed1w",
-                        "Connection": "keep-alive",
                         "cache-control": "no-cache"
                       }
-                    }
-         
+                    }    
+
+                    
+
+
                     $.ajax(settings).done(function (response) {
                       var dataSet = [];
-                      if (t == 'Leads') {
+                      if (tab == 'Leads') {
                           dataSet = [];
                           for (var i=0; i<response.totalSize; i++) {
                               dataSet[i] = [
@@ -202,8 +200,10 @@ define(
                                 response.records[i].attributes.url
                                 ];
                           }
-                          widget.leadsDataset=dataSet;
-                      } else if (t == 'Contacts') {
+                          widget.leadsTable=dataSet;
+                          widget.tabTotal(response.totalSize);
+                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');                          
+                      } else if (tab == 'Contacts') {
                           dataSet = [];
                           for (var c=0; c<response.totalSize; c++) {
                               dataSet[c] = [
@@ -215,7 +215,9 @@ define(
                                 response.records[c].attributes.url
                                 ];
                           }  
-                          widget.contactsDataset=dataSet;
+                          widget.contactsTable=dataSet;
+                          widget.tabTotal(response.totalSize);
+                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');
                       } else {
                           dataSet = [];
                           for (var g=0; g<response.totalSize; g++) {
@@ -228,10 +230,11 @@ define(
                                 response.records[g].attributes.url
                                 ];
                           }  
-                          widget.oppsDataset=dataSet;    
+                          widget.oppsTable=dataSet;    
+                          widget.tabTotal(response.totalSize);
+                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');                          
                       }
                     });    
-                
                     queryRun.push(widget.tabName());
                 }
                 
@@ -239,7 +242,7 @@ define(
             },
 
             beforeAppear: function(page) {
-
+                var widget = this;
                 $(document).ready(function() {
                     var tab = widget.tabName();
                     if (!tabUsed.includes(tab)) {
@@ -254,7 +257,7 @@ define(
                                 $('#listing').DataTable().clear().destroy();
                                 $('#listing').empty();
                             }                            
-                            var table = getConfig(tab);
+                            var table = getConfig(tab,widget);
                         });
                         tabUsed.push(tab);
                     }
