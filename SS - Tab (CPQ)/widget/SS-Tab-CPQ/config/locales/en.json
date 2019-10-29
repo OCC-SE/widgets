@@ -1,0 +1,8 @@
+{"resources":
+	{
+	"tabNameHelpText":"Enter a name for the table",
+    "tabNameLabel":"Enter a name for the table",  
+    "cpqURLHelpText":"Enter Salesforce url",
+    "cpqURLLabel":"Enter Salesforce url"
+    }
+}
