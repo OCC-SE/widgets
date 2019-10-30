@@ -74,31 +74,35 @@ define(
                 var query;
                 var authkey;
 
-                var settings = {
-                  "async": true,
-                  "crossDomain": true,
-                  "url": "https://cpq-20114.bigmachines.com/rest/v7/commerceDocumentsOraclecpqo_bmClone_1Transaction?fields=status_t,_id,transactionID_t,totalContractValue_t,_customer_t_company_name,createdDate_t,lastUpdatedDate_t",
-                  "method": "GET",
-                  "headers": {
-                    "Authorization": "Basic ZGF2aW5jaTpkYXZpbmNp",
-                    "Accept": "*/*"
-                  }
-                }
-
-                $.ajax(settings).done(function (response) {
-                  var dataSet = [];
-                  for (var i=0; i<response.items.length; i++) {
-                      var cd = response.items[i].createdDate_t;
-                      var c = response.items[i]._customer_t_company_name;
-                      var s = response.items[i].status_t.displayValue;
-                      var tcv = response.items[i].totalContractValue_t.value;
-                      var ti = response.items[i].transactionID_t;
-                      dataSet[i] = [cd,c,s,tcv,ti];
-                  }
-                  widget.quotesTable = dataSet;
-                  widget.tabTotal(response.items.length);
-                  widget.tabDisplay(tab + ' (' + response.items.length + ')');       
-                });    
+                $.ajax({
+                    type: "GET",
+                    async: true,
+                    crossDomain: true,
+                    headers: {
+                        "Authorization": "Basic ZGF2aW5jaTpkYXZpbmNp",
+                        "Accept": "*/*"
+                    },                        
+                    url: "https://cpq-20114.bigmachines.com/rest/v7/commerceDocumentsOraclecpqo_bmClone_1Transaction?fields=status_t,_id,transactionID_t,totalContractValue_t,_customer_t_company_name,createdDate_t,lastUpdatedDate_t",
+                    success: function(response) {
+                        var dataSet = [];
+                        for (var i=0; i<response.items.length; i++) {
+                          var cd = response.items[i].createdDate_t;
+                          var c = response.items[i]._customer_t_company_name;
+                          var s = response.items[i].status_t.displayValue;
+                          var tcv = response.items[i].totalContractValue_t.value;
+                          var ti = response.items[i].transactionID_t;
+                          dataSet[i] = [cd,c,s,tcv,ti];
+                        }
+                        widget.quotesTable = dataSet;
+                        widget.tabTotal(response.items.length);
+                        widget.tabDisplay(tab + ' (' + response.items.length + ')');                       
+                    },
+                    error: function(jqXHR, textStatus, error) {
+                        console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                        widget.tabTotal(0);
+                        widget.tabDisplay(tab + ' (0)');
+                    }
+                });
                 
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },

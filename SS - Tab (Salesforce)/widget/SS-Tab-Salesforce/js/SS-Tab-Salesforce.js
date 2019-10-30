@@ -167,74 +167,72 @@ define(
     
                     var sfdcToken = widget.sfToken();
                     var settings = {
-                      "async": true,
                       "crossDomain": true,
-                      "url": widget.sfURL() + "/services/data/v46.0/query/?"+q,
-                      "method": "GET",
-                      "headers": {
-                        "Authorization": "Bearer " + sfdcToken,
-                        "Accept": "*/*",
-                        "Cache-Control": "no-cache",
-                        "Postman-Token": "1c13b9c5-1b60-48e9-85fc-b41ed18a65aa,2c8b3bdc-5a91-45d3-bb04-25faf009e9e5",
-                        "cache-control": "no-cache"
-                      }
                     }    
-
                     
-
-
-                    $.ajax(settings).done(function (response) {
-                      var dataSet = [];
-                      if (tab == 'Leads') {
-                          dataSet = [];
-                          for (var i=0; i<response.totalSize; i++) {
-                              dataSet[i] = [
-                                response.records[i].Name,
-                                response.records[i].Company,
-                                response.records[i].Title,
-                                response.records[i].ProductInterest__c,
-                                response.records[i].Status,
-                                response.records[i].Email,
-                                response.records[i].Phone,
-                                response.records[i].LastModifiedDate,
-                                response.records[i].attributes.url
-                                ];
-                          }
-                          widget.leadsTable=dataSet;
-                          widget.tabTotal(response.totalSize);
-                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');                          
-                      } else if (tab == 'Contacts') {
-                          dataSet = [];
-                          for (var c=0; c<response.totalSize; c++) {
-                              dataSet[c] = [
-                                response.records[c].Name,
-                                response.records[c].Title,
-                                response.records[c].Account.Name,
-                                response.records[c].Phone,
-                                response.records[c].Email,
-                                response.records[c].attributes.url
-                                ];
-                          }  
-                          widget.contactsTable=dataSet;
-                          widget.tabTotal(response.totalSize);
-                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');
-                      } else {
-                          dataSet = [];
-                          for (var g=0; g<response.totalSize; g++) {
-                              dataSet[g] = [
-                                response.records[g].Name,
-                                response.records[g].Account.Name,
-                                response.records[g].Amount,
-                                response.records[g].StageName,
-                                response.records[g].CloseDate,
-                                response.records[g].attributes.url
-                                ];
-                          }  
-                          widget.oppsTable=dataSet;    
-                          widget.tabTotal(response.totalSize);
-                          widget.tabDisplay(tab + ' (' + response.totalSize + ')');                          
-                      }
-                    });    
+                    $.ajax({
+                        type: "GET",
+                        async: true,
+                        headers: {
+                            "Authorization": "Bearer " + sfdcToken,
+                            "Accept": "*/*",
+                            "Cache-Control": "no-cache",
+                            "Postman-Token": "1c13b9c5-1b60-48e9-85fc-b41ed18a65aa,2c8b3bdc-5a91-45d3-bb04-25faf009e9e5",
+                            "cache-control": "no-cache"
+                        },                        
+                        url: widget.sfURL() + "/services/data/v46.0/query/?"+q,
+                        dataType: 'json',
+                        success: function(response) {
+                            var dataSet = [];
+                            if (tab == 'Leads') {
+                                for (var i=0; i<response.totalSize; i++) {
+                                  dataSet[i] = [
+                                    response.records[i].Name,
+                                    response.records[i].Company,
+                                    response.records[i].Title,
+                                    response.records[i].ProductInterest__c,
+                                    response.records[i].Status,
+                                    response.records[i].Email,
+                                    response.records[i].Phone,
+                                    response.records[i].LastModifiedDate,
+                                    response.records[i].attributes.url
+                                    ];
+                                }       
+                                widget.leadsTable=dataSet;
+                            } else if (tab == 'Contacts') {
+                                for (var c=0; c<response.totalSize; c++) {
+                                    dataSet[c] = [
+                                    response.records[c].Name,
+                                    response.records[c].Title,
+                                    response.records[c].Account.Name,
+                                    response.records[c].Phone,
+                                    response.records[c].Email,
+                                    response.records[c].attributes.url
+                                    ];
+                                }  
+                                widget.contactsTable=dataSet;
+                            } else {
+                                for (var g=0; g<response.totalSize; g++) {
+                                    dataSet[g] = [
+                                    response.records[g].Name,
+                                    response.records[g].Account.Name,
+                                    response.records[g].Amount,
+                                    response.records[g].StageName,
+                                    response.records[g].CloseDate,
+                                    response.records[g].attributes.url
+                                    ];
+                                }
+                                widget.oppsTable=dataSet;
+                            }
+                            widget.tabTotal(response.totalSize);
+                            widget.tabDisplay(tab + ' (' + response.totalSize + ')');                            
+                        },
+                        error: function(jqXHR, textStatus, error) {
+                          console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                          widget.tabTotal(0);
+                          widget.tabDisplay(tab + ' (0)');
+                        }
+                    });
                     queryRun.push(widget.tabName());
                 }
                 
@@ -263,7 +261,6 @@ define(
                     }
                 });
             }
-            
         };
     }
 );

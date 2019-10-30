@@ -248,6 +248,8 @@ define(
                       },
                       error: function(jqXHR, textStatus, error) {
                         console.log('ERROR:' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                        widget.tabTotal(0);
+                        widget.tabDisplay(tab + ' (0)');
                       },
                       complete: function() {
                       }

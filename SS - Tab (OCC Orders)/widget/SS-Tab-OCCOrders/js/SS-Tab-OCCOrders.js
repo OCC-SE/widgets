@@ -16,16 +16,16 @@ define(
 
         "use strict";
 
-        function getConfig(tab) {
+        function getConfig(tab,widget) {
             var table = $('#listing').DataTable( {
-                            "processing": true,
-                            "data": widget.ordersDataset,
-                            "columns": [
+                            processing: true,
+                            data: widget.ordersDataset,
+                            columns: [
                                 {"title": "Date", "data": "creationDate"}, { "title": "Order #", "data": "orderId"}, {"title": "Total", "data" : "total"}, {"title": "Status", "data" : "status" },
                                 {"title": "", "data": "", "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">';}},
                                 {"title": "", "data": "", "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Reorder">';}}
                             ],
-                            "columnDefs": [
+                            columnDefs: [
                                 {"targets": 0, "type": "date", "render": function (value) {
                                                                             if (value === null) return "";
                                                                             var mydate = new Date(value);
@@ -40,7 +40,7 @@ define(
                                 {"type": "num-fmt", "targets": 2, "render": $.fn.dataTable.render.number( ',', '.', 2, '$' )},
                                 {"targets": [3,4,5],"orderable": false},  
                             ],
-                            "language": {
+                            language: {
                                 "emptyTable": "No orders found"
                             },                            
                             destroy: true
@@ -50,37 +50,42 @@ define(
             return table;                
         }
 
-        var widget;
         var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
         var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Customers','Opportunities','Install Base','Quotes'];
         var tabUsed = [];
 
         return {
 
+            tabTotal: ko.observable(),
+            tabDisplay: ko.observable(''),
             ordersDataset: ko.observable(),
 
             onLoad: function(widgetModel) {
-                widget = widgetModel;
+                var widget = widgetModel;
                 
-                //if (widget.useImages()) {
+                var tab = widget.tabName();
+                
                 widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
-                //}
-
-                var data = {};
-                data["sort"] = "creationDate:desc";
+                
+                var settings = {};
+                settings["sort"] = "creationDate:desc";
                 var errorCallback = function(response){
                     console.log("ERROR: " + widget.displayName() + "-(" + widget.id() + ")-" + response.errorCode + "-" + response.message);
+                    widget.tabTotal(0);
+                    widget.tabDisplay(tab + ' (0)');
                 };
-                var successCallback = function(dataSet){
-                    widget.ordersDataset=dataSet.items;
+                var successCallback = function(response){
+                    widget.ordersDataset=response.items;
+                    widget.tabTotal(response.total);
+                    widget.tabDisplay(tab + ' (' + response.total + ')');   
                 }
-                ccRestClient.request(CCConstants.ENDPOINT_GET_ALL_ORDERS_FOR_PROFILE , data, successCallback, errorCallback);                
+                ccRestClient.request(CCConstants.ENDPOINT_GET_ALL_ORDERS_FOR_PROFILE , settings, successCallback, errorCallback);                
 
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
 
             beforeAppear: function(page) {
-
+                var widget = this;
                 $(document).ready(function() {
                     var tab = widget.tabName();
                     if (!tabUsed.includes(tab)) {
@@ -95,7 +100,7 @@ define(
                                 $('#listing').DataTable().clear().destroy();
                                 $('#listing').empty();
                             }                            
-                            var table = getConfig(tab);
+                            getConfig(tab,widget);
                         });
                         tabUsed.push(tab);
                     }
