@@ -1,0 +1,11 @@
+{
+  "name": "SS - Action",
+  "availableToAllPages": true,
+  "javascript": "SS-Action",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-Action",
+  "widgetType": "SS-Action"
+}

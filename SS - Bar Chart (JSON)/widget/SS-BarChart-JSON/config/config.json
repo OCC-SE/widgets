@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "SS-DataVisualizationBar",
+  "widgetDescriptorName": "SS-BarChart-JSON",
   "properties": [
     {
         "id": "chartTitle",

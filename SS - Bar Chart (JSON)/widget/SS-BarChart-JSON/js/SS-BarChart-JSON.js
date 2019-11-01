@@ -16,32 +16,26 @@ define(
 
     "use strict";
     
-    var widget;
-
     return {
 
         chartDatasets: ko.observable(),
         
         onLoad: function(widgetModel) {                             
-            widget = widgetModel;
+            var widget = widgetModel;
            
-            console.log("-- Loading " + widget.displayName() + "(" + widget.id() + ")");
 
             var jsonUrl = widget.chartData();
             var jsonData;
-            var numberDatasets = 0;
+
               $.ajax({
                 url: jsonUrl,
                 dataType: 'json',
                 async: false,
-                success: function(data) {
-                  jsonData = data;
-                  for (var a in jsonData) {
-                      numberDatasets++;
-                  }
+                success: function(response) {
+                  jsonData = response;
                 },
-                error: function(data) {
-                  console.log(data);
+                error: function(response) {
+                  console.log(response);
                 }
               });
             
@@ -100,6 +94,7 @@ define(
         },
         
         beforeAppear: function(page) {
+        	var widget = this;
             var ctx = document.getElementById('canvas-'+ widget.id()).getContext('2d');
             if (widget.chartType() == 'Vertical') {
                 window.myBar = new Chart(ctx, {
@@ -139,6 +134,7 @@ define(
                     }
                 });
             } 
+            console.log("-- Ending " + widget.displayName() + "(" + widget.id() + ")");
         }
     };
   }

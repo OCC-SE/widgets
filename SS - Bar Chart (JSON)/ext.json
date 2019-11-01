@@ -2,8 +2,8 @@
   "createdBy": "OCC Regulators",
   "description": "Vertical or horizontal bar using JSON for Self-Service dashboard",
   "developerID": "8675309",
-  "extensionID": "fc7eb72f-890f-4b10-a21b-122250359306",
-  "name": "SS - Data Visualization (Bar)",
-  "timeCreated": "2019-10-21",
-  "version": 4
+  "extensionID": "5ff00fe5-42ad-4cc7-93af-2dda7fc127cc",
+  "name": "SS - Bar Chart (JSON)",
+  "timeCreated": "2019-10-31",
+  "version": 5
 }
