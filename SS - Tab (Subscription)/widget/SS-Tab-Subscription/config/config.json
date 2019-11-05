@@ -1,0 +1,24 @@
+{
+  "widgetDescriptorName": "SS-Tab-Subscription",
+  "properties": [
+        {
+        "id": "tabName",
+        "type": "stringType",
+        "name": "tabName",
+        "helpTextResourceId": "tabNameHelpText",
+        "labelResourceId": "tabNameLabel",
+        "defaultValue": "Subscriptions",
+        "required": true
+        },       
+    {
+     "id": "serverURL",
+     "type": "stringType",
+     "name": "serverURL",
+     "helpTextResourceId": "serverURLHelpText",
+     "labelResourceId": "serverURLLabel",
+     "defaultValue": "https://ucf1-zhpe-fa-ext.oracledemos.com/",
+     "required": true
+    }
+
+  ]
+}
