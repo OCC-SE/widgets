@@ -1,0 +1,40 @@
+{
+  "widgetDescriptorName": "SelfServiceSettings",
+  "titleResourceId": "title",
+  "descriptionResourceId": "description",
+  "enableSiteSpecific": true,
+  "properties": [
+     {
+      "id": "resources",
+      "type": "stringType",
+      "name": "resources",
+      "helpTextResourceId": "resourcesHelpText",
+      "labelResourceId": "resourcesLabel",
+      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/",
+      "required": true
+    },
+    {
+      "id": "tabNames",
+      "type": "stringType",
+      "name": "tabNames",
+      "helpTextResourceId": "tabNamesHelpText",
+      "labelResourceId": "tabNamesLabel",
+      "defaultValue": "Invoices,Orders,Repeat,Subscriptions,Leads,Customers,Opportunities,Installed,Quotes",
+      "required": true
+    },
+    {
+      "id": "salesforceUser",
+      "type": "stringType",
+      "name": "salesforceUser",
+      "helpTextResourceId": "salesforceUserHelpText",
+      "labelResourceId": "salesforceUserLabel"
+    },
+    {
+      "id": "salesforcePswd",
+      "type": "passwordType",
+      "name": "salesforcePswd",
+      "helpTextResourceId": "salesforcePswdHelpText",
+      "labelResourceId": "salesforcePswdLabel"
+    }    
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "resources" : {
+    "resourcesHelpText": "Demo data, images and widget location",
+    "resourcesLabel": "Resource location (GitHub)",
+    "tabNamesHelpText": "List of tab options (comma delimited)",
+    "tabNamesLabel": "List of tab options (comma delimited)",
+    "salesforceUserHelpText": "Salesforce.com username",
+    "salesforceUserLabel": "Salesforce.com username",
+    "salesforcePswdHelpText": "Salesforce.com password",
+    "salesforcePswdLabel": "Salesforce.com password",        
+    "title": "Self-Service Settings",
+    "description":"Settings for Self-Service dashboards"
+  }
+}
