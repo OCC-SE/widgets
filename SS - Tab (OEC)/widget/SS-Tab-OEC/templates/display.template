@@ -1,4 +1,5 @@
-.tabs {
+<style>
+ .tabs {
    width: 100%;
    text-align: center;
  }
@@ -46,3 +47,7 @@
    padding: 5px;
    margin-bottom: 5px;
  }
+</style>
+<div class="tabs" data-bind="attr:{ id:'SS-Tab-OEC-'+ $data.id()}">
+    <div class="imglink" data-bind="attr:{ id:'tab-'+ $data.tabName()}"><img data-bind="attr: {src: $data.tabImage, alt: $data.tabName }"><br><span class="imglabel" data-bind="text: $data.tabDisplay "></span></div>
+</div>

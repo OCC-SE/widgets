@@ -17,7 +17,7 @@
             },
             {
                 "id": "installTable",
-                "value": "Install Base",
+                "value": "Installed",
                 "labelResourceId": "installTableLabel"
             },
             {
@@ -53,7 +53,7 @@
         "name": "jsonURL",
         "helpTextResourceId": "jsonURLHelpText",
         "labelResourceId": "jsonURLLabel",
-        "defaultValue": "https://raw.githubusercontent.com/occ-janning/data/master/invoices.txt",
+        "defaultValue": "invoices.txt",
         "required": true
         }        
   ]

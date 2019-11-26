@@ -1,0 +1,69 @@
+{
+  "widgetDescriptorName": "SS-Tab-OEC",
+  "properties": [
+    {
+      "id": "tabName",
+      "type": "optionType",
+      "name": "tabName",
+      "helpTextResourceId": "tabNameHelpText",
+      "labelResourceId": "tabNameLabel",
+      "defaultValue": "Leads",
+      "required": true,
+      "options": [
+          {
+              "id": "leadsTable",
+              "value": "Leads",
+              "labelResourceId": "leadsTableLabel"
+          },
+          {
+              "id": "oppsTable",
+              "value": "Opportunities",
+              "labelResourceId": "oppsTableLabel"
+          },
+          {
+              "id": "contactsTable",
+              "value": "Contacts",
+              "labelResourceId": "contactsTableLabel"
+          },
+          {
+              "id": "serviceTable",
+              "value": "Service",
+              "labelResourceId": "serviceTableLabel"
+          },
+          {
+              "id": "subscriptionsTable",
+              "value": "Subscriptions",
+              "labelResourceId": "subscriptionsTableLabel"
+          }                                                                                                          
+      ]
+    },   
+    {
+     "id": "serverURL",
+     "type": "stringType",
+     "name": "serverURL",
+     "helpTextResourceId": "serverURLHelpText",
+     "labelResourceId": "serverURLLabel",
+     "defaultValue": "https://ucf1-zhpe-fa-ext.oracledemos.com/",
+     "required": true
+    }, 
+    {
+     "id": "authType",
+     "type": "stringType",
+     "name": "authType",
+     "helpTextResourceId": "authTypeHelpText",
+     "labelResourceId": "authTypeLabel",
+     "defaultValue": "Basic bmF0YWxpZS50aG9tcHNvbjpUV0M3ODY3Mw==",
+     "required": true
+    },  
+    {
+     "id": "owner",
+     "type": "stringType",
+     "name": "owner",
+     "helpTextResourceId": "ownerHelpText",
+     "labelResourceId": "ownerLabel",
+     "defaultValue": "PrimaryContactPartyName=Lisa Lauber",
+     "required": true
+    }
+
+  ]
+}

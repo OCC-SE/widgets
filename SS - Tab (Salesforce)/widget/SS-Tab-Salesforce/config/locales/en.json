@@ -1,7 +1,5 @@
 {"resources":
 	{
-    "sfTokenHelpText":"Enter Salesforce token",
-    "sfTokenLabel":"Enter Salesforce token",
 	"sfURLHelpText":"Enter Salesforce url",
     "sfURLLabel":"Enter Salesforce url", 
 	"tabNameHelpText":"Select a Salesforce datasource",

@@ -25,7 +25,7 @@
         "name": "image",
         "helpTextResourceId": "imageHelpText",
         "labelResourceId": "imageLabel",
-        "defaultValue": "/general/logo.png",
+        "defaultValue": "https://github.com/OCC-SE/images/blob/master/resources/",
         "required": true
     },
     {

@@ -22,9 +22,7 @@
       </div>  
     </div>
 <!-- ko if: $data.displayOrders() -->
-    <div style="font-weight:bold;margin-top:0px;margin-bottom:-15px">Loyalty Points History</div>
+    <div style="font-weight:bold;margin-top:0px;margin-bottom:-15px;margin-top:15px;">Loyalty Points History</div>
     <table id="loyalty-listing" class="display" style="width:100%;margin-top:-15px"></table>
 <!-- /ko -->
 <!-- /ko -->
-
-

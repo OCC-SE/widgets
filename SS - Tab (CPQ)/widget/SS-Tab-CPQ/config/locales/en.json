@@ -2,7 +2,7 @@
 	{
 	"tabNameHelpText":"Enter a name for the table",
     "tabNameLabel":"Enter a name for the table",  
-    "cpqURLHelpText":"Enter Salesforce url",
-    "cpqURLLabel":"Enter Salesforce url"
+    "cpqURLHelpText":"Enter CPQ instance url",
+    "cpqURLLabel":"Enter CPQ instance url"
     }
 }

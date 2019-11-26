@@ -1,0 +1,11 @@
+{
+  "name": "SS - Pie Chart (Service)",
+  "availableToAllPages": true,
+  "javascript": "SS-PieChart-Service",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "SS-PieChart-Service",
+  "widgetType": "SS-PieChart-Service"
+}

@@ -1,0 +1,17 @@
+{"resources":
+	{
+    "authTypeHelpText":"Authentication type",
+    "authTypeLabel":"Authentication type",
+	"serverURLHelpText":"Server url",
+    "serverURLLabel":"Server url", 
+	"tabNameHelpText":"OEC datasource",
+    "tabNameLabel":"OEC datasource",     
+    "ownerHelpText":"Datasource owner (initial filter)",
+    "ownerLabel":"Datasource owner (initial filter)", 
+    "leadsTableLabel":"Leads",
+    "oppsTableLabel":"Opportunities",
+    "contactsTableLabel":"Contacts",
+    "serviceTableLabel":"Service",
+    "subscriptionsTableLabel":"Subscriptions",
+    }
+}

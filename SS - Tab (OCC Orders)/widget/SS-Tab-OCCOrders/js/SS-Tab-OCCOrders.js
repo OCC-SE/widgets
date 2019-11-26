@@ -16,17 +16,21 @@ define(
 
         "use strict";
 
-        function getConfig(tab,widget) {
+        function buildTable(tab,widget) {
             var table = $('#listing').DataTable( {
+            				order: [[ 0, "desc" ]],
                             processing: true,
                             data: widget.ordersDataset,
                             columns: [
-                                {"title": "Date", "data": "creationDate"}, { "title": "Order #", "data": "orderId"}, {"title": "Total", "data" : "total"}, {"title": "Status", "data" : "status" },
-                                {"title": "", "data": "", "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">';}},
-                                {"title": "", "data": "", "render": function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Reorder">';}}
+                                {title: "Date", data: "creationDate"}, 
+                                {title: "Order #", data: "orderId"}, 
+                                {title: "Total", data : "total"}, 
+                                {title: "Status", data : "status" },
+                                {title: "", data: "", render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">';}},
+                                {title: "", data: "", render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Reorder">';}}
                             ],
                             columnDefs: [
-                                {"targets": 0, "type": "date", "render": function (value) {
+                                {targets: 0, type: "date", render: function (value) {
                                                                             if (value === null) return "";
                                                                             var mydate = new Date(value);
                                                                             var yyyy = mydate.getFullYear().toString();
@@ -37,11 +41,11 @@ define(
                                                                             return mydatestr.toLocaleDateString();             
                                                                         }
                                 },
-                                {"type": "num-fmt", "targets": 2, "render": $.fn.dataTable.render.number( ',', '.', 2, '$' )},
-                                {"targets": [3,4,5],"orderable": false},  
+                                {type: "num-fmt", targets: 2, render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
+                                {targets: [3,4,5],orderable: false},  
                             ],
                             language: {
-                                "emptyTable": "No orders found"
+                                emptyTable: "No orders found"
                             },                            
                             destroy: true
                             //scrollX: true,
@@ -51,7 +55,7 @@ define(
         }
 
         var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
-        var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Customers','Opportunities','Install Base','Quotes'];
+		var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Contacts','Opportunities','Installed','Quotes','Service'];
         var tabUsed = [];
 
         return {
@@ -65,7 +69,7 @@ define(
                 
                 var tab = widget.tabName();
                 
-                widget.tabImage = widgetRepository + "images/master/" + widget.tabName().toLowerCase() + ".png";
+                widget.tabImage = widgetRepository + "images/master/tabs/" + widget.tabName().toLowerCase() + ".png";
                 
                 var settings = {};
                 settings["sort"] = "creationDate:desc";
@@ -88,9 +92,12 @@ define(
                 var widget = this;
                 $(document).ready(function() {
                     var tab = widget.tabName();
+                    //var tabTrim = widget.tabName().replace(' ','');
                     if (!tabUsed.includes(tab)) {
-                        $('#tab-'+ tab).on('click', function() {
-                            $("#tab-"+tab).attr('class', 'imglink-selected');
+                        //$('#tab-'+ tabTrim).on('click', function() {
+                        $('#tab-'+ tab).on('click', function() {                            
+                            //$("#tab-"+tabTrim).attr('class', 'imglink-selected');
+                            $("#tab-"+tab).attr('class', 'imglink-selected');                            
                             for (var i=0; i<tabTypes.length; i++) {
                                 if (tabTypes[i]!=tab) {
                                     $("#tab-"+tabTypes[i]).attr('class', 'imglink');
@@ -100,13 +107,12 @@ define(
                                 $('#listing').DataTable().clear().destroy();
                                 $('#listing').empty();
                             }                            
-                            getConfig(tab,widget);
+                            buildTable(tab,widget);
                         });
                         tabUsed.push(tab);
                     }
                 });
-            }
-            
+            }            
         };
     }
 );

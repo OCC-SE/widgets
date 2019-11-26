@@ -2,10 +2,10 @@
 	{
     "tabNameHelpText":"Enter a name for the table",
     "tabNameLabel":"Enter a name for the table",  
-    "jsonURLHelpText":"JSON location",
-    "jsonURLLabel":"JSON location",
+    "jsonURLHelpText":"JSON filename",
+    "jsonURLLabel":"JSON filename",
     "repeatTableLabel":"Repeat",
-    "installTableLabel":"Install Base",
+    "installTableLabel":"Installed",
     "ordersTableLabel":"Orders",
     "invoicesTableLabel":"Invoices",
     "subscriptionsTableLabel":"Subscriptions",

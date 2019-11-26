@@ -134,7 +134,6 @@ define(
                     }
                 });
             } 
-            console.log("-- Ending " + widget.displayName() + "(" + widget.id() + ")");
         }
     };
   }

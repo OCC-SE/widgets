@@ -23,38 +23,43 @@ define(
             var widget = widgetModel;
             
             //NEED DEMO URL and OWNER
-            var qUrl = 'https://cpq-20238.bigmachines.com/rest/v8/commerceDocumentsOraclecpqoTransaction'; //needs to be set
-            var qOwner = '?q={"owner_t": "Natalie Thompson"}'; //needs to be set
-            var qFields = '&fields=status_t';
+            var qAuth = 'Basic bmF0YWxpZS50aG9tcHNvbjpUV0M3ODY3Mw==';
+            var qUrl = 'https://ucf1-zhpe-fa-ext.oracledemos.com/crmRestApi/resources/latest/serviceRequests/';
+            var qOwner = '';//'?q=PrimaryContactPartyName=Lisa Lauber';
+            var qFields = '?fields=StatusCdMeaning';
             
                 $.ajax({
                     type: "GET",
                     async: true,
                     crossDomain: true,
                     headers: {
-                        "Authorization": "Basic ZGF2aW5jaTpkYXZpbmNp",
+                        "Authorization": qAuth,
                         "Accept": "*/*"
                     },                        
                     url: qUrl + qOwner + qFields,
                     success: function(response) {
                         var statusCount = [];
-                        var sOrdered = 0;
-                        var sCreated = 0;
-                        var sQuoted = 0;
+                        var sResolved = 0;
+                        var sWaiting = 0;
+                        var sInProgress = 0;
+                        var sNew = 0;
                         for (var i=0; i<response.items.length; i++) {
-                          var s = response.items[i].status_t.displayValue;
-                          if (s == 'Ordered') {
-                              sOrdered++;
-                          } else if (s == 'Created') {
-                              sCreated++;
+                          var s = response.items[i].StatusCdMeaning;
+                          if (s == 'Resolved') {
+                              sResolved++;
+                          } else if (s == 'Waiting') {
+                              sWaiting++;
+                          } else if (s == 'New') {
+                              sNew++;
                           } else {
-                              sQuoted++;
+                              sInProgress++;
                           }
                         }
                         var text = '[' +
-                        '{ "label":"Created" , "color":"rgb(144,103,167)", "value":' + sCreated + '},' +
-                        '{ "label":"Ordered" , "color":"rgb(132,186,91)", "value":' + sOrdered + '},' +
-                        '{ "label":"Quoted" , "color":"rgb(30,144,255)", "value":' + sQuoted + '}' +
+                        '{ "label":"Resolved" , "color":"rgb(144,103,167)", "value":' + sResolved + '},' +
+                        '{ "label":"Waiting" , "color":"rgb(132,186,91)", "value":' + sWaiting + '},' +
+                        '{ "label":"In Progress" , "color":"rgb(30,144,255)", "value":' + sInProgress + '},' +
+                        '{ "label":"New" , "color":"rgb(236,107,86)", "value":' + sNew + '}' +
                         ']';
                         var jsonData = JSON.parse(text);
 

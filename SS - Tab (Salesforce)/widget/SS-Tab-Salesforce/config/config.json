@@ -35,15 +35,6 @@
      "labelResourceId": "sfURLLabel",
      "defaultValue": "https://na114.salesforce.com",
      "required": true
-    },    
-    {
-     "id": "sfToken",
-     "type": "stringType",
-     "name": "sfToken",
-     "helpTextResourceId": "sfTokenHelpText",
-     "labelResourceId": "sfTokenLabel",
-     "defaultValue": "Generate token",
-     "required": true
     }
   ]
 }

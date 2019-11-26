@@ -1,15 +1,80 @@
-<!-- ko if: user().loggedIn -->
 <div id="SS-UserProfile" class="user_profile">
-  <div class="user_picture">
-    <img data-bind="attr: {src: $data.userImage }">
+<!-- ko if: ($data.userRole == 'Customer') -->    
+  <div class="user_welcome">
+    <div style="display:table-cell;">Welcome back, <span data-bind="text: $data.user().firstName"></span>!</div>
   </div>
   <div class="user_info">
-    <div class="user_name"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></div>
-    <div class="user_role" data-bind="text: $data.userRole "></div>
-    <div class="user_company" data-bind="text: $data.user().currentOrganization().description "></div>
-    <div class="user_email" data-bind="text: $data.user().emailAddress "></div>
-    <div class="user_phone" data-bind="text: $data.userPhone "></div>
-    <div class="user_history">Customer since:&nbsp;<span data-bind="text: $data.firstVisit "></span></div>
+    <div class="rTableRow">
+      <div class="user_picture"><img data-bind="attr: {src: $data.userImage }"></div>
+      <div class="user_details">
+        <div class="rTableRow"><div class="user_name"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></div></div>
+        <div class="rTableRow"><b>Account Number:</b>&nbsp;<span data-bind="text: $data.user().id "></span></div>        
+        <div class="rTableRow"><b>Account Name:</b>&nbsp;<span data-bind="text: $data.user().currentOrganization().description "></span></div>
+        <div class="rTableRow"><b>Last Transaction:</b>&nbsp;<span data-bind="text: $data.lastTrans "></span></div>
+        <div class="rTableRow"><b>Customer since:</b>&nbsp;<span data-bind="text: $data.firstVisit "></span></div>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="user_contact">
+    <div class="rTableRow">
+      <div style="display:table-cell;width:50%;">
+        <div style="font-weight:bold;">Email</div>
+        <div data-bind="text: $data.user().emailAddress "></div>
+        <div style="font-weight:bold;padding-top:5px">Phone</div>
+        <div data-bind="text: $data.userPhone "></div>
+      </div>
+      <div style="display:table-cell;padding-left:10px;">
+        <div style="font-weight:bold;">Billing</div>
+        <div data-bind="text: $data.user().currentOrganization.companyName "></div>
+        <div data-bind="text: $data.user().contactBillingAddress.address1 "></div>
+        <div><span data-bind="text: $data.user().contactBillingAddress.city "></span>,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span></div>
+        <div data-bind="text: $data.user().contactBillingAddress.country "></div>
+      </div>
+    </div>
+  </div>
 <!-- /ko -->
+<!-- ko if: ($data.userRole == 'Buyer') -->    
+<div class="user_welcome">
+    <div style="display:table-cell;width:55px;"><img data-bind="attr: {src: $data.user().currentOrganization().organizationLogoURL }"></div>      
+    <div style="display:table-cell;padding-left:10px">Welcome back, <span data-bind="text: $data.user().firstName"></span>!</div>
+</div>
+  <div class="buyer_info">
+    <div class="rTableRow">
+      <div class="buyer_col1">
+        <img data-bind="attr: {src: $data.userImage }">
+        <div style="text-align:center;font-weight:bold;margin-top:10px;"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></div>
+      </div>
+      <div style="display:table-cell;width:15px;">
+      </div>
+      <div class="buyer_col2">
+        <div><b>Email:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.user().emailAddress "></div>
+        <div><b>Phone:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userPhone "></div>
+        <div><b>Contact Info:</b></div>
+        <div data-bind="text: $data.user().currentOrganization.companyName "></div>
+        <div data-bind="text: $data.user().contactBillingAddress.address1 "></div>
+        <div><span data-bind="text: $data.user().contactBillingAddress.city "></span>&,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span></div>
+        <div data-bind="text: $data.user().contactBillingAddress.country "></div>
+      </div>
+      <div class="buyer_col3">
+        <div><b>Business Unit:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userBusUnit "></div>
+        <div><b>Cost Center:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userCostCenter "></div>
+        <div><b>Customer Type:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userCustType "></div>
+      </div>
+      <div class="buyer_col4">
+        <div><b>Per-Order Limit:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userPurchLimit "></div>
+        <div><b>Available Credit:</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userAvailCredit "></div>
+        <div><b>Total Spend (6 Month):</b></div>
+        <div style="margin-bottom:10px;" data-bind="text: $data.userTotal "></div>
+      </div>
+    </div>
+  </div>
+<!-- /ko -->
+</div>
+

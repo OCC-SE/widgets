@@ -16,12 +16,10 @@ define(
 
         "use strict";
         
-        var widget;
-
         return {
 
             onLoad: function(widgetModel) {
-                widget = widgetModel;
+                var widget = widgetModel;
 
                 console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
