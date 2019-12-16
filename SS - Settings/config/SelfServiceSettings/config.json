@@ -5,23 +5,39 @@
   "enableSiteSpecific": true,
   "properties": [
      {
-      "id": "resources",
+      "id": "resourceData",
       "type": "stringType",
-      "name": "resources",
-      "helpTextResourceId": "resourcesHelpText",
-      "labelResourceId": "resourcesLabel",
-      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/",
+      "name": "resourceData",
+      "helpTextResourceId": "resourceDataHelpText",
+      "labelResourceId": "resourceDataLabel",
+      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/data/master/",
       "required": true
     },
+     {
+      "id": "resourceImages",
+      "type": "stringType",
+      "name": "resourceImages",
+      "helpTextResourceId": "resourceImagesHelpText",
+      "labelResourceId": "resourceImagesLabel",
+      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/images/master/",
+      "required": true
+    },    
     {
       "id": "tabNames",
       "type": "stringType",
       "name": "tabNames",
       "helpTextResourceId": "tabNamesHelpText",
       "labelResourceId": "tabNamesLabel",
-      "defaultValue": "Invoices,Orders,Repeat,Subscriptions,Leads,Customers,Opportunities,Installed,Quotes",
+      "defaultValue": "Invoices,Orders,Repeat,Subscriptions,Leads,Customers,Opportunities,Installed,Quotes,Service",
       "required": true
     },
+    {
+      "id": "salesforceURL",
+      "type": "stringType",
+      "name": "salesforceURL",
+      "helpTextResourceId": "salesforceURLHelpText",
+      "labelResourceId": "salesforceURLLabel"
+    },    
     {
       "id": "salesforceUser",
       "type": "stringType",
@@ -31,10 +47,52 @@
     },
     {
       "id": "salesforcePswd",
-      "type": "passwordType",
+      "type": "stringType",
       "name": "salesforcePswd",
       "helpTextResourceId": "salesforcePswdHelpText",
       "labelResourceId": "salesforcePswdLabel"
-    }    
+    },
+    {
+      "id": "cpqURL",
+      "type": "stringType",
+      "name": "cpqURL",
+      "helpTextResourceId": "cpqURLHelpText",
+      "labelResourceId": "cpqURLLabel"
+    },    
+    {
+      "id": "cpqUser",
+      "type": "stringType",
+      "name": "cpqUser",
+      "helpTextResourceId": "cpqUserHelpText",
+      "labelResourceId": "cpqUserLabel"
+    },
+    {
+      "id": "cpqPswd",
+      "type": "stringType",
+      "name": "cpqPswd",
+      "helpTextResourceId": "cpqPswdHelpText",
+      "labelResourceId": "cpqPswdLabel"
+    },
+    {
+      "id": "oecURL",
+      "type": "stringType",
+      "name": "oecURL",
+      "helpTextResourceId": "oecURLHelpText",
+      "labelResourceId": "oecURLLabel"
+    },    
+    {
+      "id": "oecUser",
+      "type": "stringType",
+      "name": "oecUser",
+      "helpTextResourceId": "oecUserHelpText",
+      "labelResourceId": "oecUserLabel"
+    },
+    {
+      "id": "oecPswd",
+      "type": "stringType",
+      "name": "oecPswd",
+      "helpTextResourceId": "oecPswdHelpText",
+      "labelResourceId": "oecPswdLabel"
+    }            
   ]
 }

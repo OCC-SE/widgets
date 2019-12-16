@@ -37,7 +37,7 @@
         "name": "jsonURL",
         "helpTextResourceId": "jsonURLHelpText",
         "labelResourceId": "jsonURLLabel",
-        "defaultValue": "https://raw.githubusercontent.com/occ-se/data/master/servicerequests.txt",
+        "defaultValue": "servicerequests.txt",
         "required": true
     }  
   ]

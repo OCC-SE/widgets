@@ -7,12 +7,12 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
+    ['jquery', 'knockout', 'ccLogger', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function($, ko, dataTables) {
+    function($, ko, CCLogger, dataTables) {
 
         "use strict";
 
@@ -21,30 +21,20 @@ define(
             if (tab == 'Leads') {
                 table = $('#listing').DataTable( {
                     processing: true,
-                    data: widget.leadsTable,
-                    columns: [
-                        {"title": "Name"},
-                        {"title": "Company"},
-                        {"title": "Title"},
-                        {"title": "Product Interest"},
-                        {"title": "Status"},
-                        {"title": "Email"},
-                        {"title": "Phone"},
-                        {"title": "Last Modified"},
-                        {"title": ""}
-                    ],
+                    data: widget.tabData(),
+                    columns: [{title: "Name"},{title: "Company"},{title: "Title"},{title: "Product Interest"},{title: "Status"},{title: "Email"},{title: "Phone"},{title: "Last Modified"},{title: ""}],
                     columnDefs: [{
-                        "targets": 8,
-                        "orderable": false,
-                        "data": "download_link",
-                        "render": function(data, type, row, meta) {
+                        targets: 8,
+                        orderable: false,
+                        data: "download_link",
+                        render: function(data, type, row, meta) {
                             //return '<a href="' + widget.sfURL() + row[8] + '"><u>Details</u></a>';
                             return '<input class="cc-button-primary" type="button" value="Details">';
                         }
                     },
-                        {"targets": 7,
-                            "type": "date",
-                            "render": function (value) {
+                        {targets: 7,
+                            type: "date",
+                            render: function (value) {
                                 if (value === null) return "";
                                 var mydate = new Date(value);
                                 var yyyy = mydate.getFullYear().toString();
@@ -56,12 +46,12 @@ define(
                             }
                         },
                         {
-                            "targets": [3,4,5,6,8],
-                            "orderable": false
+                            targets: [3,4,5,6,8],
+                            orderable: false
                         },
                     ],
                     language: {
-                        "emptyTable": "No " + tab.toLowerCase() + " found"
+                        emptyTable: "No " + tab.toLowerCase() + " found"
                     },
                     destroy: true,
                     scrollX: true,
@@ -71,42 +61,24 @@ define(
             else if (tab == 'Contacts') {
                 table = $('#listing').DataTable( {
                     processing: true,
-                    data: widget.contactsTable,
-                    columns: [
-                        {"title": "Name"},
-                        {"title": "Title"},
-                        {"title": "Account"},
-                        {"title": "Phone"},
-                        {"title": "Email"},
-                        {"title": ""},
-                        {"title": ""}
-                    ],
-                    columnDefs: [
-                    {
-                        "targets": 5,
-                        "orderable": false,
-                        "data": "download_link",
-                        "render": function(data, type, row, meta) {
+                    data: widget.tabData(),
+                    columns: [{title: "Name"},{title: "Title"},{title: "Account"},{title: "Phone"},{title: "Email"},{title: ""}],
+                    columnDefs: [{
+                        targets: 5,
+                        orderable: false,
+                        data: "download_link",
+                        render: function(data, type, row, meta) {
                             //return '<a href="' + widget.sfURL() + row[8] + '"><u>Details</u></a>';
                             return '<input class="cc-button-primary" type="button" value="Details">';
                         }
                     },
-					{
-                        "targets": 6,
-                        "orderable": false,
-                        "data": "download_link",
-                        "render": function(data, type, row, meta) {
-                            //return '<a href="' + widget.sfURL() + row[8] + '"><u>Details</u></a>';
-                            return '<input class="cc-button-primary" type="button" value="Shop on Behalf">';
-                        }
-                    },                    
                         {
-                            "targets": [3,4],
-                            "orderable": false
+                            targets: [3,4],
+                            orderable: false
                         },
                     ],
                     language: {
-                        "emptyTable": "No " + tab.toLowerCase() + " found"
+                        emptyTable: "No " + tab.toLowerCase() + " found"
                     },
                     destroy: true
                 });
@@ -114,28 +86,21 @@ define(
             else {
                 table = $('#listing').DataTable( {
                     processing: true,
-                    data: widget.oppsTable,
-                    columns: [
-                        {"title": "Name"},
-                        {"title": "Account"},
-                        {"title": "Amount"},
-                        {"title": "Stage"},
-                        {"title": "Close Date"},
-                        {"title": ""}
-                    ],
+                    data: widget.tabData(),
+                    columns: [{title: "Name"},{title: "Account"},{title: "Amount"},{title: "Stage"},{title: "Close Date"},{title: ""}],
                     columnDefs: [{
-                        "targets": 5,
-                        "orderable": false,
-                        "data": "download_link",
-                        "render": function(data, type, row, meta) {
+                        targets: 5,
+                        orderable: false,
+                        data: "download_link",
+                        render: function(data, type, row, meta) {
                             //return '<a href="' + widget.sfURL() + row[8] + '"><u>Details</u></a>';
                             return '<input class="cc-button-primary" type="button" value="Details">';
                         }
                     },
-                        {"type": "num-fmt", "targets": 2, "render": $.fn.dataTable.render.number( ',', '.', 2, '$' )},
-                        {"targets": 4,
-                            "type": "date",
-                            "render": function (value) {
+                        {type: "num-fmt", targets: 2, render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
+                        {targets: 4,
+                            type: "date",
+                            render: function (value) {
                                 if (value === null) return "";
                                 var mydate = new Date(value);
                                 var yyyy = mydate.getFullYear().toString();
@@ -148,7 +113,7 @@ define(
                         },
                     ],
                     language: {
-                        "emptyTable": "No " + tab.toLowerCase() + " found"
+                        emptyTable: "No " + tab.toLowerCase() + " found"
                     },
                     destroy: true
                 });
@@ -156,27 +121,44 @@ define(
             return table;
         }
 
-        var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
-        var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Contacts','Opportunities','Installed','Quotes','Service'];
         var tabUsed = [];
-        var queryRun = [];
+        var apiCalled = [];
+        var ss_images;
 
         return {
 
-            tabTotal: ko.observable(),
-            tabDisplay: ko.observable(''),
-            leadsTable: ko.observable(),
-            oppsTable: ko.observable(),
-            contactsTable: ko.observable(),
+            tabNameTrim: ko.observable('Loading'),
+            tabTotal: ko.observable(0),
+            tabDisplay: ko.observable('Loading...'),
+            tabData: ko.observable(),
 
             onLoad: function(widgetModel) {
+                
                 var widget = widgetModel;
                 
-                var tab = widget.tabName();
-                
-                widget.tabImage = widgetRepository + "images/master/tabs/" + widget.tabName().toLowerCase() + ".png";
+                if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                    return;
+                }
 
-                if (!queryRun.includes(tab)) {
+                var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+                ss_images = ss_settings.resourceImages;
+
+                if (!widget.tabName()) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
+                    return;
+                }                
+
+                var tab = widget.tabName();
+                var tabTrim = tab; //widget.tabName().replace(' ','');
+
+                widget.tabNameTrim(tabTrim);
+                widget.tabImage = ss_images + "/tabs/" + tabTrim.toLowerCase() + ".png";
+                                
+                //Create the tab collection
+                tabUsed.push(tab);
+                
+                if (!apiCalled.includes(tab)) {
                     var assetType;
                     if (tab == 'Leads') {
                         assetType = "leads";
@@ -207,7 +189,7 @@ define(
                                         response.records[i].attributes.url
                                     ];
                                 }
-                                widget.leadsTable=dataSet;
+                                widget.tabData(dataSet);
                             } else if (tab == 'Contacts') {
                                 for (var c=0; c<response.totalSize; c++) {
                                     dataSet[c] = [
@@ -219,7 +201,7 @@ define(
                                         response.records[c].attributes.url
                                     ];
                                 }
-                                widget.contactsTable=dataSet;
+                                widget.tabData(dataSet);
                             } else {
                                 for (var g=0; g<response.totalSize; g++) {
                                     dataSet[g] = [
@@ -231,44 +213,37 @@ define(
                                         response.records[g].attributes.url
                                     ];
                                 }
-                                widget.oppsTable=dataSet;
+                                widget.tabData(dataSet);
                             }
                             widget.tabTotal(response.totalSize);
                             widget.tabDisplay(tab + ' (' + response.totalSize + ')');
                         },
                         error: function(jqXHR, textStatus, error) {
-                            console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
                             widget.tabTotal(0);
                             widget.tabDisplay(tab + ' (0)');
+                            CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + tab + "-" + error);
                         }
                     });
-                    queryRun.push(widget.tabName());
+                    apiCalled.push(tab);
                 }
 
-                console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" + tab);
             },
 
             beforeAppear: function(page) {
                 var widget = this;
-                $(document).ready(function() {
-                    var tab = widget.tabName();
-                    if (!tabUsed.includes(tab)) {
-                        $("#tab-"+ tab).on('click', function() {
-                            $("#tab-"+tab).attr('class', 'imglink-selected');
-                            for (var i=0; i<tabTypes.length; i++) {
-                                if (tabTypes[i]!=tab) {
-                                    $("#tab-"+tabTypes[i]).attr('class', 'imglink');
-                                }
-                            }
-                            if ($.fn.DataTable.isDataTable('#listing')) {
-                                $('#listing').DataTable().clear().destroy();
-                                $('#listing').empty();
-                            }
-                            buildTable(tab,widget);
-                        });
-                        tabUsed.push(tab);
-                    }
-                });
+                var tab = widget.tabName();
+                if (tabUsed.includes(tab)) {
+                    $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                        $('[id^=tab-]').attr('class', 'imglink');
+                        $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected');
+                        if ($.fn.DataTable.isDataTable('#listing')) {
+                            $('#listing').DataTable().clear().destroy();
+                            $('#listing').empty();
+                        }      
+                        buildTable(tab,widget);
+                    });
+                }
             }
         };
     }

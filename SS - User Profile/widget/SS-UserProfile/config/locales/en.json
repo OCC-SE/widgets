@@ -4,6 +4,6 @@
 	"userTypeLabel":"Select a role",
 	"buyerUserTypeLabel":"Buyer",
     "customerUserTypeLabel":"Customer",
-    "partnerUserTypeLabel":"Partner"  
+    "salesRepUserTypeLabel":"Sales Representative"  
 	}
 }

@@ -7,12 +7,12 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout', 'https://www.chartjs.org/dist/2.8.0/Chart.min.js','https://www.chartjs.org/samples/latest/utils.js'],
+    ['jquery', 'knockout', 'https://www.chartjs.org/dist/2.8.0/Chart.min.js','https://www.chartjs.org/samples/latest/utils.js', 'ccLogger'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function ($, ko, Chart, utils) {
+    function ($, ko, Chart, utils, CCLogger) {
 
     "use strict";
     
@@ -21,6 +21,10 @@ define(
         onLoad: function(widgetModel) {     
 
             var widget = widgetModel;
+
+            var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+            //tabTypes = ss_settings.tabNames.trim().split(',');
+            //widgetRepository = ss_settings.resources;
             
             //NEED DEMO URL and OWNER
             var qUrl = 'https://cpq-20238.bigmachines.com/rest/v8/commerceDocumentsOraclecpqoTransaction'; //needs to be set
@@ -108,9 +112,11 @@ define(
                         } 
                     },
                     error: function(jqXHR, textStatus, error) {
-                        console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                        //console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                        CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
                     }
                 });   
+            CCLogger.info("Loading " + widget.displayName() + "-(" + widget.id() + ")");
         }
     };
   }

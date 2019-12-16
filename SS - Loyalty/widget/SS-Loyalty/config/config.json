@@ -7,7 +7,7 @@
         "name": "displayOrders",
         "helpTextResourceId": "displayOrdersHelpText",
         "labelResourceId": "displayOrdersLabel",
-        "defaultValue": false
+        "defaultValue": true
     },    
     {
         "id": "loyalTier",
@@ -41,7 +41,7 @@
         "name": "loyalPoints",
         "helpTextResourceId": "loyalPointsHelpText",
         "labelResourceId": "loyalPointsLabel",
-        "defaultValue": "",
+        "defaultValue": "563",
         "required": true
     },
     {
@@ -50,7 +50,7 @@
         "name": "nextTier",
         "helpTextResourceId": "nextTierHelpText",
         "labelResourceId": "nextTierLabel",
-        "defaultValue": "",
+        "defaultValue": "1000",
         "required": true
     }   
   ]

@@ -29,8 +29,9 @@ define(
 
         return {
 
-            onLoad: function() {
-                //CCLogger.info("Loading Demo Shared View Models");
+            onLoad: function() {    
+                //var widget = widgetModel;            
+                //CCLogger.info("Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
             
             doMessage : function() {
@@ -38,8 +39,8 @@ define(
             },
       
             viewModel : ko.observable({
-                //firstName : ko.observable('Bob'),
-                userprofile : ko.observable('Test')
+                userprofile : ko.observable('Test'),
+                userprofileBlock : ko.observable()
             })
 
         };

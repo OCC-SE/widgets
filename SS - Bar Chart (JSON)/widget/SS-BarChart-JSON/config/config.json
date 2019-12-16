@@ -64,7 +64,7 @@
         "name": "chartData",
         "helpTextResourceId": "chartDataHelpText",
         "labelResourceId": "chartDataLabel",
-        "defaultValue": "https://raw.githubusercontent.com/occ-se/data/master/unitsordered.txt",
+        "defaultValue": "unitsordered.txt",
         "required": true
     }   
   ]

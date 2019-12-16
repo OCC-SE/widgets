@@ -7,16 +7,16 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout'],
+    ['jquery', 'knockout', 'ccLogger'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function ($, ko) {
+    function ($, ko, CCLogger) {
 
     "use strict";
     
-    var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
+    var widgetRepositor;// = "https://raw.githubusercontent.com/OCC-SE/";
 
     return {
 
@@ -26,14 +26,18 @@ define(
             thisHeight: ko.observable(''),
 
             onLoad: function(widgetModel) {                             
+                
                 var widget = widgetModel;
+
+                var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+                widgetRepository = ss_settings.resources;
 
                 widget.thisTitle(widget.title());
                 widget.thisLink(widget.link());
                 widget.thisImage(widget.image());
                 widget.thisHeight(widget.height() + 'px');
 
-                console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
+                CCLogger.info("Loading " + widget.displayName() + "-(" + widget.id() + ")");
             },
         };
     }

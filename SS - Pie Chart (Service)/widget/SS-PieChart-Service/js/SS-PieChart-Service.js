@@ -7,12 +7,12 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout', 'https://www.chartjs.org/dist/2.8.0/Chart.min.js','https://www.chartjs.org/samples/latest/utils.js'],
+    ['jquery', 'knockout', 'https://www.chartjs.org/dist/2.8.0/Chart.min.js','https://www.chartjs.org/samples/latest/utils.js', 'ccLogger'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function ($, ko, Chart, utils) {
+    function ($, ko, Chart, utils, CCLogger) {
 
     "use strict";
     
@@ -21,7 +21,15 @@ define(
         onLoad: function(widgetModel) {     
 
             var widget = widgetModel;
-            
+
+            if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
+                CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                return;
+            }
+
+            var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+            var ss_data = ss_settings.resourceData;
+                
             //NEED DEMO URL and OWNER
             var qAuth = 'Basic bmF0YWxpZS50aG9tcHNvbjpUV0M3ODY3Mw==';
             var qUrl = 'https://ucf1-zhpe-fa-ext.oracledemos.com/crmRestApi/resources/latest/serviceRequests/';
@@ -113,9 +121,11 @@ define(
                         } 
                     },
                     error: function(jqXHR, textStatus, error) {
-                        console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
+                        CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
                     }
                 });   
+
+          CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
         }
     };
   }

@@ -7,21 +7,22 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
+    ['jquery', 'knockout', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js', 'ccLogger'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function($, ko, dataTables) {
+    function($, ko, dataTables, CCLogger) {
 
         "use strict";
         
         return {
 
             onLoad: function(widgetModel) {
+                
                 var widget = widgetModel;
-
-                console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
+                
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
             },
 
         };

@@ -7,19 +7,19 @@ define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-    ['jquery', 'knockout', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
+    ['jquery', 'knockout', 'ccLogger', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function($, ko, dataTables) {
+    function($, ko, CCLogger, dataTables) {
 
         "use strict";
         
         function buildTable(tab,widget) {
             var table = $('#listing').DataTable( {
                             processing: true,
-                            data: widget.dataTable,
+                            data: widget.tabData(),
                             columns: [
                                 {title: "Transaction"}, 
                                 {title: "Version"},
@@ -36,15 +36,15 @@ define(
                                 {targets: [6,7], 
                                 type: "date", 
                                 render: function (value) {
-                                                            if (value === null) return "";
-                                                            var mydate = new Date(value);
-                                                            var yyyy = mydate.getFullYear().toString();
-                                                            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based   
-                                                            var dd = mydate.getDate().toString();
-                                                            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
-                                                            var mydatestr = new Date(parts);                                                                        
-                                                            return mydatestr.toLocaleDateString();             
-                                            }
+                                            if (value === null) return "";
+                                            var mydate = new Date(value);
+                                            var yyyy = mydate.getFullYear().toString();
+                                            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based   
+                                            var dd = mydate.getDate().toString();
+                                            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
+                                            var mydatestr = new Date(parts);                                                                        
+                                            return mydatestr.toLocaleDateString();             
+                                        }
                                 },                                 
                                 {type: "num-fmt", targets: [5,8], render: $.fn.dataTable.render.number( ',', '.', 2, '$' ) },
                                 {targets: [1,3,4],orderable: false}
@@ -57,23 +57,41 @@ define(
             return table;                
         }
 
-        var widgetRepository = "https://raw.githubusercontent.com/OCC-SE/";
-        var tabTypes = ['Invoices','Orders','Repeat','Subscriptions','Leads','Contacts','Opportunities','Installed','Quotes','Service'];
         var tabUsed = [];
-        var queryRun = [];
+        var apiCalled = [];
+        var ss_images;
 
         return {
 
-            tabTotal: ko.observable(),
-            tabDisplay: ko.observable(''),
-            dataTable: ko.observable(),
+            tabNameTrim: ko.observable('Loading'),
+            tabTotal: ko.observable(0),
+            tabDisplay: ko.observable('Loading...'),
+            tabData: ko.observable(),
 
             onLoad: function(widgetModel) {
+                
                 var widget = widgetModel;
                 
-                var tab = widget.tabName();
+                if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                    return;
+                }
 
-                widget.tabImage = widgetRepository + "images/master/tabs/" + widget.tabName().toLowerCase() + ".png";
+                var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+                ss_images = ss_settings.resourceImages;
+
+                if (!widget.tabName()) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
+                    return;
+                }                
+
+                var tab = widget.tabName();
+                var tabTrim = tab; //widget.tabName().replace(' ','');
+
+                widget.tabNameTrim(tabTrim);
+                widget.tabImage = ss_images + "/tabs/" + tabTrim.toLowerCase() + ".png";             
+
+                tabUsed.push(tab);
                 
                 //NEED DEMO URL, OWNER and possibly Authorization
                 var qUrl = 'https://cpq-20238.bigmachines.com/rest/v8/commerceDocumentsOraclecpqoTransaction'; //needs to be set
@@ -104,44 +122,34 @@ define(
                           var ta = response.items[i].totalAnnualValue_t.value;
                           dataSet[i] = [ti,v,c,tn,s,tcv,cd,ld,ta];
                         }
-                        widget.dataTable = dataSet;
+                        widget.tabData(dataSet);
                         widget.tabTotal(response.items.length);
                         widget.tabDisplay(tab + ' (' + response.items.length + ')');                       
                     },
                     error: function(jqXHR, textStatus, error) {
-                        console.log('ERROR: ' + widget.displayName() + "-(" + widget.id() + ")-" + textStatus + "-" + error);
                         widget.tabTotal(0);
                         widget.tabDisplay(tab + ' (0)');
+                        CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + tab + "-" + error);
                     }
                 });
                 
-                console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" + tab);
             },
 
             beforeAppear: function(page) {
                 var widget = this;
-                $(document).ready(function() {
-                    var tab = widget.tabName();
-                    //var tabTrim = widget.tabName().replace(' ','');
-                    if (!tabUsed.includes(tab)) {
-                        //$('#tab-'+ tabTrim).on('click', function() {
-                        $('#tab-'+ tab).on('click', function() {                            
-                            //$("#tab-"+tabTrim).attr('class', 'imglink-selected');
-                            $("#tab-"+tab).attr('class', 'imglink-selected');                            
-                            for (var i=0; i<tabTypes.length; i++) {
-                                if (tabTypes[i]!=tab) {
-                                    $("#tab-"+tabTypes[i]).attr('class', 'imglink');
-                                }
-                            }
-                            if ($.fn.DataTable.isDataTable('#listing')) {
-                                $('#listing').DataTable().clear().destroy();
-                                $('#listing').empty();
-                            }                            
-                            buildTable(tab,widget);
-                        });
-                        tabUsed.push(tab);
-                    }
-                });
+                var tab = widget.tabName();
+                if (tabUsed.includes(tab)) {
+                    $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                        $('[id^=tab-]').attr('class', 'imglink');
+                        $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected');
+                        if ($.fn.DataTable.isDataTable('#listing')) {
+                            $('#listing').DataTable().clear().destroy();
+                            $('#listing').empty();
+                        }      
+                        buildTable(tab,widget);
+                    });
+                }
             }
         };
     }

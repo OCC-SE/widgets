@@ -1,3 +1,4 @@
+<!-- ko if: user().loggedIn -->
 <div id="SS-UserProfile" class="user_profile">
 <!-- ko if: ($data.userRole == 'Customer') -->    
   <div class="user_welcome">
@@ -77,4 +78,4 @@
   </div>
 <!-- /ko -->
 </div>
-
+<!-- /ko -->

@@ -1,14 +1,30 @@
 {
   "resources" : {
-    "resourcesHelpText": "Demo data, images and widget location",
-    "resourcesLabel": "Resource location (GitHub)",
+    "resourceDataHelpText": "Demo data location",
+    "resourceDataLabel": "Resource data location (GitHub)",
+    "resourceImagesHelpText": "Demo images location",
+    "resourceImagesLabel": "Resource image location (GitHub)",
     "tabNamesHelpText": "List of tab options (comma delimited)",
     "tabNamesLabel": "List of tab options (comma delimited)",
+    "salesforceURLHelpText": "Salesforce.com URL",
+    "salesforceURLLabel": "Salesforce.com URL",    
     "salesforceUserHelpText": "Salesforce.com username",
     "salesforceUserLabel": "Salesforce.com username",
     "salesforcePswdHelpText": "Salesforce.com password",
     "salesforcePswdLabel": "Salesforce.com password",        
     "title": "Self-Service Settings",
-    "description":"Settings for Self-Service dashboards"
+    "description":"Settings for Self-Service dashboards",
+    "cpqURLHelpText": "CPQ URL",
+    "cpqURLLabel": "CPQ URL",   
+    "cpqUserHelpText": "CPQ username",
+    "cpqUserLabel": "CPQ username",
+    "cpqPswdHelpText": "CPQ password",
+    "cpqPswdLabel": "CPQ password", 
+    "oecURLHelpText": "OEC URL",
+    "oecURLLabel": "OEC URL",    
+    "oecUserHelpText": "OEC username",
+    "oecUserLabel": "OEC username",
+    "oecPswdHelpText": "OEC password",
+    "oecPswdLabel": "OEC password"    
   }
 }

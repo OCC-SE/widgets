@@ -21,9 +21,9 @@
                 "labelResourceId": "customerUserTypeLabel"
             },
             {
-                "id": "partnerUserType",
-                "value": "Partner",
-                "labelResourceId": "partnerUserTypeLabel"
+                "id": "salesRepUserType",
+                "value": "Sales Representative",
+                "labelResourceId": "salesRepUserTypeLabel"
             }
         ]
     }   

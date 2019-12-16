@@ -1,3 +1,3 @@
-<div id="SS-PieChart-Service" class="data_viz_pie">
+<div data-bind="attr:{ id:'SS-PieChart-Service-' + $data.id()}" class="data_viz_pie">
 	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.id()}"></canvas>
 </div>
