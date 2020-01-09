@@ -1,5 +1,11 @@
 {"resources":
 	{
+    "authTypeHelpText":"Authentication type",
+    "authTypeLabel":"Authentication type",
+	"serverURLHelpText":"Server url",
+    "serverURLLabel":"Server url", 
+    "ownerHelpText":"Datasource owner (initial filter)",
+    "ownerLabel":"Datasource owner (initial filter)",     		
 	"chartTypeHelpText":"Choose the chart type",
 	"chartTypeLabel":"Choose the chart type",
 	"pieChartTypeLabel":"Pie",

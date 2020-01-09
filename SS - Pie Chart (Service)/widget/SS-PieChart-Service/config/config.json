@@ -30,6 +30,33 @@
                 "labelResourceId": "doughnutChartTypeLabel"
             }
         ]
+    },
+    {
+     "id": "serverURL",
+     "type": "stringType",
+     "name": "serverURL",
+     "helpTextResourceId": "serverURLHelpText",
+     "labelResourceId": "serverURLLabel",
+     "defaultValue": "https://ucf1-zhpe-fa-ext.oracledemos.com/",
+     "required": true
+    }, 
+    {
+     "id": "authType",
+     "type": "stringType",
+     "name": "authType",
+     "helpTextResourceId": "authTypeHelpText",
+     "labelResourceId": "authTypeLabel",
+     "defaultValue": "Basic bmF0YWxpZS50aG9tcHNvbjpUV0M3ODY3Mw==",
+     "required": true
+    },  
+    {
+     "id": "owner",
+     "type": "stringType",
+     "name": "owner",
+     "helpTextResourceId": "ownerHelpText",
+     "labelResourceId": "ownerLabel",
+     "defaultValue": "PrimaryContactPartyName=Lisa Lauber",
+     "required": true
     }
   ]
 }

@@ -54,8 +54,8 @@ define(
         return table;
     }
     
-    var widgetRepository;// = "https://raw.githubusercontent.com/OCC-SE/";
-
+    var ss_images; 
+    
     return {
 
         thisPercent: ko.observable(''),
@@ -64,9 +64,14 @@ define(
         onLoad: function(widgetModel) {                             
             
             var widget = widgetModel;
-            
+
+            if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
+                CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                return;
+            }
+
             var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
-            widgetRepository = ss_settings.resources;
+            ss_images = ss_settings.resourceImages;            
 
             var thisPerc = widget.loyalPoints()/widget.nextTier();
             if (thisPerc <= 0) { //check for incorrect user input
@@ -78,7 +83,7 @@ define(
             
             widget.thisNeeded = widget.nextTier() - widget.loyalPoints();
             
-            widget.markerImage = widgetRepository + "images/master/resources/loyaltymarker.png";
+            widget.markerImage = ss_images + "/resources/loyaltymarker.png";
 
             if (widget.displayOrders()) {
                 var user = widget.user();
@@ -88,7 +93,7 @@ define(
                     data["sort"] = "creationDate:desc";
     
                     var errorCallback = function(response){
-                        console.log("ERROR: " + widget.displayName() + "-(" + widget.id() + ")-" + response.errorCode + "-" + response.message);
+                        CCLogger.error("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" + response.errorCode + "-" + response.message);
                     };
                     
                     var successCallback = function(response){
@@ -101,12 +106,11 @@ define(
                     }
                     ccRestClient.request(CCConstants.ENDPOINT_GET_ALL_ORDERS_FOR_PROFILE , data, successCallback, errorCallback);
                 } else {
-                    CCLogger.warn(widget.displayName() + "-(" + widget.id() + ") - No user logged in");
+                    CCLogger.warn("Widget: " + widget.displayName() + "-(" + widget.id() + ") - No user logged in");
                 }
             }   
-            //console.log("-- Loading " + widget.displayName() + "-(" + widget.id() + ")");
-            CCLogger.info("Loading " + widget.displayName() + "-(" + widget.id() + ")");
-        },
+            CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
+        }
     };
   }
 );
