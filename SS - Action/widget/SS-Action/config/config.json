@@ -25,7 +25,7 @@
         "name": "image",
         "helpTextResourceId": "imageHelpText",
         "labelResourceId": "imageLabel",
-        "defaultValue": "https://github.com/OCC-SE/images/blob/master/resources/",
+        "defaultValue": "catalog.JPG",
         "required": true
     },
     {
@@ -34,7 +34,7 @@
         "name": "height",
         "helpTextResourceId": "heightHelpText",
         "labelResourceId": "heightLabel",
-        "defaultValue": "245",
+        "defaultValue": "225",
         "required": true
     }         
   ]

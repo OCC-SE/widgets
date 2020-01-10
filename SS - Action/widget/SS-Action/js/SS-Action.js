@@ -16,8 +16,6 @@ define(
 
     "use strict";
     
-    var widgetRepositor;// = "https://raw.githubusercontent.com/OCC-SE/";
-
     return {
 
             thisTitle: ko.observable(''),
@@ -28,16 +26,21 @@ define(
             onLoad: function(widgetModel) {                             
                 
                 var widget = widgetModel;
+                
+                if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                    return;
+                }
 
                 var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
-                widgetRepository = ss_settings.resources;
+                var ss_images = ss_settings.resourceImages;
 
                 widget.thisTitle(widget.title());
                 widget.thisLink(widget.link());
-                widget.thisImage(widget.image());
+                widget.thisImage(ss_images + "/resources/" + widget.image());
                 widget.thisHeight(widget.height() + 'px');
 
-                CCLogger.info("Loading " + widget.displayName() + "-(" + widget.id() + ")");
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
             },
         };
     }
