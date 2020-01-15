@@ -16,11 +16,6 @@
                 "labelResourceId": "repeatTableLabel"
             },
             {
-                "id": "installTable",
-                "value": "Installed",
-                "labelResourceId": "installTableLabel"
-            },
-            {
                 "id": "ordersTable",
                 "value": "Orders",
                 "labelResourceId": "ordersTableLabel"
@@ -41,10 +36,15 @@
                 "labelResourceId": "quotesTableLabel"
             },
             {
-                "id": "leadsTable",
-                "value": "Leads",
-                "labelResourceId": "leadsTableLabel"
-            }                                                                                               
+                "id": "serviceTable",
+                "value": "Service",
+                "labelResourceId": "serviceTableLabel"
+            },
+            {
+                "id": "iotTable",
+                "value": "IoT",
+                "labelResourceId": "iotTableLabel"
+            }                                                                                                             
         ]
     	},
         {
@@ -55,6 +55,15 @@
         "labelResourceId": "jsonURLLabel",
         "defaultValue": "invoices.txt",
         "required": true
-        }        
+        },
+        {
+        "id": "tabTitle",
+        "type": "stringType",
+        "name": "tabTitle",
+        "helpTextResourceId": "tabTitleHelpText",
+        "labelResourceId": "tabTitleLabel",
+        "defaultValue": "Orders",
+        "required": true
+        }         
   ]
 }

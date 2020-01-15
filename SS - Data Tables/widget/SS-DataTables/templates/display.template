@@ -2,7 +2,13 @@
 <style>
 .dataTables_wrapper {font-size:14px}
 th, td { white-space: nowrap; }
+table.dataTable.compact th {
+    border-bottom: 1px none #111111; 
+}
+table.dataTable.no-footer {
+    border-bottom: 0px solid #111; 
+}
 </style>
-<div class="datatable" data-bind="attr:{ id:'SS-DataTables-'+ $data.id(), style:'margin-top:' + $data.topMargin() + 'px'}">
-    <table id="listing" class="display"></table>
+<div data-bind="attr:{ id:'SS-DataTables-'+ $data.id(), style:'margin-top:' + $data.topMargin() + 'px;'}">
+    <table id="listing" class="display compact" style="width:100%"></table>
 </div>

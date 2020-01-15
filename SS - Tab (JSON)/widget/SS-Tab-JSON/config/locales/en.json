@@ -1,15 +1,17 @@
 {"resources":
 	{
-    "tabNameHelpText":"Enter a name for the table",
-    "tabNameLabel":"Enter a name for the table",  
+    "tabNameHelpText":"Select the data source",
+    "tabNameLabel":"Select the data source",  
+    "tabTitleHelpText":"Enter a name for the tab",
+    "tabTitleLabel":"Enter a name for the tab",
     "jsonURLHelpText":"JSON filename",
     "jsonURLLabel":"JSON filename",
     "repeatTableLabel":"Repeat",
-    "installTableLabel":"Installed",
     "ordersTableLabel":"Orders",
     "invoicesTableLabel":"Invoices",
     "subscriptionsTableLabel":"Subscriptions",
     "quotesTableLabel":"Quotes",
-    "leadsTableLabel":"Leads"
+    "serviceTableLabel":"Service",
+    "iotTableLabel":"IoT"
 	}
 }
