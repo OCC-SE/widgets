@@ -7,7 +7,7 @@
         "name": "userType",
         "helpTextResourceId": "userTypeHelpText",
         "labelResourceId": "userTypeLabel",
-        "defaultValue": "Buyer",
+        "defaultValue": "Owner",
         "required": true,
         "options": [
             {
@@ -24,6 +24,11 @@
                 "id": "salesRepUserType",
                 "value": "Sales Representative",
                 "labelResourceId": "salesRepUserTypeLabel"
+            },
+            {
+                "id": "ownerUserType",
+                "value": "Owner",
+                "labelResourceId": "ownerUserTypeLabel"
             }
         ]
     }   

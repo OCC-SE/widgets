@@ -4,8 +4,6 @@
     "resourceDataLabel": "Resource data location (GitHub)",
     "resourceImagesHelpText": "Demo images location",
     "resourceImagesLabel": "Resource image location (GitHub)",
-    "tabNamesHelpText": "List of tab options (comma delimited)",
-    "tabNamesLabel": "List of tab options (comma delimited)",
     "salesforceURLHelpText": "Salesforce.com URL",
     "salesforceURLLabel": "Salesforce.com URL",    
     "salesforceUserHelpText": "Salesforce.com username",
@@ -25,6 +23,8 @@
     "oecUserHelpText": "OEC username",
     "oecUserLabel": "OEC username",
     "oecPswdHelpText": "OEC password",
-    "oecPswdLabel": "OEC password"    
+    "oecPswdLabel": "OEC password",
+    "oecAuthHelpText": "OEC authorization",
+    "oecAuthLabel": "OEC authorization"
   }
 }

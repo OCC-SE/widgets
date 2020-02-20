@@ -23,15 +23,6 @@
       "required": true
     },    
     {
-      "id": "tabNames",
-      "type": "stringType",
-      "name": "tabNames",
-      "helpTextResourceId": "tabNamesHelpText",
-      "labelResourceId": "tabNamesLabel",
-      "defaultValue": "Invoices,Orders,Repeat,Subscriptions,Leads,Customers,Opportunities,Installed,Quotes,Service",
-      "required": true
-    },
-    {
       "id": "salesforceURL",
       "type": "stringType",
       "name": "salesforceURL",
@@ -78,8 +69,19 @@
       "type": "stringType",
       "name": "oecURL",
       "helpTextResourceId": "oecURLHelpText",
-      "labelResourceId": "oecURLLabel"
-    },    
+      "labelResourceId": "oecURLLabel",
+      "defaultValue": "https://ucf1-zhpe-fa-ext.oracledemos.com/",
+      "required": true
+    },
+    {
+      "id": "oecAuth",
+      "type": "stringType",
+      "name": "oecAuth",
+      "helpTextResourceId": "oecAuthHelpText",
+      "labelResourceId": "oecAuthLabel",
+      "defaultValue": "Basic bmF0YWxpZS50aG9tcHNvbjpYSUg1NTU0OA==",
+      "required": true
+    },
     {
       "id": "oecUser",
       "type": "stringType",
@@ -93,6 +95,6 @@
       "name": "oecPswd",
       "helpTextResourceId": "oecPswdHelpText",
       "labelResourceId": "oecPswdLabel"
-    }            
+    }
   ]
 }

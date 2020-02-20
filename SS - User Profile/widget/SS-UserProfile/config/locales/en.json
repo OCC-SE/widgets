@@ -1,9 +1,10 @@
 {"resources":
 	{
-	"userTypeHelpText":"Select a role",
-	"userTypeLabel":"Select a role",
-	"buyerUserTypeLabel":"Buyer",
-    "customerUserTypeLabel":"Customer",
-    "salesRepUserTypeLabel":"Sales Representative"  
+	  "userTypeHelpText":"Select a role",
+	  "userTypeLabel":"Select a role",
+      "ownerUserTypeLabel":"Owner",
+	  "buyerUserTypeLabel":"Buyer",
+      "customerUserTypeLabel":"Customer",
+      "salesRepUserTypeLabel":"Sales Representative"
 	}
 }
