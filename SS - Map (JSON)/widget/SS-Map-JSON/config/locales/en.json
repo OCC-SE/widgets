@@ -1,0 +1,8 @@
+{"resources":
+	{
+    "mapTitleHelpText":"Enter a name for the tab",
+    "mapTitleLabel":"Enter a name for the tab",
+    "jsonURLHelpText":"JSON filename",
+    "jsonURLLabel":"JSON filename"
+    }
+}

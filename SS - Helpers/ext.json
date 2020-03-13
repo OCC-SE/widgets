@@ -1,9 +1,9 @@
 {
   "createdBy": "OCC Regulators",
-  "description": "JavaScript helper applications for Self-Service widgets",
+  "description": "Global JavaScript helper for Self-Service widgets",
   "developerID": "8675309",
-  "extensionID": "dda4844d-f743-4674-bcb6-40310f4295b7",
+  "extensionID": "e131bee8-f51e-4ff7-ba7b-ec65af5e5661",
   "name": "SS - Helpers",
   "timeCreated": "2019-11-25",
-  "version": 1
+  "version": 2
 }

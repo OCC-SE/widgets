@@ -33,6 +33,7 @@ define(
             return mydatestr.toLocaleDateString();
         }
 
+        /*
         function getContact(widget) {
             var qUrl = oecURL + 'crmRestApi/resources/latest/contacts/' + pn;
             return  $.ajax({
@@ -41,7 +42,7 @@ define(
                 crossDomain: true,
                 headers: {
                     "Authorization": oecAuth,
-                    "Accept": "*/*"
+                    "Accept": "* / *"
                 },
                 url: qUrl,
                 success: function(result) {
@@ -66,6 +67,7 @@ define(
             console.log(getContactResponse);
 
         }
+        */
 
         return {
 
@@ -107,16 +109,16 @@ define(
                 var userType = widget.userType();
                 widget.userRole(userType);
 
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
+                //const queryString = window.location.search;
+                //const urlParams = new URLSearchParams(queryString);
 
                 if (urlParams.has('pn') && userType == 'Customer') { //This is a Customer record, query the CRM
 
-                    oecURL = ss_settings.oecURL;
-                    oecAuth = ss_settings.oecAuth;
-                    pn = urlParams.get('pn');
+                    //oecURL = ss_settings.oecURL;
+                    //oecAuth = ss_settings.oecAuth;
+                    //pn = urlParams.get('pn');
 
-                    getContact(widget).then(getOpportunities);
+                    //getContact(widget).then(getOpportunities);
                     //A().then(B).then(C).then(D);
                     /*
                     $.ajaxSetup({

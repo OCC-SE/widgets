@@ -1,0 +1,7 @@
+{
+  "name": "SS - Helpers",
+  "availableToAllPages": true,
+  "javascript": "SS-Helpers",
+  "jsEditable": true,
+  "global": true
+}

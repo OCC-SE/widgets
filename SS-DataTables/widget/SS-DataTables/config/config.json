@@ -1,0 +1,13 @@
+{
+  "widgetDescriptorName": "SS-DataTables",
+  "properties": [
+		{
+		"id": "topMargin",
+		"type": "stringType",
+		"name": "topMargin",
+		"helpTextResourceId": "topMarginHelpText",
+		"labelResourceId": "topMarginLabel",
+		"defaultValue": "-30"
+		}		
+  ]
+}

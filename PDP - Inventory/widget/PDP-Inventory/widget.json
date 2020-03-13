@@ -1,0 +1,11 @@
+{
+  "name": "PDP - Inventory",
+  "availableToAllPages": true,
+  "javascript": "PDP-Inventory",
+  "jsEditable": true,
+  "global": false,
+  "pageTypes": ["product"],
+  "version": 1,
+  "widgetFamily": "PDP-Inventory",
+  "widgetType": "PDP-Inventory"
+}

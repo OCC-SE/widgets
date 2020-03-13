@@ -1,0 +1,22 @@
+{"resources":
+	{
+    "tabNameHelpText":"Select the table type",
+    "tabNameLabel":"Select the table type",
+    "tabTitleHelpText":"Enter a name for the tab",
+    "tabTitleLabel":"Enter a name for the tab",
+    "tabImageHelpText":"Image file (transparent background PNG)",
+    "tabImageLabel":"Image file (transparent background PNG)",
+    "jsonURLHelpText":"JSON filename",
+    "jsonURLLabel":"JSON filename",
+    "repeatTableLabel":"Repeat",
+    "ordersTableLabel":"Orders",
+    "invoicesTableLabel":"Invoices",
+    "subscriptionsTableLabel":"Subscriptions",
+    "quotesTableLabel":"Quotes",
+    "serviceTableLabel":"Service",
+    "iotTableLabel":"IoT",
+      "custom1TableLabel":"CUSTOM 1",
+      "custom2TableLabel":"CUSTOM 2",
+      "custom3TableLabel":"CUSTOM 3"
+    }
+}

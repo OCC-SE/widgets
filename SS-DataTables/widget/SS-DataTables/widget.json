@@ -1,0 +1,9 @@
+{
+  "name": "SS-DataTables",
+  "availableToAllPages": true,
+  "javascript": "SS-DataTables",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1
+}

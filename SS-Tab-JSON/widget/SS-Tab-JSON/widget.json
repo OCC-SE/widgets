@@ -1,0 +1,9 @@
+{
+  "name": "SS-Tab-JSON",
+  "availableToAllPages": true,
+  "javascript": "SS-Tab-JSON",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1
+}
