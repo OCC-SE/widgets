@@ -1,0 +1,204 @@
+{
+  "widgetDescriptorName": "CXIntegration",
+  "titleResourceId": "title",
+  "descriptionResourceId": "description",
+  "enableSiteSpecific": true,
+  "properties": [
+     {
+      "id": "resourceData",
+      "type": "stringType",
+      "name": "resourceData",
+      "helpTextResourceId": "resourceDataHelpText",
+      "labelResourceId": "resourceDataLabel",
+      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/data/master/",
+      "required": true
+    },
+     {
+      "id": "resourceImages",
+      "type": "stringType",
+      "name": "resourceImages",
+      "helpTextResourceId": "resourceImagesHelpText",
+      "labelResourceId": "resourceImagesLabel",
+      "defaultValue": "https://raw.githubusercontent.com/OCC-SE/images/master/",
+      "required": true
+    },
+    {
+      "id": "responsysURL",
+      "type": "stringType",
+      "name": "responsysURL",
+      "helpTextResourceId": "responsysURLHelpText",
+      "labelResourceId": "responsysURLLabel",
+      "defaultValue": "https://demo033z0.rsys5.net/pub/rf"
+    },
+    {
+      "id": "responsysUserRegRI",
+      "type": "stringType",
+      "name": "responsysUserRegRI",
+      "helpTextResourceId": "responsysUserRegRIHelpText",
+      "labelResourceId": "responsysUserRegRILabel",
+      "defaultValue": "X0Gzc2X%3DYQpglLjHJlYQGuMglgDH1u7H06eBkSylb65DEaze3XlzgSibk0VwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGmucsY8Hj1uzfCNCU8zezaXyqCDEaze3XlzgSibk0"
+    },
+    {
+      "id": "responsysOrderConfRI",
+      "type": "stringType",
+      "name": "responsysOrderConfRI",
+      "helpTextResourceId": "responsysOrderConfRIHelpText",
+      "labelResourceId": "responsysOrderConfRILabel",
+      "defaultValue": "X0Gzc2X%3DYQpglLjHJlYQGt1S0LAl1Mlgj34f2YEbPOvwzbT2EveHzfsszanVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGlACAj8Fu02Rh2GrSGTtwplwzbT2EveHzfsszan"
+    },
+    {
+      "id": "responsysStayTouchRI",
+      "type": "stringType",
+      "name": "responsysStayTouchRI",
+      "helpTextResourceId": "responsysStayTouchRIHelpText",
+      "labelResourceId": "responsysStayTouchRILabel",
+      "defaultValue": "X0Gzc2X%3DYQpglLjHJlYQGsLOAT2zfN4rzd40DBzei7oPhkTjfHcNT0RI7TKVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGN6gzgzbSzbzazcaf6oaYcvazfwN6TjfHcNT0RI7TK"
+    },
+    {
+      "id": "webpushURL",
+      "type": "stringType",
+      "name": "webpushURL",
+      "helpTextResourceId": "webpushURLHelpText",
+      "labelResourceId": "webpushURLLabel",
+      "defaultValue": "https://api.pushio.com"
+    },
+    {
+      "id": "webpushAppServiceKey",
+      "type": "stringType",
+      "name": "webpushAppServiceKey",
+      "helpTextResourceId": "webpushAppServiceKeyHelpText",
+      "labelResourceId": "webpushAppServiceKeyLabel",
+      "defaultValue": "BChK7InjJZ0L46FCHpwcfEpwTNk6qAFFp7lkVIAeNyyx9IKES0jRwH60213Buwrl7vnWJ8szvtbda23MZ4tzuH0="
+    },
+    {
+      "id": "webpushApiKey",
+      "type": "stringType",
+      "name": "webpushApiKey",
+      "helpTextResourceId": "webpushApiKeyHelpText",
+      "labelResourceId": "webpushApiKeyLabel",
+      "defaultValue": "ABEltbBKeIV3QW1c2ALoN-a1s"
+    },
+    {
+      "id": "webpushAccountToken",
+      "type": "stringType",
+      "name": "webpushAccountToken",
+      "helpTextResourceId": "webpushAccountTokenHelpText",
+      "labelResourceId": "webpushAccountTokenLabel",
+      "defaultValue": "ABEgQAS9cEenJP4nvMKg0y5Fg"
+    },
+    {
+      "id": "infinityURL",
+      "type": "stringType",
+      "name": "infinityURL",
+      "helpTextResourceId": "infinityURLHelpText",
+      "labelResourceId": "infinityURLLabel",
+      "defaultValue": "//c.oracleinfinity.io/acs/account/xx7jkxhep7/js/OCCDEV/odc.js"
+    },
+    {
+      "id": "bluekaiURL",
+      "type": "stringType",
+      "name": "bluekaiURL",
+      "helpTextResourceId": "bluekaiURLHelpText",
+      "labelResourceId": "bluekaiURLLabel",
+      "defaultValue": "https://stags.bluekai.com/site/30151"
+    },
+    {
+      "id": "maxymiserURL",
+      "type": "stringType",
+      "name": "maxymiserURL",
+      "helpTextResourceId": "maxymiserURLHelpText",
+      "labelResourceId": "maxymiserURLLabel",
+      "defaultValue": "https://service.maxymiser.net/api/eu/vision13.com/74b3b2/mmapi.js"
+    },
+    {
+      "id": "leafletToken",
+      "type": "stringType",
+      "name": "leafletToken",
+      "helpTextResourceId": "leafletTokenHelpText",
+      "labelResourceId": "leafletTokenLabel",
+      "defaultValue": "pk.eyJ1IjoiY2hyaXNqYW5uaW5nIiwiYSI6ImNrN2JuNThhYzAyZ24za21obml4OTRsYzkifQ.QdKgtpKVhbe8CbbmK1z9pA"
+    },
+    {
+      "id": "salesforceURL",
+      "type": "stringType",
+      "name": "salesforceURL",
+      "helpTextResourceId": "salesforceURLHelpText",
+      "labelResourceId": "salesforceURLLabel"
+    },    
+    {
+      "id": "salesforceUser",
+      "type": "stringType",
+      "name": "salesforceUser",
+      "helpTextResourceId": "salesforceUserHelpText",
+      "labelResourceId": "salesforceUserLabel"
+    },
+    {
+      "id": "salesforcePswd",
+      "type": "stringType",
+      "name": "salesforcePswd",
+      "helpTextResourceId": "salesforcePswdHelpText",
+      "labelResourceId": "salesforcePswdLabel"
+    },
+    {
+      "id": "cpqConfigURL",
+      "type": "stringType",
+      "name": "cpqConfigURL",
+      "helpTextResourceId": "cpqConfigURLHelpText",
+      "labelResourceId": "cpqConfigURLLabel",
+      "defaultValue": "https://cpq-20114.bigmachines.com/commerce/new_equipment/products/model_configs.jsp"
+    },
+    {
+      "id": "cpqURL",
+      "type": "stringType",
+      "name": "cpqURL",
+      "helpTextResourceId": "cpqURLHelpText",
+      "labelResourceId": "cpqURLLabel"
+    },    
+    {
+      "id": "cpqUser",
+      "type": "stringType",
+      "name": "cpqUser",
+      "helpTextResourceId": "cpqUserHelpText",
+      "labelResourceId": "cpqUserLabel"
+    },
+    {
+      "id": "cpqPswd",
+      "type": "stringType",
+      "name": "cpqPswd",
+      "helpTextResourceId": "cpqPswdHelpText",
+      "labelResourceId": "cpqPswdLabel"
+    },
+    {
+      "id": "oecURL",
+      "type": "stringType",
+      "name": "oecURL",
+      "helpTextResourceId": "oecURLHelpText",
+      "labelResourceId": "oecURLLabel",
+      "defaultValue": "https://ucf1-zhpe-fa-ext.oracledemos.com/",
+      "required": true
+    },
+    {
+      "id": "oecAuth",
+      "type": "stringType",
+      "name": "oecAuth",
+      "helpTextResourceId": "oecAuthHelpText",
+      "labelResourceId": "oecAuthLabel",
+      "defaultValue": "Basic bmF0YWxpZS50aG9tcHNvbjpYSUg1NTU0OA==",
+      "required": true
+    },
+    {
+      "id": "oecUser",
+      "type": "stringType",
+      "name": "oecUser",
+      "helpTextResourceId": "oecUserHelpText",
+      "labelResourceId": "oecUserLabel"
+    },
+    {
+      "id": "oecPswd",
+      "type": "stringType",
+      "name": "oecPswd",
+      "helpTextResourceId": "oecPswdHelpText",
+      "labelResourceId": "oecPswdLabel"
+    }
+  ]
+}
