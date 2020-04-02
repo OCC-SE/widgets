@@ -1,0 +1,23 @@
+{
+  "widgetDescriptorName": "SS-Map-JSON",
+  "properties": [
+    {
+      "id": "mapTitle",
+      "type": "stringType",
+      "name": "mapTitle",
+      "helpTextResourceId": "mapTitleHelpText",
+      "labelResourceId": "mapTitleLabel",
+      "defaultValue": "My Fleet",
+      "required": true
+    },
+    {
+      "id": "jsonURL",
+      "type": "stringType",
+      "name": "jsonURL",
+      "helpTextResourceId": "jsonURLHelpText",
+      "labelResourceId": "jsonURLLabel",
+      "defaultValue": "map.txt",
+      "required": true
+    }
+  ]
+}

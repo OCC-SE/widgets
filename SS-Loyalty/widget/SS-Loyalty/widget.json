@@ -1,7 +1,7 @@
 {
-  "name": "SS-DataTables",
+  "name": "SS-Loyalty",
   "availableToAllPages": true,
-  "javascript": "SS-DataTables",
+  "javascript": "SS-Loyalty",
   "jsEditable": true,
   "global": false,
   "imports": [],

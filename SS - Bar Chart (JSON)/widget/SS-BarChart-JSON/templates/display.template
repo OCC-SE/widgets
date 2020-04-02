@@ -1,3 +1,0 @@
-<div id="SS-BarChart-JSON" class="data_viz_bar">
-	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.id()}"></canvas>
-</div>

@@ -1,7 +1,7 @@
 {
-  "name": "SS-DataTables",
+  "name": "SS-BarChart-JSON",
   "availableToAllPages": true,
-  "javascript": "SS-DataTables",
+  "javascript": "SS-BarChart-JSON",
   "jsEditable": true,
   "global": false,
   "imports": [],
