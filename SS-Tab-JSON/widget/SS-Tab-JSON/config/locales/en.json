@@ -15,8 +15,14 @@
     "quotesTableLabel":"Quotes",
     "serviceTableLabel":"Service",
     "iotTableLabel":"IoT",
-      "custom1TableLabel":"CUSTOM 1",
-      "custom2TableLabel":"CUSTOM 2",
-      "custom3TableLabel":"CUSTOM 3"
+    "custom1TableLabel":"CUSTOM 1",
+    "custom2TableLabel":"CUSTOM 2",
+    "custom3TableLabel":"CUSTOM 3",
+    "dataDisplayTypeHelpText":"Data display type",
+    "dataDisplayTypeLabel":"Data display type",
+      "tableLabel":"Table",
+      "iFrameLabel":"iFrame",
+      "iFrameURLHelpText":"iFrame URL (iFrame type only)",
+      "iFrameURLLabel":"iFrame URL (iFrame type only)"
     }
 }

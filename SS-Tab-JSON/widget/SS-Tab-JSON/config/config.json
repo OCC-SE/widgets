@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "SS-Tab-JSON",
+  "widgetDescriptorName": "SS - Tab(JSON)",
   "properties": [
     	{
         "id": "tabName",
@@ -88,6 +88,34 @@
           "labelResourceId": "tabImageLabel",
           "defaultValue": "orders.png",
           "required": true
+        },
+    {
+      "id": "dataDisplayType",
+      "type": "optionType",
+      "name": "dataDisplayType",
+      "helpTextResourceId": "dataDisplayTypeHelpText",
+      "labelResourceId": "dataDisplayTypeLabel",
+      "defaultValue": "Table",
+      "required": true,
+      "options": [
+        {
+          "id": "table",
+          "value": "Table",
+          "labelResourceId": "tableLabel"
+        },
+        {
+          "id": "iframe",
+          "value": "iFrame",
+          "labelResourceId": "iFrameLabel"
         }
+      ]
+    },
+    {
+      "id": "iFrameURL",
+      "type": "stringType",
+      "name": "iFrameURL",
+      "helpTextResourceId": "iFrameURLHelpText",
+      "labelResourceId": "iFrameURLLabel"
+    }
   ]
 }

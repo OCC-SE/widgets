@@ -43,28 +43,28 @@ define(
                     return;
                 }
 
-                var tab = widget.tabName();
-                var tabTitle = widget.tabTitle();
+                widget.tabImage = ss_images + "tabs/" + widget.tabImage();
 
-                widget.tabName(tab);
-                widget.tabImage = ss_images + "/tabs/" + tab.toLowerCase() + ".png";
+                if (widget.dataDisplayType() == 'Table') {
+                    $.ajax({
+                        url: ss_data + widget.jsonURL(),
+                        dataType: 'json',
+                        success: function(result) {
+                            widget.tabData(result);
+                            widget.tabTotal(result.items.length);
+                            widget.tabDisplay(widget.tabTitle() + ' (' + result.items.length + ')');
+                        },
+                        error: function(jqXHR, textStatus, error) {
+                            widget.tabTotal(0);
+                            widget.tabDisplay(widget.tabTitle() + ' (0)');
+                            CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "-" + textStatus + "-" + error);
+                        }
+                    });
+                } else if (widget.dataDisplayType() == 'iFrame') {
+                    widget.tabDisplay(widget.tabTitle());
+                }
 
-                $.ajax({
-                    url: ss_data + widget.jsonURL(),
-                    dataType: 'json',
-                    success: function(result) {
-                        widget.tabData(result);
-                        widget.tabTotal(result.items.length);
-                        widget.tabDisplay(tabTitle + ' (' + result.items.length + ')');
-                    },
-                    error: function(jqXHR, textStatus, error) {
-                        widget.tabTotal(0);
-                        widget.tabDisplay(tabTitle + ' (0)');
-                        CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + tab + "-" + textStatus + "-" + error);
-                    }
-                });
-
-                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" + tab);
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName());
             },
 
             beforeAppear: function(page) {
@@ -77,7 +77,17 @@ define(
                         $('#listing').DataTable().clear().destroy();
                         $('#listing').empty();
                     }
-                    buildTable(tab,widget);
+
+                    if (widget.dataDisplayType() == 'Table') {
+                        $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
+                        buildTable(tab,widget);
+                    } else if (widget.dataDisplayType() == 'Map') {
+                        //TODO
+                    } else if (widget.dataDisplayType() == 'iFrame') {
+                        var url = widget.iFrameURL();
+                        $('#SS-DataTables').html('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
+                    }
+
                 });
             }
         };

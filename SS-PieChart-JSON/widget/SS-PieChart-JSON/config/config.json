@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "SS-PieChart-JSON",
+  "widgetDescriptorName": "SS - Pie Chart(JSON)",
   "properties": [
     {
         "id": "chartTitle",
