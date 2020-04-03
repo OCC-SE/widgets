@@ -34,7 +34,7 @@
     "salesforceUserLabel": "Salesforce.com username",
     "salesforcePswdHelpText": "Salesforce.com password",
     "salesforcePswdLabel": "Salesforce.com password",        
-    "title": "CX Integration",
+    "title": "CX Integration Settings",
     "description":"Integration credentials and settings for custom widgets",
     "cpqConfigURLHelpText": "CPQ Configuration URL",
     "cpqConfigURLLabel": "CPQ Configuration URL",

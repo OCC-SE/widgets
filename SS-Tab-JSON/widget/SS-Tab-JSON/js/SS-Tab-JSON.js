@@ -1,182 +1,391 @@
 /**
- *  @fileoverview
- *  @author
+ * @fileoverview
+ *
+ * @author
  */
-
 define(
     //-------------------------------------------------------------------
     // DEPENDENCIES
     //-------------------------------------------------------------------
-
-    ['knockout', 'jquery', 'ccRestClient', 'ccConstants', 'pubsub', 'ccLogger', 'navigation', 'https://api.pushio.com/webpush/sdk/wpIndex_min.js'],
+    ['jquery', 'knockout', 'ccLogger', 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'],
 
     //-------------------------------------------------------------------
     // MODULE DEFINITION
     //-------------------------------------------------------------------
-    function (ko, $, ccRestClient, ccConstants, pubsub, CCLogger, nav, webpush) {
+    function($, ko, CCLogger, dataTables) {
 
         "use strict";
 
+        var ss_images;
+        var ss_data;
+
         return {
 
-            onLoad: function (widgetModel) {
+            tabTotal: ko.observable(0),
+            tabDisplay: ko.observable('Loading...'),
+            tabData: ko.observable(),
 
-                window.globalWidget = widgetModel;
+            onLoad: function(widgetModel) {
+
                 var widget = widgetModel;
 
-                if (!widget.site().extensionSiteSettings.IntegrationSettings) {
-                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Integration Settings not found");
+                if (!widget.site().extensionSiteSettings.CXIntegrationSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - CX Integration Settings not found");
                     return;
                 }
 
-                var ss_settings = widget.site().extensionSiteSettings.IntegrationSettings;
-                var ss_images = ss_settings.resourceImages;
+                var ss_settings = widget.site().extensionSiteSettings.CXIntegrationSettings;
+                ss_data = ss_settings.resourceData;
+                ss_images = ss_settings.resourceImages;
 
-                var webpushURL = ss_settings.webpushURL;
-                var appServiceKey = ss_settings.webpushAppServiceKey;
-                var apiKey = ss_settings.webpushApiKey;
-                var accountToken = ss_settings.webpushAccountToken;
+                if (!widget.tabName()) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
+                    return;
+                }
 
-                //-------------------------------------------------------------------
-                // Web Push
-                //-------------------------------------------------------------------
-                //var wpconfig = '{"appserviceKey":'+appServiceKey';
-                var wpconfig = '{"appserviceKey":"'+appServiceKey+'","apiKey":"'+apiKey+'","accountToken":"'+accountToken+'","appver":"0.0.0","apiHost":"'+webpushURL+'","lazy":false}';
-                //var wpconfig = '{"appserviceKey":"BChK7InjJZ0L46FCHpwcfEpwTNk6qAFFp7lkVIAeNyyx9IKES0jRwH60213Buwrl7vnWJ8szvtbda23MZ4tzuH0=","apiKey":"ABEltbBKeIV3QW1c2ALoN-a1s","accountToken":"ABEgQAS9cEenJP4nvMKg0y5Fg","appver":"0.0.0","apiHost":"https://api.pushio.com","lazy":false}';
-                var webpushtag = "<script type='text/javascript' src='"+webpushURL+"/webpush/sdk/wpIndex_min.js' id='rsyswpsdk' wpconfig='" + wpconfig + "'></script>";
-                $('head').append(webpushtag);
+                var tab = widget.tabName();
+                var tabTitle = widget.tabTitle();
 
-                //-------------------------------------------------------------------
-                // User Registration
-                //-------------------------------------------------------------------
-                $.Topic(pubsub.topicNames.USER_REGISTRATION_SUBMIT).subscribe(function(widgetData) {
-                    var data={};
-                    data.type="User Registration";
-                    var email = widget.user().emailAddress();
-                    var firstName = widget.user().firstName();
-                    var lastName = widget.user().lastName();
-                    var receiveEmails = 'O';
-                    if (widget.user().emailMarketingMails() === true) {
-                        receiveEmails = 'I';
+                widget.tabName(tab);
+                widget.tabImage = ss_images + "/tabs/" + tab.toLowerCase() + ".png";
+
+                $.ajax({
+                    url: ss_data + widget.jsonURL(),
+                    dataType: 'json',
+                    success: function(result) {
+                        widget.tabData(result);
+                        widget.tabTotal(result.items.length);
+                        widget.tabDisplay(tabTitle + ' (' + result.items.length + ')');
+                    },
+                    error: function(jqXHR, textStatus, error) {
+                        widget.tabTotal(0);
+                        widget.tabDisplay(tabTitle + ' (0)');
+                        CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" + tab + "-" + textStatus + "-" + error);
                     }
-
-                    data.email = email;
-                    data.firstName = firstName;
-                    data.lastName = lastName;
-                    data.receiveEmails = receiveEmails;
-
-                    webPushManagerAPI.setUserId(email);
-
-                    var url = ss_settings.responsysURL + '?_ri=' + ss_settings.responsysUserRegRI +
-                        //var url = 'https://demo033z0.rsys5.net/pub/rf?_ri_='+
-                        //'X0Gzc2X%3DYQpglLjHJlYQGuMglgDH1u7H06eBkSylb65DEaze3XlzgSibk0VwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGmucsY8Hj1uzfCNCU8zezaXyqCDEaze3XlzgSibk0'+
-                        '&FIRST_NAME=' + firstName +
-                        '&LAST_NAME=' + lastName +
-                        '&EMAIL_ADDRESS_=' + email +
-                        '&EMAIL_PERMISSION_STATUS_=' + receiveEmails;
-                    $.ajax({
-                        url: url,
-                        success: function(result) {
-                            CCLogger.info(result);
-                        },
-                        error: function(error) {
-                            CCLogger.error(error);
-                        }
-                    });
-                    nav.goTo("/");
-                    CCLogger.info('Responsys User Registration: ' + url);
                 });
 
-                $.Topic(pubsub.topicNames.AUTH_LOGIN_SUCCCESS).subscribe(function () {
-                    var email = widget.user().emailAddress();
-                    webPushManagerAPI.setUserId(email);
-                });
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" + tab);
+            },
 
-                $.Topic(pubsub.topicNames.USER_LOGIN_SUCCESSFUL).subscribe(function () {
-                    var email = widget.user().emailAddress();
-                    webPushManagerAPI.setUserId(email);
-                });
-
-                //-------------------------------------------------------------------
-                // Order Confirmation
-                //-------------------------------------------------------------------
-                widget.fireTag = function(){
-                    var data={};
-                    data.type="Order Confirmation";
-
-                    if (widget.pageContext().pageType.name == 'confirmation') {
-                        data.page=widget.pageContext().page.displayName;
-
-                        var prodIDs='';
-                        var prodSKUs='';
-                        var prodUnits='';
-                        var subTotal='';
-                        for(var i=0;i<widget.confirmation().shoppingCart.items.length;i++) {
-                            if (i === 0) {
-                                prodSKUs = widget.confirmation().shoppingCart.items[i].productId;
-                                prodUnits = widget.confirmation().shoppingCart.items[i].quantity;
-                                subTotal = widget.confirmation().shoppingCart.items[i].unitPrice;
-                            }
-                            else {
-                                prodSKUs = prodSKUs + ';' + widget.confirmation().shoppingCart.items[i].productId;
-                                prodUnits = prodUnits + ';' + widget.confirmation().shoppingCart.items[i].quantity;
-                                subTotal = subTotal + ';' + widget.confirmation().shoppingCart.items[i].unitPrice;
-                            }
-                        }
-
-                        var email_address;
-                        if (widget.user().email() !== null) {
-                            email_address = widget.user().email();
-                        } else {
-                            email_address = 'guest';
-                        }
-
-                        webPushManagerAPI.setUserId(email_address);
-
-                        var today = new Date();
-                        var event_dt = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
-                        var order_num = widget.confirmation().id;
-
-                        data.product_skus=prodSKUs;
-                        data.product_units=prodUnits;
-                        data.order_num=order_num;
-                        data.subtotal=subTotal;
-                        data.email_address=email_address;
-                        data.event_dt=event_dt;
-
-                        var url = ss_settings.responsysURL + '?_ri=' + ss_settings.responsysOrderConfRI +
-                            //var url = 'http://demo033z0.rsys5.net/pub/rf?_ri_='+
-                            //'X0Gzc2X%3DYQpglLjHJlYQGt1S0LAl1Mlgj34f2YEbPOvwzbT2EveHzfsszanVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlYQGlACAj8Fu02Rh2GrSGTtwplwzbT2EveHzfsszan'+
-                            '&EMAIL_ADDRESS_='+email_address+
-                            '&ORDER_NUM='+order_num+
-                            '&EVENT_DT='+event_dt+
-                            '&PRODUCT_SKUS='+prodSKUs+
-                            '&PRODUCT_UNITS='+prodUnits+
-                            '&PRODUCT_SUBTOTALS='+subTotal;
-                        CCLogger.info('Responsys Order Confirmation: ' + url);
-                        $.ajax({
-                            url: url,
-                            success: function(result) {
-                                CCLogger.info(result);
-                            },
-                            error: function(error) {
-                                CCLogger.error(error);
-                            }
-                        });
+            beforeAppear: function(page) {
+                var widget = this;
+                var tab = widget.tabName();
+                $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                    $('[id^=tab-]').attr('class', 'imglink');
+                    $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected');
+                    if ($.fn.DataTable.isDataTable('#listing')) {
+                        $('#listing').DataTable().clear().destroy();
+                        $('#listing').empty();
                     }
-
-                    localStorage.setItem("occ.referrer",window.location.href);
-                };
-
-                widget.configTag = function () {
-                    localStorage.setItem("occ.referrer",document.referrer);
-                    $.Topic(pubsub.topicNames.PAGE_CHANGED).subscribe(widget.fireTag);
-                };
-                document.body.addEventListener('ORA_ANALYTICS_READY', widget.configTag, false);
-
-                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
+                    buildTable(tab,widget);
+                });
             }
-
         };
+
+        function formatDate(value) {
+            if (value === null) return "";
+            var mydate = new Date(value);
+            var yyyy = mydate.getFullYear().toString();
+            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = mydate.getDate().toString();
+            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
+            var mydatestr = new Date(parts);
+            return mydatestr.toLocaleDateString();
+        }
+
+        function buildTable(tab,widget) {
+            var table;
+            if (tab == 'Repeat') {
+                table = $('#listing').DataTable({
+                    data: widget.tabData().items,
+                    order: [[ 6, "desc" ]],
+                    columns: [
+                        {data: "id"},
+                        {data: "image"},
+                        {data: "displayName"},
+                        {data: "brand"},
+                        {data: "quantity"},
+                        {data: "total"},
+                        {data: "lastOrdered"}
+                    ],
+                    columnDefs: [
+                        {title: "Product ID", targets: 0, orderable: false},
+                        {title: "", targets: 1, orderable: false,
+                            render: function(data, type, row, meta) {
+                                return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';
+                            }
+                        },
+                        {title: "Name", targets: 2, orderable: false},
+                        {title: "Brand", targets: 3, orderable: false},
+                        {title: "Quantity", targets: 4, orderable: false},
+                        {title: "Price", targets: 5, orderable: true, type: "num-fmt", render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
+                        {title: "Last Ordered", targets: 6, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}},
+                        {title: "New Quantity", targets: 7, orderable: false, render: function(data, type, row, meta) {return '<input type="text" size="5">';}},
+                        {title: "", targets: 8, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Add to Cart">&nbsp;<input class="cc-button-primary" type="button" value="Schedule">';}}
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+            } else if (tab == 'IoT') {
+                table = $('#listing').DataTable( {
+                    data: widget.tabData().items,
+                    order: [[ 3, "desc" ]],
+                    columns: [
+                        {data: "Status"},
+                        {data: "Image"},
+                        {data: "Name"},
+                        {data: "PurchaseDate"},
+                        {data: "LastServiced"},
+                        {data: "UsageMonthAvg"},
+                        {data: "UsageTotal"},
+                        {data: "Temperature"},
+                        {data: "CushionPressure"}
+                    ],
+                    columnDefs: [
+                        {title: "Status", targets: 0, orderable: false, render: function(data, type, row, meta) {
+                                return '<img src="' + ss_images + '/tables/' + data + '.png" height="20px" widgth="20px">';
+                            }
+                        },
+                        {title: " ", targets: 1, orderable: false,
+                            render: function(data, type, row, meta) {
+                                return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';
+                            }
+                        },
+                        {title: "Name", targets: 2, orderable: false},
+                        {title: "Purchased", targets: 3, orderable: true},
+                        {title: "Serviced", targets: 4, orderable: true},
+                        {title: "Monthly (Hours)", targets: 5, orderable: false},
+                        {title: "Total (Hours)", targets: 6, orderable: false},
+                        {title: "Temperature", targets: 7, orderable: false},
+                        {title: "Cushion Pressure", targets: 8, orderable: false},
+                        {title: " ", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<a href="https://goo.gl/maps/WbtxQfnhNSTcLJPR8" target="_blank"><img src="' + ss_images + "/tables/geolocation.png" + '" height="30px" widgth="30px"></a>';}},
+                        {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}
+                        }
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+            } else if (tab == 'Orders') {
+                table = $('#listing').DataTable({
+                    data: widget.tabData().items,
+                    order: [[ 5, "desc" ]],
+                    columns: [
+                        {data: "WebOrder"},
+                        {data: "Invoice"},
+                        {data: "Customer"},
+                        {data: "Master"},
+                        {data: "PO"},
+                        {data: "Date"},
+                        {data: "Items"},
+                        {data: "POTotal"},
+                        {data: "Status"}
+                    ],
+                    columnDefs: [
+                        {title: "Web Order #", targets: 0, orderable: false},
+                        {title: "Invoice #", targets: 1, orderable: false},
+                        {title: "Customer", targets: 2, orderable: false},
+                        {title: "Master", targets: 3, orderable: false},
+                        {title: "PO", targets: 4, orderable: false},
+                        {title: "Date", targets: 5, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}},
+                        {title: "Items", targets: 6, orderable: false},
+                        {title: "POTotal", targets: 7, orderable: false},
+                        {title: "Status", targets: 8, orderable: false},
+                        {title: "", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">&nbsp;<input class="cc-button-primary" type="button" value="Reorder">';}}
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+            } else if (tab == 'Invoices') {
+                table = $('#listing').DataTable({
+                    //data: widget.invoicesTable.data,
+                    data: widget.tabData().items,
+                    order: [[ 0, "desc" ]],
+                    columns: [ {title: "Date"},{title: "Invoice #"},{title: "Order #"},{title: "Total"},{title: "PO #"},{title: "Due Date"},{title: "Status"},{title: "PDF"},{title: ""}],
+                    columnDefs: [{
+                        targets: 6,
+                        orderable: false,
+                        data: "download_link",
+                        render: function(data, type, row, meta) {return '<a href="' + data + '"><u>Details</u></a>';}
+                    },
+                        {
+                            targets: 7,
+                            orderable: false,
+                            data: "download_link",
+                            render: function(data, type, row, meta) {return '<img src="' + ss_images + "/tables/pdf.png" + '" height="20px" widgth="20px">';}
+                        },
+                        {
+                            targets: 8,
+                            orderable: false,
+                            data: "download_link",
+                            render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Pay">';}
+                        }
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true
+                    //scrollX: true
+                    //scrollCollapse: true
+                });
+            } else if (tab == 'Subscriptions') {
+                table = $('#listing').DataTable( {
+                    data: widget.tabData().items,
+                    order: [[ 4, "desc" ]],
+                    columns: [
+                        {data: "SubscriptionNumber"},
+                        {data: "PrimaryPartyName"},
+                        {data: "TotalContractValue"},
+                        {data: "StartDate"},
+                        {data: "EndDate"},
+                        {data: "Status"},
+                        {data: "Duration"},
+                        {data: "Period"},
+                        {data: "Status"}
+                    ],
+                    columnDefs: [
+                        {title: "Number", targets: 0, orderable: false},
+                        {title: "Customer", targets: 1, orderable: false},
+                        {title: "Total Contract Value", targets: 2, orderable: true, type: "num-fmt", render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
+                        {title: "Start Date", targets: 3, orderable: true},
+                        {title: "End Date", targets: 4, orderable: true},
+                        {title: "Status", targets: 5, orderable: false,
+                            render: function(data, type, row, meta) {
+                                var image;
+                                if (data == 'ORA_ACTIVE') {
+                                    image = ss_images + "/tables/green_check.png";
+                                } else if (data == 'ORA_CLOSED') {
+                                    image = ss_images + "/tables/red_x.png";
+                                } else {
+                                    image = ss_images + "/tables/warning.png";
+                                }
+                                return '<img alt="' + data + '" src="' + image + '" height="20px" widgth="20px"> ' + data;
+                            }
+                        },
+                        {title: "Term", targets: 6, orderable: false},
+                        {title: "Period", targets: 7, orderable: false},
+                        {title: "", targets: 8, orderable: false,
+                            render: function(data, type, row, meta) {
+                                var buttons;
+                                if (data == 'ORA_ACTIVE') {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Cancel">'
+                                } else if (data == 'ORA_CLOSED') {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Renew">&nbsp;<input class="cc-button-primary" type="button" value="Cancel">';
+                                } else {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Renew">&nbsp;<input class="cc-button-primary" type="button" value="Cancel">';
+                                }
+                                return buttons;
+                            }
+                        }
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                });
+            } else if (tab == 'Quotes') {
+                table = $('#listing').DataTable({
+                    data: widget.tabData().items,
+                    order: [[ 7, "desc" ]],
+                    columns: [
+                        {data: "transactionID_t"},
+                        //{data: "version_number_versionTransaction_t"},
+                        {data: "transactionName_t"},
+                        {data: "status_t.displayValue"},
+                        {data: "totalContractValue_t.value"},
+                        {data: "owner_t"},
+                        {data: "_customer_t_company_name"},
+                        {data: "createdDate_t"},
+                        {data: "lastUpdatedDate_t"},
+                        {data: "status_t.displayValue"}
+                    ],
+                    columnDefs: [
+                        {title: "Transaction", targets: 0, orderable: false, render: function(data, type, row, meta) {return '<a href=""><u>' + data + '</u></a>'}},
+                        // {title: "Version", targets: 1, orderable: false},
+                        {title: "Description", targets: 1, orderable: false},
+                        {title: "Status", targets: 2, orderable: false},
+                        {title: "Amount", targets: 3, orderable: false},
+                        {title: "Prepared By", targets: 4, orderable: false},
+                        {title: "Account", targets: 5, orderable: false},
+                        {title: "Created", targets: 6, orderable: true},
+                        {title: "Updated", targets: 7, orderable: true},
+                        {title: "", targets: 8, orderable: false, render: function(data, type, row, meta) {
+                                var buttons;
+                                if (data == 'Created') {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Cancel">';
+                                } else if (data == 'Quoted') {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Accept">&nbsp;<input class="cc-button-primary" type="button" value="Reject">';
+                                }
+                                return buttons;
+                            }}
+                    ],
+                    language: {emptyTable: 'No ' + tab + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+            } else if (tab == 'Service') {
+                table = $('#listing').DataTable( {
+                    data: widget.tabData().items,
+                    order: [[ 6, "desc" ]],
+                    columns: [
+                        {data: "CriticalFlag"},
+                        {data: "SeverityCdMeaning"},
+                        {data: "SeverityRank"},
+                        {data: "SrNumber"},
+                        {data: "Title"},
+                        {data: "ChannelTypeCdMeaning"},
+                        {data: "LastUpdateDate"},
+                        {data: "AccountPartyName"},
+                        {data: "StatusCdMeaning"}
+                    ],
+                    columnDefs: [
+                        {title: " ", targets: 0, orderable: false, render: function(data, type, row, meta) {
+                                var image = '';
+                                if (data === true) {
+                                    image = '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';
+                                }
+                                return image;
+                            }
+                        },
+                        {title: "Severity", targets: 1, orderable: false},
+                        {title: "Rank", targets: 2, orderable: false},
+                        {title: "Number", targets: 3, orderable: false},
+                        {title: "Title", targets: 4, orderable: false},
+                        {title: "Channel", targets: 5, orderable: false, render: function(data, type, row, meta) {return  '<img alt="'+data+'" src="' + ss_images + '/tables/' + data.toLowerCase() + '.png">&nbsp;' + data;}},
+                        {title: "Last Updated", targets: 6, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}, type: "date"},
+                        {title: "Account", targets: 7, orderable: false},
+                        {title: "Status", targets: 8, orderable: false},
+                        {title: "", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Chat">';}
+                        }
+                    ],
+                    language: {
+                        emptyTable: 'No ' + tab + ' found'
+                    },
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+            } else {
+                CCLogger.warn('No table config found - ' + tab);
+            }
+            return table;
+        }
+
     }
 );

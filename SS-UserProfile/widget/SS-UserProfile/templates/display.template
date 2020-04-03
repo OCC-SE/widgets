@@ -8,14 +8,18 @@
                 <div style="width:100%;text-align:center;"><a href="/profile-business" style="text-decoration:underline;font-size:14px;color:blue;">View Profile</a></div>
             </div>
             <div class="user_details">
-                <div class="rTableRow"><div class="user_name"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></div></div>
+                <div class="rTableRow">
+                    <div class="user_name">
+                        <span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span>
+                    </div>
+                    <div style="display:table-cell;width:60px;text-align:right;vertical-align:top">
+                        <img width="40px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.CXIntegrationSettings.resourceImages + 'resources/alert.png' }" />
+                    </div>
+                </div>
                 <div class="rTableRow"><b>Account Number:</b>&nbsp;<span data-bind="text: $data.user().id "></span></div>
                 <div class="rTableRow"><b>Account Name:</b>&nbsp;<span data-bind="text: $data.userAccountName "></span></div>
                 <div class="rTableRow"><b>Available Credit:</b>&nbsp;<span data-bind="text: $data.userAvailCredit "></span></div>
                 <div class="rTableRow"><b>Customer since:</b>&nbsp;2011</div>
-            </div>
-            <div class="customerTableCell" style="width:100px;text-align:right;vertical-align:top">
-                <img width="40px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.SelfServiceSettings.resourceImages + 'resources/alert.png' }" />
             </div>
         </div>
     </div>

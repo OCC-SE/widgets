@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "CXIntegration",
+  "widgetDescriptorName": "CXIntegrationSettings",
   "titleResourceId": "title",
   "descriptionResourceId": "description",
   "enableSiteSpecific": true,
