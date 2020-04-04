@@ -124,6 +124,7 @@ define(
         var tabUsed = [];
         var apiCalled = [];
         var ss_images;
+        var ss_data;
 
         return {
 
@@ -135,19 +136,20 @@ define(
             onLoad: function(widgetModel) {
                 
                 var widget = widgetModel;
-                
-                if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
-                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+
+                if (!widget.site().extensionSiteSettings.CXIntegrationSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - CX Integration Settings not found");
                     return;
                 }
 
-                var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+                var ss_settings = widget.site().extensionSiteSettings.CXIntegrationSettings;
+                ss_data = ss_settings.resourceData;
                 ss_images = ss_settings.resourceImages;
 
                 if (!widget.tabName()) {
                     CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
                     return;
-                }                
+                }
 
                 var tab = widget.tabName();
                 var tabTrim = tab; //widget.tabName().replace(' ','');

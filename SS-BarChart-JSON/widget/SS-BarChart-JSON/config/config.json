@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "SS-BarChart-JSON",
+  "widgetDescriptorName": "SS - Bar Chart(JSON)",
   "properties": [
     {
         "id": "chartTitle",

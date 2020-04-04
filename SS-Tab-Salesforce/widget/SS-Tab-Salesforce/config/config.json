@@ -1,5 +1,5 @@
 {
-  "widgetDescriptorName": "SS-TableTab-Salesforce",
+  "widgetDescriptorName": "SS - Tab(Salesforce)",
   "properties": [
     {
       "id": "tabName",

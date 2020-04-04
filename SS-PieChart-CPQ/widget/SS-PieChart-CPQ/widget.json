@@ -1,11 +1,10 @@
 {
-  "name": "SS - Pie Chart (CPQ)",
+  "name": "SS - Pie Chart(CPQ)",
   "availableToAllPages": true,
   "javascript": "SS-PieChart-CPQ",
   "jsEditable": true,
   "global": false,
   "imports": [],
   "version": 1,
-  "widgetFamily": "SS-PieChart-CPQ",
-  "widgetType": "SS-PieChart-CPQ"
+  "widgetFamily": "Self-Service"
 }

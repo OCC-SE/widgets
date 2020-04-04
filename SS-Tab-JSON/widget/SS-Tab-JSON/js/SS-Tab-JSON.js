@@ -1,7 +1,7 @@
 /**
- * @fileoverview
+ * @fileoverview Navigation tab to display external JSON in DataTables
  *
- * @author
+ * @author Chris Janning <chris.janning@oracle.com>
  */
 define(
     //-------------------------------------------------------------------
@@ -39,7 +39,7 @@ define(
                 ss_images = ss_settings.resourceImages;
 
                 if (!widget.tabName()) {
-                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
+                    CCLogger.error("Widget: " + widget.displayName() + "-(" + widget.id() + ") - Widget configuration empty (Hint: Open and save)");
                     return;
                 }
 
@@ -57,7 +57,7 @@ define(
                         error: function(jqXHR, textStatus, error) {
                             widget.tabTotal(0);
                             widget.tabDisplay(widget.tabTitle() + ' (0)');
-                            CCLogger.error(widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "-" + textStatus + "-" + error);
+                            CCLogger.error("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "-" + textStatus + "-" + error);
                         }
                     });
                 } else if (widget.dataDisplayType() == 'iFrame') {
@@ -71,23 +71,23 @@ define(
                 var widget = this;
                 var tab = widget.tabName();
                 $('#tab-' + tab + '-' + widget.id()).on('click', function() {
-                    $('[id^=tab-]').attr('class', 'imglink');
-                    $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected');
-                    if ($.fn.DataTable.isDataTable('#listing')) {
+                    $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
+                    $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+
+                    if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                         $('#listing').DataTable().clear().destroy();
                         $('#listing').empty();
                     }
 
                     if (widget.dataDisplayType() == 'Table') {
                         $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
-                        buildTable(tab,widget);
+                        buildTable(widget);
                     } else if (widget.dataDisplayType() == 'Map') {
                         //TODO
                     } else if (widget.dataDisplayType() == 'iFrame') {
                         var url = widget.iFrameURL();
                         $('#SS-DataTables').html('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
                     }
-
                 });
             }
         };
@@ -103,10 +103,37 @@ define(
             return mydatestr.toLocaleDateString();
         }
 
-        function buildTable(tab,widget) {
-            var table;
-            if (tab == 'Repeat') {
+        function buildTable(widget) {
+            if (widget.tabName() == 'CUSTOM1') {
                 table = $('#listing').DataTable({
+                    data: widget.tabData().items, //Do not touch
+                    order: [[ 0, "desc" ]], //Default column to sort
+                    columns: [ //One row for each key found in the JSON
+                        {data: "key1"}, //Key
+                        {data: "key2"}, //Key
+                        {data: "key3"} //Key
+                    ],
+                    columnDefs: [ //Column heading and data type of each key/value pair. "title" is the column header
+                        {title: "title1", targets: 0, orderable: false}, //Basic text display
+                        {title: "title2", targets: 1, orderable: true, type: "num-fmt", render: $.fn.dataTable.render.number( ',', '.', 2, '$' )}, //Currency format
+                        {title: "title3", targets: 2, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}}, //Date format
+                        {title: "", targets: 3, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Button example">';}} //Custom HTML (buttons)
+                        //{title: "", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';}}, //Display an image
+                    ],
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'}, //Do not touch
+                    lengthChange: false, //Do not touch
+                    pageLength: 5, //Number of results per page
+                    destroy: true, //Do not touch
+                });
+                //CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
+            } else if (widget.tabName() == 'CUSTOM2') {
+                //TODO: Copy starter structure from CUSTOM1
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
+            } else if (widget.tabName() == 'CUSTOM3') {
+                //TODO: Copy starter structure from CUSTOM1
+                CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
+            } else if (widget.tabName() == 'Repeat') {
+                $('#listing').DataTable({
                     data: widget.tabData().items,
                     order: [[ 6, "desc" ]],
                     columns: [
@@ -133,15 +160,15 @@ define(
                         {title: "New Quantity", targets: 7, orderable: false, render: function(data, type, row, meta) {return '<input type="text" size="5">';}},
                         {title: "", targets: 8, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Add to Cart">&nbsp;<input class="cc-button-primary" type="button" value="Schedule">';}}
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
                     //scrollX: true,
                     //scrollCollapse: true
                 });
-            } else if (tab == 'IoT') {
-                table = $('#listing').DataTable( {
+            } else if (widget.tabName() == 'IoT') {
+                $('#listing').DataTable( {
                     data: widget.tabData().items,
                     order: [[ 3, "desc" ]],
                     columns: [
@@ -176,15 +203,15 @@ define(
                         {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}
                         }
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
                     //scrollX: true,
                     //scrollCollapse: true
                 });
-            } else if (tab == 'Orders') {
-                table = $('#listing').DataTable({
+            } else if (widget.tabName() == 'Orders') {
+                $('#listing').DataTable({
                     data: widget.tabData().items,
                     order: [[ 5, "desc" ]],
                     columns: [
@@ -210,16 +237,15 @@ define(
                         {title: "Status", targets: 8, orderable: false},
                         {title: "", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">&nbsp;<input class="cc-button-primary" type="button" value="Reorder">';}}
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
                     //scrollX: true,
                     //scrollCollapse: true
                 });
-            } else if (tab == 'Invoices') {
-                table = $('#listing').DataTable({
-                    //data: widget.invoicesTable.data,
+            } else if (widget.tabName() == 'Invoices') {
+                $('#listing').DataTable({
                     data: widget.tabData().items,
                     order: [[ 0, "desc" ]],
                     columns: [ {title: "Date"},{title: "Invoice #"},{title: "Order #"},{title: "Total"},{title: "PO #"},{title: "Due Date"},{title: "Status"},{title: "PDF"},{title: ""}],
@@ -242,15 +268,15 @@ define(
                             render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Pay">';}
                         }
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true
                     //scrollX: true
                     //scrollCollapse: true
                 });
-            } else if (tab == 'Subscriptions') {
-                table = $('#listing').DataTable( {
+            } else if (widget.tabName() == 'Subscriptions') {
+                $('#listing').DataTable( {
                     data: widget.tabData().items,
                     order: [[ 4, "desc" ]],
                     columns: [
@@ -299,13 +325,13 @@ define(
                             }
                         }
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
                 });
-            } else if (tab == 'Quotes') {
-                table = $('#listing').DataTable({
+            } else if (widget.tabName() == 'Quotes') {
+                $('#listing').DataTable({
                     data: widget.tabData().items,
                     order: [[ 7, "desc" ]],
                     columns: [
@@ -347,8 +373,8 @@ define(
                     //scrollX: true,
                     //scrollCollapse: true
                 });
-            } else if (tab == 'Service') {
-                table = $('#listing').DataTable( {
+            } else if (widget.tabName() == 'Service') {
+                $('#listing').DataTable( {
                     data: widget.tabData().items,
                     order: [[ 6, "desc" ]],
                     columns: [
@@ -383,7 +409,7 @@ define(
                         }
                     ],
                     language: {
-                        emptyTable: 'No ' + tab + ' found'
+                        emptyTable: 'No ' + widget.tabName() + ' found'
                     },
                     lengthChange: false,
                     pageLength: 5,
@@ -392,10 +418,8 @@ define(
                     //scrollCollapse: true
                 });
             } else {
-                CCLogger.warn('No table config found - ' + tab);
+                CCLogger.warn('No table config found - ' + widget.tabName());
             }
-            return table;
         }
-
     }
 );

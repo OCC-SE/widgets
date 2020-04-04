@@ -1,3 +1,4 @@
+<!-- ko if: user().loggedIn -->
 <div id="SS-UserProfile" class="user_profile">
     <div class="user_welcome">
         <div style="display:table-cell;"><span data-bind="text: $data.userGreeting "></span>!</div>
@@ -41,3 +42,4 @@
         </div>
     </div>
 </div>
+<!-- /ko -->
