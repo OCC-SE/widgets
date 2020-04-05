@@ -4,8 +4,8 @@
 	"titleLabel":"Display name for the action",
 	"linkHelpText":"Link for the action when clicked",
 	"linkLabel":"Link for the action when clicked",
-	"imageHelpText":"Action background image",
-	"imageLabel":"Action background image",
+	"imageHelpText":"Background image",
+	"imageLabel":"Background image",
 	"heightHelpText":"Image height (number only)",
 	"heightLabel":"Image height (number only)"
 	}

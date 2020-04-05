@@ -6,7 +6,7 @@
 	"doughnutChartTypeLabel":"Doughnut",
 	"chartTitleHelpText":"Enter a title",
     "chartTitleLabel":"Enter a title",
- 	"jsonURLHelpText":"Enter URL for data (JSON)",
-    "jsonURLLabel":"Enter URL for data (JSON)"
+ 	"jsonURLHelpText":"JSON filename",
+    "jsonURLLabel":"JSON filename"
 	}
 }

@@ -22,13 +22,14 @@ define(
 
                 var widget = widgetModel;
 
-                if (!widget.site().extensionSiteSettings.SelfServiceSettings) {
-                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - Self-Service Settings not found");
+                if (!widget.site().extensionSiteSettings.CXIntegrationSettings) {
+                    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - CX Integration Settings not found");
                     return;
                 }
 
-                var ss_settings = widget.site().extensionSiteSettings.SelfServiceSettings;
+                var ss_settings = widget.site().extensionSiteSettings.CXIntegrationSettings;
                 var ss_data = ss_settings.resourceData;
+                var ss_images = ss_settings.resourceImages;
                 var ss_token = ss_settings.leafletToken;
 
                 var mapTitle = widget.mapTitle(); //change to mapTitle
