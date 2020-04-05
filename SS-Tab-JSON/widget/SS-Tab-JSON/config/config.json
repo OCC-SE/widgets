@@ -1,7 +1,15 @@
 {
   "widgetDescriptorName": "SS - Tab(JSON)",
   "properties": [
-    	{
+    {
+      "id": "defaultTab",
+      "type": "booleanType",
+      "name": "defaultTab",
+      "helpTextResourceId": "defaultTabHelpText",
+      "labelResourceId": "defaultTabLabel",
+      "defaultValue": false
+    },
+    {
         "id": "tabName",
         "type": "optionType",
         "name": "tabName",

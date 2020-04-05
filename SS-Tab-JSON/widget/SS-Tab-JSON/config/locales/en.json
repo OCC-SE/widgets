@@ -1,5 +1,7 @@
 {"resources":
 	{
+      "defaultTabLabel":"Default tab on load",
+      "defaultTabHelpText":"Default tab on load",
     "tabNameHelpText":"Select the table type",
     "tabNameLabel":"Select the table type",
     "tabTitleHelpText":"Tab display name",
