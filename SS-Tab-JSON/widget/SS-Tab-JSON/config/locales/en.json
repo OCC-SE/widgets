@@ -2,8 +2,8 @@
 	{
     "tabNameHelpText":"Select the table type",
     "tabNameLabel":"Select the table type",
-    "tabTitleHelpText":"Enter a name for the tab",
-    "tabTitleLabel":"Enter a name for the tab",
+    "tabTitleHelpText":"Tab display name",
+    "tabTitleLabel":"Tab display name",
     "tabImageHelpText":"Image file (transparent background PNG)",
     "tabImageLabel":"Image file (transparent background PNG)",
     "jsonURLHelpText":"JSON filename",
