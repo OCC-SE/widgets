@@ -59,11 +59,11 @@
         "required": false
     },           
     {
-        "id": "chartData",
+        "id": "jsonURL",
         "type": "stringType",
-        "name": "chartData",
-        "helpTextResourceId": "chartDataHelpText",
-        "labelResourceId": "chartDataLabel",
+        "name": "jsonURL",
+        "helpTextResourceId": "jsonURLHelpText",
+        "labelResourceId": "jsonURLLabel",
         "defaultValue": "unitsordered.txt",
         "required": true
     }   

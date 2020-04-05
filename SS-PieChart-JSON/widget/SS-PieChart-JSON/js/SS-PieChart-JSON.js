@@ -35,10 +35,8 @@ define(
 
                 widget.chartHeading(widget.chartTitle());
 
-                var jsonUrl = ss_data + widget.jsonURL();
-
                 $.ajax({
-                    url: jsonUrl,
+                    url: ss_data + widget.jsonURL(),
                     dataType: 'json',
                     async: false,
                     success: function(data) {

@@ -38,7 +38,7 @@ define(
                 var jsonData;
 
                 $.ajax({
-                    url: ss_data + widget.chartData(),
+                    url: ss_data + widget.jsonURL(),
                     dataType: 'json',
                     async: false,
                     success: function(result) {
