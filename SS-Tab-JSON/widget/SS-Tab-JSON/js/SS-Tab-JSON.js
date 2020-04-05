@@ -1,7 +1,7 @@
 /**
  * @fileoverview Navigation tab to display external JSON in DataTables
  *
- * @author Chris Janning <chris.janning@oracle.com>
+ * @author Chris Janning >
  */
 define(
     //-------------------------------------------------------------------
@@ -53,6 +53,21 @@ define(
                             widget.tabData(result);
                             widget.tabTotal(result.items.length);
                             widget.tabDisplay(widget.tabTitle() + ' (' + result.items.length + ')');
+                            if (widget.defaultTab()) {
+                                $('[id^=tab-]').attr('class', 'imglink'); //in case another tab is set to default
+                                $('#tab-' + widget.tabName() + '-' + widget.id()).attr('class', 'imglink-selected');
+                                if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
+                                    $('#listing').DataTable().clear().destroy();
+                                    $('#listing').empty();
+                                }
+                                if (widget.dataDisplayType() == 'Table') {
+                                    $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
+                                    buildTable(widget);
+                                } else if (widget.dataDisplayType() == 'iFrame') {
+                                    var url = widget.iFrameURL();
+                                    $('#SS-DataTables').html('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
+                                }
+                            }
                         },
                         error: function(jqXHR, textStatus, error) {
                             widget.tabTotal(0);
