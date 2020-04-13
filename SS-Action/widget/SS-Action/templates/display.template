@@ -1,4 +1,4 @@
-<div class="action" data-bind="attr:{ id:'SS-Action-'+ $data.id()}">
+<div class="action" data-bind="attr:{ id:'SS-Action-'+ $data.id()}" style="margin-top:-5px">
     <div class="actionscell" data-bind="style: { background: 'url(' + thisImage() + ') top center no-repeat', height: thisHeight() }">
         <div class="actionscelltext"><a data-bind="attr: {href: thisLink() }"><span data-bind="text: thisTitle() "></span></a></div>
     </div>

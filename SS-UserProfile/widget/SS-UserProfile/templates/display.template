@@ -43,3 +43,6 @@
     </div>
 </div>
 <!-- /ko -->
+<!-- ko ifnot: user().loggedIn -->
+    <div>User login required for User Profile</div>
+<!-- /ko -->

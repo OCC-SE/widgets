@@ -53,9 +53,18 @@ define(
                             widget.tabData(result);
                             widget.tabTotal(result.items.length);
                             widget.tabDisplay(widget.tabTitle() + ' (' + result.items.length + ')');
+
+                            for (var i = 0; i < result.items.length; i++) {
+                                if (result.items[i].Alert == 'true') { //Any alert column set to true
+                                    $('#alert-' + widget.id()).attr('src', ss_images + 'tables/alert.png');
+                                    $('#alertimage').attr('src', ss_images + 'resources/alert_one.png');
+                                    $('#alertimage').attr('alt', 'Attention needed');
+                                }
+                            }
+
                             if (widget.defaultTab()) {
-                                $('[id^=tab-]').attr('class', 'imglink'); //in case another tab is set to default
-                                $('#tab-' + widget.tabName() + '-' + widget.id()).attr('class', 'imglink-selected');
+                                $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
+                                $('#tab-' + widget.tabName() + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
                                 if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                                     $('#listing').DataTable().clear().destroy();
                                     $('#listing').empty();
@@ -120,7 +129,45 @@ define(
 
         function buildTable(widget) {
             if (widget.tabName() == 'CUSTOM1') {
-                table = $('#listing').DataTable({
+                $('#listing').DataTable( {
+                    data: widget.tabData().items,
+                    order: [[ 4, "desc" ]],
+                    columns: [
+                        {data: "Alert"},
+                        {data: "Status"},
+                        {data: "Image"},
+                        {data: "Name"},
+                        {data: "PurchaseDate"},
+                        {data: "LastServiced"},
+                        {data: "UsageMonthAvg"},
+                        {data: "UsageTotal"},
+                        {data: "Temperature"},
+                        {data: "CushionPressure"}
+                    ],
+                    columnDefs: [
+                        {title: "", targets: 0, orderable: false, render: function(data, type, row, meta) {if (data == 'true') {return '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';} else {return '';}}},
+                        {title: "Status", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<img src="' + ss_images + '/tables/' + data + '.png" height="20px" widgth="20px">';}},
+                        {title: " ", targets: 2, orderable: false, render: function(data, type, row, meta) {return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';}},
+                        {title: "Name", targets: 3, orderable: false},
+                        {title: "Purchased", targets: 4, orderable: true},
+                        {title: "Serviced", targets: 5, orderable: true},
+                        {title: "Monthly (Hours)", targets: 6, orderable: false},
+                        {title: "Total (Hours)", targets: 7, orderable: false},
+                        {title: "Temperature", targets: 8, orderable: false},
+                        {title: "Cushion Pressure", targets: 9, orderable: false},
+                        {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<a href="https://goo.gl/maps/WbtxQfnhNSTcLJPR8" target="_blank"><img src="' + ss_images + "/tables/geolocation.png" + '" height="30px" widgth="30px"></a>';}},
+                        {title: " ", targets: 11, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}}
+                    ],
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
+                    lengthChange: false,
+                    pageLength: 5,
+                    destroy: true,
+                    //scrollX: true,
+                    //scrollCollapse: true
+                });
+                //CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
+            } else if (widget.tabName() == 'CUSTOM2') {
+                $('#listing').DataTable({
                     data: widget.tabData().items, //Do not touch
                     order: [[ 0, "desc" ]], //Default column to sort
                     columns: [ //One row for each key found in the JSON
@@ -140,9 +187,6 @@ define(
                     pageLength: 5, //Number of results per page
                     destroy: true, //Do not touch
                 });
-                //CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
-            } else if (widget.tabName() == 'CUSTOM2') {
-                //TODO: Copy starter structure from CUSTOM1
                 CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")-" +  widget.tabName() + "- Table configuration needed"); //Remove after configuration is added
             } else if (widget.tabName() == 'CUSTOM3') {
                 //TODO: Copy starter structure from CUSTOM1
@@ -185,8 +229,9 @@ define(
             } else if (widget.tabName() == 'IoT') {
                 $('#listing').DataTable( {
                     data: widget.tabData().items,
-                    order: [[ 3, "desc" ]],
+                    order: [[ 4, "desc" ]],
                     columns: [
+                        {data: "Alert"},
                         {data: "Status"},
                         {data: "Image"},
                         {data: "Name"},
@@ -198,25 +243,18 @@ define(
                         {data: "CushionPressure"}
                     ],
                     columnDefs: [
-                        {title: "Status", targets: 0, orderable: false, render: function(data, type, row, meta) {
-                                return '<img src="' + ss_images + '/tables/' + data + '.png" height="20px" widgth="20px">';
-                            }
-                        },
-                        {title: " ", targets: 1, orderable: false,
-                            render: function(data, type, row, meta) {
-                                return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';
-                            }
-                        },
-                        {title: "Name", targets: 2, orderable: false},
-                        {title: "Purchased", targets: 3, orderable: true},
-                        {title: "Serviced", targets: 4, orderable: true},
-                        {title: "Monthly (Hours)", targets: 5, orderable: false},
-                        {title: "Total (Hours)", targets: 6, orderable: false},
-                        {title: "Temperature", targets: 7, orderable: false},
-                        {title: "Cushion Pressure", targets: 8, orderable: false},
-                        {title: " ", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<a href="https://goo.gl/maps/WbtxQfnhNSTcLJPR8" target="_blank"><img src="' + ss_images + "/tables/geolocation.png" + '" height="30px" widgth="30px"></a>';}},
-                        {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}
-                        }
+                        {title: "", targets: 0, orderable: false, render: function(data, type, row, meta) {if (data == 'true') {return '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';} else {return '';}}},
+                        {title: "Status", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<img src="' + ss_images + '/tables/' + data + '.png" height="20px" widgth="20px">';}},
+                        {title: " ", targets: 2, orderable: false, render: function(data, type, row, meta) {return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';}},
+                        {title: "Name", targets: 3, orderable: false},
+                        {title: "Purchased", targets: 4, orderable: true},
+                        {title: "Serviced", targets: 5, orderable: true},
+                        {title: "Monthly (Hours)", targets: 6, orderable: false},
+                        {title: "Total (Hours)", targets: 7, orderable: false},
+                        {title: "Temperature", targets: 8, orderable: false},
+                        {title: "Cushion Pressure", targets: 9, orderable: false},
+                        {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<a href="https://goo.gl/maps/WbtxQfnhNSTcLJPR8" target="_blank"><img src="' + ss_images + "/tables/geolocation.png" + '" height="30px" widgth="30px"></a>';}},
+                        {title: " ", targets: 11, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}}
                     ],
                     language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
@@ -381,7 +419,7 @@ define(
                                 return buttons;
                             }}
                     ],
-                    language: {emptyTable: 'No ' + tab + ' found'},
+                    language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,

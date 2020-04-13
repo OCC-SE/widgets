@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "quickOrderRowsToDisplayHelpText": "Enter the initial number of rows you want to display in quick order.",
+    "quickOrderRowsToDisplayLabel": "Initial number of rows in quick order",
+    "maxQuantityOfItemsDisplayHelpText": "Enter the maximum quantity per product that can be added to cart",
+    "maxQuantityOfItemsDisplayLabel" : "Maximum quantity per product",
+    "maxNoOfItemsInCSVDisplayHelpText": "Enter the maximum number of items that can be imported through CSV file.",
+    "maxNoOfItemsInCSVDisplayLabel": "Maximum number of items in import file"
+  }
+}

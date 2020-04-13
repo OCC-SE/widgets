@@ -1,0 +1,10 @@
+{
+  "name": "SS - Test Widget",
+  "availableToAllPages": true,
+  "javascript": "SS-TestWidget",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Self-Service"
+}

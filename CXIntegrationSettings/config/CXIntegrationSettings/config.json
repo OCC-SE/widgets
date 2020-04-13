@@ -87,6 +87,30 @@
       "defaultValue": "ABEgQAS9cEenJP4nvMKg0y5Fg"
     },
     {
+      "id": "eloquaURL",
+      "type": "stringType",
+      "name": "eloquaURL",
+      "helpTextResourceId": "eloquaURLHelpText",
+      "labelResourceId": "eloquaURLLabel",
+      "defaultValue": "https://s1650439596.t.eloqua.com/e/f2"
+    },
+    {
+      "id": "eloquaForm",
+      "type": "stringType",
+      "name": "eloquaForm",
+      "helpTextResourceId": "eloquaFormHelpText",
+      "labelResourceId": "eloquaFormLabel",
+      "defaultValue": "UntitledForm-1586289965283"
+    },
+    {
+      "id": "eloquaSiteID",
+      "type": "stringType",
+      "name": "eloquaSiteID",
+      "helpTextResourceId": "eloquaSiteIDHelpText",
+      "labelResourceId": "eloquaSiteIDLabel",
+      "defaultValue": "1650439596"
+    },
+    {
       "id": "infinityURL",
       "type": "stringType",
       "name": "infinityURL",

@@ -9,7 +9,7 @@
         "labelResourceId": "titleLabel",
         "defaultValue": "Shop Catalog",
         "required": true
-    },    
+    },
     {
         "id": "link",
         "type": "stringType",
@@ -36,6 +36,6 @@
         "labelResourceId": "heightLabel",
         "defaultValue": "225",
         "required": true
-    }         
+    }
   ]
 }

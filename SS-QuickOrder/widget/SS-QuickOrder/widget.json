@@ -1,0 +1,25 @@
+{
+  "availableToAllPages": true,
+  "config": {
+    "maxNoOfItemsInCSV": "999",
+    "maxQuantityOfItems": "100",
+    "noOfRowsToDisplay": "4"
+  },
+  "global": false,
+  "globalEnabled": true,
+  "i18nresources": "quickOrder",
+  "imports": [],
+  "javascript": "quick-order",
+  "jsEditable": false,
+  "minWidth": 1,
+  "source": 100,
+  "translations": [
+    {
+      "language": "en",
+      "name": "SS - Quick Order"
+    }
+  ],
+  "version": 1,
+  "widgetFamily": "quickOrder",
+  "widgetType": "quickOrder"
+}

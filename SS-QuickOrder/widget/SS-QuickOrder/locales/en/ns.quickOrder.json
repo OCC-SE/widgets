@@ -1,0 +1,30 @@
+{
+  "resources": {
+    "quickOrderText": "Quick Order",
+    "searchPlaceholder": "Search",
+    "itemsText": "Items",
+    "quantityText": "Quantity",
+    "quantityGreaterThanMsg": "Quantity must be greater than __quantity__.",
+    "quantityRequireMsg": "Quantity is mandatory.",
+    "quantityNumericMsg": "Invalid entry. Please enter only numbers.",
+    "invalidInputs": "There are invalid inputs.",
+    "newRowText": "Row",
+    "addItemsText": "Add Items To Cart",
+    "outOfStockText":"Out Of Stock",
+    "noLongerForSaleText": "Inactive",
+    "configurableItemText": "Can't add Configurable Item",
+    "updateCacelModalTitle" : "Unsaved Changes",
+    "updateCancelModalMessage" : "You have items in quick order. Do you want to discard them ?",
+    "updateCancelModalClose" : "Discard",
+    "updateCancelModalCancel" : "Cancel",
+    "quantitySmallerThanMsg" : "Quantity cannot exceed __quantity__.",
+    "invalidSKUText": "Invalid SKU",
+    "invalidFileText": "You have selected an incorrect file type. Please select a csv file and try again.",
+    "clearAllText": "Clear All",
+    "fileParsingErrorText": "There was an error while parsing the file.",
+    "maxNoInFileErrorText": "Number of items exceeds the configured maximum.",
+    "chooseFileText": "Choose File",
+    "uploadText": "Upload",
+    "noFilesSelectedText": "No files selected"
+  }
+}

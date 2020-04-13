@@ -1,0 +1,32 @@
+{
+  "widgetDescriptorName": "SS - Quick Order",
+  "properties": [
+    {
+      "id": "noOfRowsToDisplay",
+      "type": "stringType",
+      "name": "noOfRowsToDisplay",
+      "helpTextResourceId": "quickOrderRowsToDisplayHelpText",
+      "labelResourceId": "quickOrderRowsToDisplayLabel",
+      "defaultValue": "4",
+      "required": true
+    },
+    {
+      "id": "maxQuantityOfItems",
+      "type": "stringType",
+      "name": "maxQuantityOfItems",
+      "helpTextResourceId": "maxQuantityOfItemsDisplayHelpText",
+      "labelResourceId": "maxQuantityOfItemsDisplayLabel",
+      "defaultValue": "100",
+      "required": true
+    },
+     {
+      "id": "maxNoOfItemsInCSV",
+      "type": "stringType",
+      "name": "maxNoOfItemsInCSV",
+      "helpTextResourceId": "maxNoOfItemsInCSVDisplayHelpText",
+      "labelResourceId": "maxNoOfItemsInCSVDisplayLabel",
+      "defaultValue": "999",
+      "required": true
+    }
+  ]
+}

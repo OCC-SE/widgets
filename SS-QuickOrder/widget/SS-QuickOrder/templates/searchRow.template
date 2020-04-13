@@ -1,0 +1,20 @@
+<div class = "row">
+	<div class = "col-md-5 col-lg-5 col-xs-8">
+		<div class= "right-inner-addon">
+	  	<input type="text" aria-label="searchProduct" class="form-control quick-order-query" autocomplete="off" value= searchQuery
+	    	data-bind="attr: { 'id': 'quick-order-query-search'+$index()}, widgetLocaleText: {attr: 'placeholder', value: 'searchPlaceholder'}, onRender: $parent.initializer.bind($parent,$element.id),
+	      value: productDisplay, event: { focus: $parent.searchSelected.bind($parent,$index(),$element.id), blur: $parent.afterBlur.bind($parent,$index()) }"/>			
+	<i class="glyphicon glyphicon-search"></i>
+	</div>
+	</div> 
+	<div class = "col-lg-1 col-md-1 col-xs-3">
+	  	<input type="text" aria-label="productQuantity" class=" form-control" data-bind="attr: { 'id': 'product-quantity'+$index()}, value: productQuantity, event: { focus: $parent.lastRowCheck.bind($parent,$index())}">
+		</div>
+		 <div class="col-md-3 col-xs-4 col-xs-12">
+		   <!-- ko ifnot: errorMessage() =="" -->
+             <span class="text-danger" data-bind="text: errorMessage(), attr: { 'id': 'error-message'+$index()}" role="alert"></span>
+           <!-- /ko -->		 
+         <span class="text-danger" data-bind="validationMessage: productQuantity,  attr: { 'id': 'quantity-error-message'+$index()}" role="alert"></span> 
+      </div>
+</div>
+		
