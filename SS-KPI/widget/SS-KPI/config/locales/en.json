@@ -1,0 +1,11 @@
+{
+  "resources":
+  {
+    "titleHelpText":"KPI title",
+    "titleLabel":"KPI title",
+    "valueHelpText":"KPI value",
+    "valueLabel":"KPI value",
+    "imageHelpText":"Image filename (transparent background PNG)",
+    "imageLabel":"Image filename (transparent background PNG)"
+  }
+}

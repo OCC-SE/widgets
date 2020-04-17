@@ -1,0 +1,41 @@
+{
+  "widgetDescriptorName": "SS - Tab(Navigation)",
+  "properties": [
+    {
+      "id": "title",
+      "type": "stringType",
+      "name": "title",
+      "helpTextResourceId": "titleHelpText",
+      "labelResourceId": "titleLabel",
+      "defaultValue": "Shop Catalog",
+      "required": true
+    },
+    {
+      "id": "link",
+      "type": "stringType",
+      "name": "link",
+      "helpTextResourceId": "linkHelpText",
+      "labelResourceId": "linkLabel",
+      "defaultValue": "/browse",
+      "required": true
+    },
+    {
+      "id": "image",
+      "type": "stringType",
+      "name": "image",
+      "helpTextResourceId": "imageHelpText",
+      "labelResourceId": "imageLabel",
+      "defaultValue": "catalog.JPG",
+      "required": true
+    },
+    {
+      "id": "height",
+      "type": "stringType",
+      "name": "height",
+      "helpTextResourceId": "heightHelpText",
+      "labelResourceId": "heightLabel",
+      "defaultValue": "75",
+      "required": true
+    }
+  ]
+}

@@ -1,48 +1,133 @@
+<!-- ko if: $data.widgetError -->
+<div id="widgetError" style="color:red"></div>
+<!-- /ko -->
+<!-- ko ifnot: $data.widgetError -->
 <!-- ko if: user().loggedIn -->
-<div id="SS-UserProfile" class="user_profile">
-    <div class="user_welcome">
-        <div style="display:table-cell;"><span data-bind="text: $data.userGreeting "></span>!</div>
+<div class="userTABLE">
+  <div style="display:table-row">
+    <div style="display:table-cell;font-weight:bold;font-size:25px;">
+      <span data-bind="text: $data.userGreeting "></span>!
     </div>
-    <div class="user_info">
-        <div class="rTableRow">
-            <div class="user_picture"><img data-bind="attr: {src: $data.userImage }"><br>
-                <div style="width:100%;text-align:center;"><a href="/profile-business" style="text-decoration:underline;font-size:14px;color:blue;">View Profile</a></div>
-            </div>
-            <div class="user_details">
-                <div class="rTableRow">
-                    <div class="user_name">
-                        <span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span>
-                    </div>
-                    <div style="display:table-cell;width:60px;text-align:right;vertical-align:top">
-                        <img width="40px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.CXIntegrationSettings.resourceImages + 'resources/alert.png' }" />
-                    </div>
+    <div style="display:table-cell;width:100px;text-align:left;">
+        <img width="40px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.CXIntegrationSettings.resourceImages + 'resources/alert.png'}"/>
+    </div>
+  </div>
+  <div style="display:table-row">
+    <div style="display:table-cell;padding-top:15px">
+      <div class="userPicTABLE">
+        <div style="display: table-row">
+          <div class="userPicTD">
+            <img data-bind="attr: {src: $data.userImage}"><br>
+            <a href="/profile-business" style="text-decoration:underline;font-size:14px;color:blue;">View Profile</a>
+          </div>
+          <div style="display: table-cell;padding-left:10px">
+            <div class="userTopTABLE">
+              <div style="display:table-row">
+                <div class="userNameTD">
+                    <span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span>
                 </div>
-                <div class="rTableRow"><b>Account Number:</b>&nbsp;<span data-bind="text: $data.user().id "></span></div>
-                <div class="rTableRow"><b>Account Name:</b>&nbsp;<span data-bind="text: $data.userAccountName "></span></div>
-                <div class="rTableRow"><b>Available Credit:</b>&nbsp;<span data-bind="text: $data.userAvailCredit "></span></div>
-                <div class="rTableRow"><b>Customer since:</b>&nbsp;2011</div>
+              </div>
+              <div style="display:table-row">
+                <div class="userTopTD">
+                  <div style="display:table;">
+                    <div style="display:table-row">
+                      <div style="display:table-cell;">
+                        <b>Account Number:</b>
+                      </div>
+                      <div style="display:table-cell;padding-left:5px;">
+                        <span data-bind="text: $data.user().id"></span>
+                      </div>
+                    </div>
+                    <div style="display:table-row">
+                      <div style="display:table-cell;padding-top:5px;">
+                        <b>Account Name:</b>
+                      </div>
+                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
+                        <span data-bind="text: $data.userAccountName"></span>
+                      </div>
+                    </div>
+                    <div style="display:table-row">
+                      <div style="display:table-cell;padding-top:5px;">
+                        <b>Available Credit:</b>
+                      </div>
+                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
+                        <span data-bind="text: $data.userAvailCredit"></span>
+                      </div>
+                    </div>
+                    <div style="display:table-row">
+                      <div style="display:table-cell;padding-top:5px;">
+                        <b>Customer Since:</b>
+                      </div>
+                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
+                        2011
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="user_contact">
-        <div class="rTableRow">
-            <div style="display:table-cell;width:50%;">
-                <div style="font-weight:bold;">Email</div>
-                <div data-bind="text: $data.user().emailAddress "></div>
-                <div style="font-weight:bold;padding-top:5px">Phone</div>
-                <div data-bind="text: $data.userPhone "></div>
+  </div>
+  <div style="display:table-row">
+    <div class="userBottomTABLE">
+      <div style="display:table-row">
+        <div style="display:table-cell;width:50%">
+          <div style="display:table;border-collapse:separate;border-spacing:5px">
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <b>Email</b>
+              </div>
             </div>
-            <div style="display:table-cell;padding-left:10px;">
-                <div style="font-weight:bold;">Billing</div>
-                <div data-bind="text: $data.user().currentOrganization.companyName "></div>
-                <div data-bind="text: $data.user().contactBillingAddress.address1 "></div>
-                <div><span data-bind="text: $data.user().contactBillingAddress.city "></span>,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span></div>
-                <div data-bind="text: $data.user().contactBillingAddress.country "></div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <span data-bind="text: $data.user().emailAddress"></span>
+              </div>
             </div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <b>Phone</b>
+              </div>
+            </div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <span data-bind="text: $data.userPhone"></span>
+              </div>
+            </div>
+          </div>
         </div>
+        <div style="display:table-cell">
+          <div style="display:table;border-collapse:separate;border-spacing:5px">
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <b>Billing Address</b>
+              </div>
+            </div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <span data-bind="text: $data.user().contactBillingAddress.address1"></span>
+              </div>
+            </div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <span data-bind="text: $data.user().contactBillingAddress.city"></span>,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span>
+              </div>
+            </div>
+            <div style="display:table-row">
+              <div style="display:table-cell">
+                <span data-bind="text: $data.user().contactBillingAddress.country"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /ko -->
 <!-- ko ifnot: user().loggedIn -->
     <div>User login required for User Profile</div>
+<!-- /ko -->
 <!-- /ko -->

@@ -1,0 +1,23 @@
+<div class="kpiBoxes" data-bind="attr:{ id:'SS-kpiBox-' + $data.id()}">
+  <div style="display:table-row">
+    <div class="kpiBox">
+      <div style="width:100%;display:table;">
+        <div style="display:table-row">
+          <div class="kpiImage">
+            <img data-bind="attr: {src: $data.kpiImage}">
+          </div>
+          <div class="kpiValue">
+            <span data-bind="text: $data.value"></span>
+          </div>
+        </div>
+      </div>
+      <div style="width:100%;display:table;">
+        <div style="display:table-row">
+          <div class="kpiTitle">
+            <span data-bind="text: $data.title"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "widgetDescriptorName": "SS - KPI",
+  "properties": [
+    {
+      "id": "title",
+      "type": "stringType",
+      "name": "title",
+      "helpTextResourceId": "titleHelpText",
+      "labelResourceId": "titleLabel",
+      "defaultValue": "Service Requests",
+      "required": true
+    },
+    {
+      "id": "value",
+      "type": "stringType",
+      "name": "value",
+      "helpTextResourceId": "valueHelpText",
+      "labelResourceId": "valueLabel",
+      "defaultValue": "7",
+      "required": true
+    },
+    {
+      "id": "image",
+      "type": "stringType",
+      "name": "image",
+      "helpTextResourceId": "imageHelpText",
+      "labelResourceId": "imageLabel",
+      "defaultValue": "servicerequests.png",
+      "required": true
+    }
+  ]
+}

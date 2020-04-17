@@ -169,7 +169,7 @@
       "name": "cpqConfigURL",
       "helpTextResourceId": "cpqConfigURLHelpText",
       "labelResourceId": "cpqConfigURLLabel",
-      "defaultValue": "https://cpq-20114.bigmachines.com/commerce/new_equipment/products/model_configs.jsp"
+      "defaultValue": "https://cpq-20114.bigmachines.com/commerce/new_equipment/products/model_configs.jsp?segment=homeComfort&product_line=wholeHomeSolutions&model=elite_ACS&_from_partner=true"
     },
     {
       "id": "cpqURL",

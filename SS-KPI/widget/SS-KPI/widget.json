@@ -1,0 +1,10 @@
+{
+  "name": "SS - KPI 2",
+  "availableToAllPages": true,
+  "javascript": "SS-KPI",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Self-Service"
+}

@@ -1,0 +1,5 @@
+<div class="tabsNav" data-bind="attr:{ id:'SS-Tab-Navigation-' + $data.id()}">
+    <div class="tablink" data-bind="attr:{id:'tabNav-' + $data.id(), onclick: thisLink()}">
+        <span data-bind="text: thisTitle() "></span>
+    </div>
+</div>

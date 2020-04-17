@@ -1,0 +1,10 @@
+{
+  "name": "SS - Tab(Navigation)",
+  "availableToAllPages": true,
+  "javascript": "SS-Tab-Navigation",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Self-Service"
+}

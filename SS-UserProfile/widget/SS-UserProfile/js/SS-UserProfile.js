@@ -16,51 +16,21 @@ define(
 
         "use strict";
 
-        var ss_data;
-        var ss_images;
-        var pn;
-        var oecURL;
-        var oecAuth;
-
-        function formatDate(value) {
-            if (value === null) return "";
-            var mydate = new Date(value);
-            var yyyy = mydate.getFullYear().toString();
-            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based
-            var dd = mydate.getDate().toString();
-            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
-            var mydatestr = new Date(parts);
-            return mydatestr.toLocaleDateString();
-        }
-
-        function getGreeting() {
-            var myDate = new Date();
-            var hrs = myDate.getHours();
-            var greet;
-            if (hrs < 12) {
-                greet = 'Good morning, ';
-            } else if (hrs >= 12 && hrs <= 17) {
-                greet = 'Good afternoon, ';
-            } else if (hrs >= 17 && hrs <= 24) {
-                greet = 'Good evening, ';
-            }
-            return greet;
-        }
-
         return {
 
+            widgetError: ko.observable(false),
             userImage: ko.observable(''),
             firstVisit: ko.observable(''),
             lastTrans: ko.observable(),
-            userFirstName: ko.observable('Bill'),
-            userLastName: ko.observable('Smith'),
+            //userFirstName: ko.observable('Bill'),
+            //userLastName: ko.observable('Smith'),
             userJobTitle: ko.observable(''),
             userEmailAddress: ko.observable(''),
             userPartyNumber: ko.observable(''),
             userAccountName: ko.observable(''),
             userStatus: ko.observable(''),
             userRank: ko.observable(''),
-            userRole: ko.observable(''),
+            //userRole: ko.observable(''),
             userPhone: ko.observable('515-222-1212'),
             userPurchLimit: ko.observable(0),
             userCustType: ko.observable('Enteprise'),
@@ -83,11 +53,10 @@ define(
                 }
 
                 var ss_settings = widget.site().extensionSiteSettings.CXIntegrationSettings;
-                ss_data = ss_settings.resourceData;
-                ss_images = ss_settings.resourceImages;
+                var ss_data = ss_settings.resourceData;
+                var ss_images = ss_settings.resourceImages;
 
                 var userType = widget.userType();
-                widget.userRole(userType);
 
                 var user = widget.user();
                 if (user.loggedIn()) {
@@ -161,5 +130,30 @@ define(
                 CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
             }
         };
+
+        function formatDate(value) {
+            if (value === null) return "";
+            var mydate = new Date(value);
+            var yyyy = mydate.getFullYear().toString();
+            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = mydate.getDate().toString();
+            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
+            var mydatestr = new Date(parts);
+            return mydatestr.toLocaleDateString();
+        }
+
+        function getGreeting() {
+            var myDate = new Date();
+            var hrs = myDate.getHours();
+            var greet;
+            if (hrs < 12) {
+                greet = 'Good morning, ';
+            } else if (hrs >= 12 && hrs <= 17) {
+                greet = 'Good afternoon, ';
+            } else if (hrs >= 17 && hrs <= 24) {
+                greet = 'Good evening, ';
+            }
+            return greet;
+        }
     }
 );
