@@ -2,8 +2,8 @@
   "createdBy": "OCC Regulators",
   "description": "Pie or doughnut using CPQ for Self-Service dashboard",
   "developerID": "8675309",
-  "extensionID": "b72b69ad-7d90-4e83-9e3f-02871393d16d",
-  "name": "SS - Pie Chart (CPQ)",
+  "extensionID": "efcec449-0627-4bf0-87b0-2cb221ce483e",
+  "name": "SS - Pie Chart(CPQ)",
   "timeCreated": "2019-10-31",
-  "version": 3
+  "version": 4
 }

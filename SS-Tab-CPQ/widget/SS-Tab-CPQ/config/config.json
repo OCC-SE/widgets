@@ -1,0 +1,65 @@
+{
+  "widgetDescriptorName": "SS-Tab-CPQ",
+  "properties": [
+    {
+      "id": "defaultTab",
+      "type": "booleanType",
+      "name": "defaultTab",
+      "helpTextResourceId": "defaultTabHelpText",
+      "labelResourceId": "defaultTabLabel",
+      "defaultValue": false
+    },
+    {
+      "id": "tabTitle",
+      "type": "stringType",
+      "name": "tabTitle",
+      "helpTextResourceId": "tabTitleHelpText",
+      "labelResourceId": "tabTitleLabel",
+      "defaultValue": "Quotes",
+      "required": true
+    },
+    {
+      "id": "tabImage",
+      "type": "stringType",
+      "name": "tabImage",
+      "helpTextResourceId": "tabImageHelpText",
+      "labelResourceId": "tabImageLabel",
+      "defaultValue": "quotes.png",
+      "required": true
+    },
+    {
+      "id": "cpqAuth",
+      "type": "stringType",
+      "name": "cpqAuth",
+      "helpTextResourceId": "cpqAuthHelpText",
+      "labelResourceId": "cpqAuthLabel",
+      "defaultValue": "Basic ZGF2aW5jaTpkYXZpbmNp",
+      "required": true
+    },
+    {
+     "id": "cpqURL",
+     "type": "stringType",
+     "name": "cpqURL",
+     "helpTextResourceId": "cpqURLHelpText",
+     "labelResourceId": "cpqURLLabel",
+     "defaultValue": "https://cpq-20114.bigmachines.com",
+     "required": true
+    },
+    {
+      "id": "cpqQuery",
+      "type": "stringType",
+      "name": "cpqQuery",
+      "helpTextResourceId": "cpqQueryHelpText",
+      "labelResourceId": "cpqQueryLabel",
+      "defaultValue": "/rest/v8/commerceDocumentsOraclecpqoTransaction"
+    },
+    {
+      "id": "cpqParams",
+      "type": "stringType",
+      "name": "cpqParams",
+      "helpTextResourceId": "cpqParamsHelpText",
+      "labelResourceId": "cpqParamsLabel",
+      "defaultValue": "?q={\"owner_t\": \"davinci davinci\"}"
+    }
+  ]
+}

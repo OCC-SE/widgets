@@ -5,6 +5,14 @@
 	"pieChartTypeLabel":"Pie",
 	"doughnutChartTypeLabel":"Doughnut",
 	"chartTitleHelpText":"Enter a title",
-    "chartTitleLabel":"Enter a title"
+    "chartTitleLabel":"Enter a title",
+		"cpqAuthHelpText":"CPQ Authorization/credentials",
+		"cpqAuthLabel":"CPQ Authorization/credentials",
+		"cpqURLHelpText":"CPQ instance url",
+		"cpqURLLabel":"CPQ instance url",
+		"cpqQueryHelpText":"API call query",
+		"cpqQueryLabel":"API call query",
+		"cpqParamsHelpText":"API call parameters",
+		"cpqParamsLabel":"API call parameters"
 	}
 }

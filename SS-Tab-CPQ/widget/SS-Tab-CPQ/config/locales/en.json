@@ -1,0 +1,18 @@
+{"resources":
+	{
+      "defaultTabLabel":"Default tab on load",
+      "defaultTabHelpText":"Default tab on load",
+      "tabTitleHelpText":"Tab display name",
+      "tabTitleLabel":"Tab display name",
+      "tabImageHelpText":"Image file (transparent background PNG)",
+      "tabImageLabel":"Image file (transparent background PNG)",
+      "cpqAuthHelpText":"CPQ Authorization/credentials",
+      "cpqAuthLabel":"CPQ Authorization/credentials",
+    "cpqURLHelpText":"CPQ instance url",
+    "cpqURLLabel":"CPQ instance url",
+      "cpqQueryHelpText":"API call query",
+      "cpqQueryLabel":"API call query",
+      "cpqParamsHelpText":"API call parameters",
+      "cpqParamsLabel":"API call parameters"
+    }
+}

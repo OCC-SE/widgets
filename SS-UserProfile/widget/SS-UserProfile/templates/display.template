@@ -3,125 +3,50 @@
 <!-- /ko -->
 <!-- ko ifnot: $data.widgetError -->
 <!-- ko if: user().loggedIn -->
-<div class="userTABLE">
-  <div style="display:table-row">
-    <div style="display:table-cell;font-weight:bold;font-size:25px;">
-      <span data-bind="text: $data.userGreeting "></span>!
-    </div>
-    <div style="display:table-cell;width:100px;text-align:left;">
-        <img width="40px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.CXIntegrationSettings.resourceImages + 'resources/alert.png'}"/>
-    </div>
-  </div>
-  <div style="display:table-row">
-    <div style="display:table-cell;padding-top:15px">
-      <div class="userPicTABLE">
-        <div style="display: table-row">
-          <div class="userPicTD">
-            <img data-bind="attr: {src: $data.userImage}"><br>
-            <a href="/profile-business" style="text-decoration:underline;font-size:14px;color:blue;">View Profile</a>
-          </div>
-          <div style="display: table-cell;padding-left:10px">
-            <div class="userTopTABLE">
-              <div style="display:table-row">
-                <div class="userNameTD">
-                    <span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span>
-                </div>
-              </div>
-              <div style="display:table-row">
-                <div class="userTopTD">
-                  <div style="display:table;">
-                    <div style="display:table-row">
-                      <div style="display:table-cell;">
-                        <b>Account Number:</b>
-                      </div>
-                      <div style="display:table-cell;padding-left:5px;">
-                        <span data-bind="text: $data.user().id"></span>
-                      </div>
-                    </div>
-                    <div style="display:table-row">
-                      <div style="display:table-cell;padding-top:5px;">
-                        <b>Account Name:</b>
-                      </div>
-                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
-                        <span data-bind="text: $data.userAccountName"></span>
-                      </div>
-                    </div>
-                    <div style="display:table-row">
-                      <div style="display:table-cell;padding-top:5px;">
-                        <b>Available Credit:</b>
-                      </div>
-                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
-                        <span data-bind="text: $data.userAvailCredit"></span>
-                      </div>
-                    </div>
-                    <div style="display:table-row">
-                      <div style="display:table-cell;padding-top:5px;">
-                        <b>Customer Since:</b>
-                      </div>
-                      <div style="display:table-cell;padding-top:5px;padding-left:5px;">
-                        2011
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div data-bind="attr:{ id:'SS-UserProfile-' + $data.id()}" style="width:100%">
+<div class="divTable">
+    <div class="tableRow">
+      <div class="userPicTD">
+        <img data-bind="attr: {src: $data.userImage}"><br>
+        <a href="/profile-business" style="text-decoration:underline;font-size:14px;color:blue;">View Profile</a>
       </div>
-    </div>
-  </div>
-  <div style="display:table-row">
-    <div class="userBottomTABLE">
-      <div style="display:table-row">
-        <div style="display:table-cell;width:50%">
-          <div style="display:table;border-collapse:separate;border-spacing:5px">
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <b>Email</b>
-              </div>
+      <div class="divTableCell" style="padding-left:10px;">
+        <div class="divTable">
+          <div class="tableRow">
+            <div style="display:table-cell;font-weight:bold;font-size:25px;vertical-align:middle">
+              <span data-bind="text: $data.userGreeting ">Good morning, <span data-bind="text: $data.user().firstName"></span></span>!
             </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <span data-bind="text: $data.user().emailAddress"></span>
-              </div>
-            </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <b>Phone</b>
-              </div>
-            </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <span data-bind="text: $data.userPhone"></span>
-              </div>
+            <div style="display:table-cell;width:100px;text-align:right;">
+              <img width="50px" id="alertimage" data-bind="attr: {src: $data.site().extensionSiteSettings.CXIntegrationSettings.resourceImages + 'resources/alert.png'}"/>
             </div>
           </div>
         </div>
-        <div style="display:table-cell">
-          <div style="display:table;border-collapse:separate;border-spacing:5px">
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <b>Billing Address</b>
-              </div>
-            </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <span data-bind="text: $data.user().contactBillingAddress.address1"></span>
-              </div>
-            </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
-                <span data-bind="text: $data.user().contactBillingAddress.city"></span>,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span>
-              </div>
-            </div>
-            <div style="display:table-row">
-              <div style="display:table-cell">
+        <table class="detailTable">
+          <tr>
+            <td colspan="4" style="font-weight:bold;font-size:20px;padding-bottom:5px"><span data-bind="text: $data.user().firstName"></span>&nbsp;<span data-bind="text: $data.user().lastName"></span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;width:20%">Number:</td>
+            <td colspan="3"><span data-bind="text: $data.user().id"></span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Account:</td>
+            <td colspan="3"><span data-bind="text: $data.userAccountName"></span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Email:</td>
+            <td colspan="3"><span data-bind="text: $data.user().emailAddress"></span></td>
+          </tr>
+          <tr>
+            <td style="vertical-align:top;font-weight: bold;">Billing:</td>
+            <td><span data-bind="text: $data.user().contactBillingAddress.address1"></span><br>
+                <span data-bind="text: $data.user().contactBillingAddress.city"></span>,&nbsp;<span data-bind="text: $data.user().contactBillingAddress.state "></span>&nbsp;<span data-bind="text: $data.user().contactBillingAddress.postalCode "></span><br>
                 <span data-bind="text: $data.user().contactBillingAddress.country"></span>
-              </div>
-            </div>
-          </div>
-        </div>
+            </td>
+            <td style="vertical-align:top;text-align:right;font-weight:bold">Phone:</td>
+            <td style="vertical-align:top;text-align:right"><span data-bind="text: $data.userPhone"></span></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

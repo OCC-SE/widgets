@@ -1,3 +1,5 @@
-<div id="SS-PieChart-CPQ" class="data_viz_pie">
-	<canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.id()}"></canvas>
+<div data-bind="attr:{ id:'SS-PieChart-JSON-' + $data.id()}" class="data_viz_pie">
+    <div id="SS-WidgetError" style="color:red"></div>
+    <div style="font-size:20px;font-weight:bold;text-align:left;"><span data-bind="text: $data.chartHeading "></span></div>
+    <canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.id()}"></canvas>
 </div>

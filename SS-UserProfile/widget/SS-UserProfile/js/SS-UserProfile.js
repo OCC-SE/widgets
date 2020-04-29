@@ -60,7 +60,7 @@ define(
 
                 var user = widget.user();
                 if (user.loggedIn()) {
-                    widget.userImage = ss_images + "/users/" + user.firstName().toLowerCase() + ".jpg";
+                    widget.userImage = ss_images + "users/" + user.firstName().toLowerCase() + ".jpg";
 
                     if (user.firstName() == 'Wendy') { //phone number not found in profile so hard coded
                         widget.userPhone('555-555-1234');

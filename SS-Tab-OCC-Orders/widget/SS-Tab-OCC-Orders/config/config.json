@@ -1,0 +1,31 @@
+{
+  "widgetDescriptorName": "SS-TableTab-OCC-Orders",
+  "properties": [
+    {
+      "id": "defaultTab",
+      "type": "booleanType",
+      "name": "defaultTab",
+      "helpTextResourceId": "defaultTabHelpText",
+      "labelResourceId": "defaultTabLabel",
+      "defaultValue": false
+    },
+    {
+      "id": "tabTitle",
+      "type": "stringType",
+      "name": "tabTitle",
+      "helpTextResourceId": "tabTitleHelpText",
+      "labelResourceId": "tabTitleLabel",
+      "defaultValue": "Quotes",
+      "required": true
+    },
+    {
+      "id": "tabImage",
+      "type": "stringType",
+      "name": "tabImage",
+      "helpTextResourceId": "tabImageHelpText",
+      "labelResourceId": "tabImageLabel",
+      "defaultValue": "quotes.png",
+      "required": true
+    }
+  ]
+}

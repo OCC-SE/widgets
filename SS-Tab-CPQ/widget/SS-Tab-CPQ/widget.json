@@ -1,11 +1,10 @@
 {
-  "name": "SS - Tab (CPQ)",
+  "name": "SS - Tab(CPQ)",
   "availableToAllPages": true,
   "javascript": "SS-Tab-CPQ",
   "jsEditable": true,
   "global": false,
   "imports": [],
   "version": 1,
-  "widgetFamily": "SS-Tab-CPQ",
-  "widgetType": "SS-Tab-CPQ"
+  "widgetFamily": "Self-Service"
 }

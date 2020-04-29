@@ -43,7 +43,7 @@ define(
                     return;
                 }
 
-                widget.tabImage = ss_images + "tabs/" + widget.tabImage();
+                widget.tabImage = ss_images + "tabs/" + widget.tabImage().toLowerCase();
 
                 if (widget.dataDisplayType() == 'Table') {
                     $.ajax({

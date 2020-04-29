@@ -1,7 +1,7 @@
 {
-  "name": "SS - KPI",
+  "name": "SS - Tab(OCC Orders)",
   "availableToAllPages": true,
-  "javascript": "SS-KPI",
+  "javascript": "SS-Tab-OCC-Orders",
   "jsEditable": true,
   "global": false,
   "imports": [],
