@@ -10,12 +10,12 @@
       "defaultValue": false
     },
     {
-      "id": "tabTitle",
+      "id": "tabName",
       "type": "stringType",
-      "name": "tabTitle",
-      "helpTextResourceId": "tabTitleHelpText",
-      "labelResourceId": "tabTitleLabel",
-      "defaultValue": "Quotes",
+      "name": "tabName",
+      "helpTextResourceId": "tabNameHelpText",
+      "labelResourceId": "tabNameLabel",
+      "defaultValue": "Orders",
       "required": true
     },
     {
@@ -24,7 +24,7 @@
       "name": "tabImage",
       "helpTextResourceId": "tabImageHelpText",
       "labelResourceId": "tabImageLabel",
-      "defaultValue": "quotes.png",
+      "defaultValue": "orders.png",
       "required": true
     }
   ]

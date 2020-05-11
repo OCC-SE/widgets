@@ -2,8 +2,8 @@
 	{
       "defaultTabLabel":"Default tab on load",
       "defaultTabHelpText":"Default tab on load",
-      "tabTitleHelpText":"Tab display name",
-      "tabTitleLabel":"Tab display name",
+      "tabNameHelpText":"Tab display name",
+      "tabNameLabel":"Tab display name",
       "tabImageHelpText":"Image file (transparent background PNG)",
       "tabImageLabel":"Image file (transparent background PNG)"
 	}
