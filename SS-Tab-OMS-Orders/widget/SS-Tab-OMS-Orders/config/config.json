@@ -1,0 +1,31 @@
+{
+  "widgetDescriptorName": "SS-Tab-OMS-Orders",
+  "properties": [
+    {
+      "id": "defaultTab",
+      "type": "booleanType",
+      "name": "defaultTab",
+      "helpTextResourceId": "defaultTabHelpText",
+      "labelResourceId": "defaultTabLabel",
+      "defaultValue": false
+    },
+    {
+      "id": "tabName",
+      "type": "stringType",
+      "name": "tabName",
+      "helpTextResourceId": "tabNameHelpText",
+      "labelResourceId": "tabNameLabel",
+      "defaultValue": "Orders",
+      "required": true
+    },
+    {
+      "id": "tabImage",
+      "type": "stringType",
+      "name": "tabImage",
+      "helpTextResourceId": "tabImageHelpText",
+      "labelResourceId": "tabImageLabel",
+      "defaultValue": "orders.png",
+      "required": true
+    }
+  ]
+}

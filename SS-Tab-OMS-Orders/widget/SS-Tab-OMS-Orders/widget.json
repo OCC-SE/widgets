@@ -1,0 +1,10 @@
+{
+  "name": "SS - Tab(OMS Orders)",
+  "availableToAllPages": true,
+  "javascript": "SS-Tab-OMS-Orders",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Self-Service"
+}
