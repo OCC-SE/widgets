@@ -85,7 +85,7 @@ define(
 
                     if (widget.defaultTab()) {
                         $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
-                        $('#tab-' + widget.tabTitle() + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+                        $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
                         if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                             $('#listing').DataTable().clear().destroy();
                             $('#listing').empty();
@@ -101,10 +101,9 @@ define(
 
             beforeAppear: function(page) {
                 var widget = this;
-                var tab = widget.tabTitle();
-                $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                $('#tab-' + widget.id()).on('click', function() {
                     $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
-                    $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+                    $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
                     if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                         $('#listing').DataTable().clear().destroy();
                         $('#listing').empty();

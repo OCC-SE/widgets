@@ -23,6 +23,7 @@
     "dataDisplayTypeHelpText":"Data display type",
     "dataDisplayTypeLabel":"Data display type",
       "tableLabel":"Table",
+      "actionLabel":"Action",
       "iFrameLabel":"iFrame",
       "iFrameURLHelpText":"iFrame URL (iFrame type only)",
       "iFrameURLLabel":"iFrame URL (iFrame type only)"

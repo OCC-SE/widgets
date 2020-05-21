@@ -112,6 +112,11 @@
           "labelResourceId": "tableLabel"
         },
         {
+          "id": "action",
+          "value": "Action",
+          "labelResourceId": "actionLabel"
+        },
+        {
           "id": "iframe",
           "value": "iFrame",
           "labelResourceId": "iFrameLabel"

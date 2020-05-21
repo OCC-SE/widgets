@@ -236,9 +236,9 @@ define(
                 var widget = this;
                 var tab = widget.tabName();
                 if (tabUsed.includes(tab)) {
-                    $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                    $('#tab-' + widget.id()).on('click', function() {
                         $('[id^=tab-]').attr('class', 'imglink');
-                        $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected');
+                        $('#tab-' + widget.id()).attr('class', 'imglink-selected');
                         if ($.fn.DataTable.isDataTable('#listing')) {
                             $('#listing').DataTable().clear().destroy();
                             $('#listing').empty();

@@ -94,7 +94,6 @@ define(
         };
 
         function buildTable(dataset) {
-            console.log(dataset);
             var table = $('#loyalty-listing').DataTable( {
                 paging:true,
                 searching: false,
@@ -119,14 +118,30 @@ define(
 
         function formatDate(value) {
             if (value === null) return "";
+
+            function addZero(i) {if (i < 10) {i = "0" + i;}return i;}
+
             var mydate = new Date(value);
             var yyyy = mydate.getFullYear().toString();
-            var mm = (mydate.getMonth() + 1).toString(); // getMonth() is zero-based
-            var dd = mydate.getDate().toString();
-            var parts = (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
+            var mm = addZero((mydate.getMonth() + 1).toString()); // getMonth() is zero-based
+            var dd = addZero(mydate.getDate().toString());
+            var h = mydate.getHours();
+            var ap = "AM";
+            if (h > 12) {
+                h -= 12;
+                ap = "PM";
+            } else if (h === 0) {
+                h = 12;
+            }
+            var m = mydate.getMinutes();
+            var parts;
+            if (m <= 0) {
+                parts = mm + '/' + dd + '/' + yyyy;
+            } else {
+                parts = mm + '/' + dd + '/' + yyyy + ' ' + addZero(h) + ':' + addZero(m) + ' ' + ap;
+            }
             var mydatestr = new Date(parts);
-            return mydatestr.toLocaleDateString();
+            return parts;
         }
-
     }
 );

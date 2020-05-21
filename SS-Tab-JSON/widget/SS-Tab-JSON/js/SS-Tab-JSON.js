@@ -64,7 +64,7 @@ define(
 
                             if (widget.defaultTab()) {
                                 $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
-                                $('#tab-' + widget.tabName() + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+                                $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
                                 if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                                     $('#listing').DataTable().clear().destroy();
                                     $('#listing').empty();
@@ -93,11 +93,9 @@ define(
 
             beforeAppear: function(page) {
                 var widget = this;
-                var tab = widget.tabName();
-                $('#tab-' + tab + '-' + widget.id()).on('click', function() {
+                $('#tab-' + widget.id()).on('click', function() {
                     $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
-                    $('#tab-' + tab + '-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
-
+                    $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
                     if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                         $('#listing').DataTable().clear().destroy();
                         $('#listing').empty();
@@ -106,11 +104,10 @@ define(
                     if (widget.dataDisplayType() == 'Table') {
                         $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
                         buildTable(widget);
-                    } else if (widget.dataDisplayType() == 'Map') {
+                    } else if (widget.dataDisplayType() == 'Action') {
                         //TODO
                     } else if (widget.dataDisplayType() == 'iFrame') {
-                        var url = widget.iFrameURL();
-                        $('#SS-DataTables').html('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
+                        $('#SS-DataTables').html('<iframe id="iframe" src="' + widget.iFrameURL() + '" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
                     }
                 });
             }

@@ -25,7 +25,7 @@
         "name": "image",
         "helpTextResourceId": "imageHelpText",
         "labelResourceId": "imageLabel",
-        "defaultValue": "catalog.JPG",
+        "defaultValue": "catalog.jpg",
         "required": true
     },
     {
