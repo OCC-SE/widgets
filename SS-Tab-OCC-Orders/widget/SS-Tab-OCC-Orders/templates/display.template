@@ -1,3 +1,6 @@
-<div class="tabs" data-bind="attr:{ id:'SS-Tab-OCCOrders-'+ $data.id()}">
-    <div class="imglink" data-bind="attr:{ id:'tab-'+ $data.tabNameTrim() + '-' + $data.id()}"><img data-bind="attr: {src: $data.tabImage, alt: $data.tabName }"><br><span class="imglabel" data-bind="text: $data.tabDisplay ">)</span></div>
+<div class="tabs" data-bind="attr:{ id:'SS-Tab-JSON-' + $data.id()}">
+    <div class="imglink" data-bind="attr:{ id:'tab-'+ $data.tabTitle() + '-' + $data.id()}">
+        <img data-bind="attr: {src: $data.tabImage, alt: $data.tabTitle }"><br>
+    </div>
+    <img data-bind="attr:{ id:'alert-' + $data.id()}" src="" />&nbsp;<span class="imglabel" data-bind="text: $data.tabDisplay ">)</span>
 </div>

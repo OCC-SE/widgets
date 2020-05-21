@@ -10,11 +10,11 @@
       "defaultValue": false
     },
     {
-      "id": "tabName",
+      "id": "tabTitle",
       "type": "stringType",
-      "name": "tabName",
-      "helpTextResourceId": "tabNameHelpText",
-      "labelResourceId": "tabNameLabel",
+      "name": "tabTitle",
+      "helpTextResourceId": "tabTitleHelpText",
+      "labelResourceId": "tabTitleLabel",
       "defaultValue": "Orders",
       "required": true
     },

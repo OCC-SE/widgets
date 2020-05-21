@@ -2,8 +2,8 @@
 	{
       "defaultTabLabel":"Default tab on load",
       "defaultTabHelpText":"Default tab on load",
-    "tabNameHelpText":"Select the table type",
-    "tabNameLabel":"Select the table type",
+    "tabNameHelpText":"Tab table type",
+    "tabNameLabel":"Tab table type",
     "tabTitleHelpText":"Tab display name",
     "tabTitleLabel":"Tab display name",
     "tabImageHelpText":"Image file (transparent background PNG)",
