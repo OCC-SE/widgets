@@ -1,0 +1,1 @@
+<div style="display:none" data-bind="attr:{ id:'AC-RightNowChat-'+ $data.id()}"></div>

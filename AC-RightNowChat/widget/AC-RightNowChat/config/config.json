@@ -1,0 +1,23 @@
+{
+  "widgetDescriptorName": "SS - Test Widget",
+  "properties": [
+    {
+      "id": "siteURL",
+      "type": "stringType",
+      "name": "siteURL",
+      "helpTextResourceId": "siteURLHelpText",
+      "labelResourceId": "siteURLLabel",
+      "defaultValue": "rnowgse11039.widget.rightnowdemo.com",
+      "required": true
+    },
+    {
+      "id": "siteScript",
+      "type": "stringType",
+      "name": "siteScript",
+      "helpTextResourceId": "siteScriptHelpText",
+      "labelResourceId": "siteScriptLabel",
+      "defaultValue": "https://rnowgse11039.widget.rightnowdemo.com/s/oit/latest/common/v0/libs/oit/loader.js",
+      "required": true
+    }
+  ]
+}

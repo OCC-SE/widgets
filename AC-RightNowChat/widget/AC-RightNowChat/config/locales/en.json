@@ -1,0 +1,8 @@
+{"resources":
+	{
+		"siteURLLabel":"Service Cloud domain (remove https://)",
+		"siteURLHelpText":"Service Cloud domain (remove https://)",
+		"siteScriptLabel":"Inlay script file (js)",
+		"siteScriptHelpText":"Inlay script file (js)"
+	}
+}

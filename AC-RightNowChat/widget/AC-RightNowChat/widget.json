@@ -1,0 +1,10 @@
+{
+  "name": "AC - RightNowChat",
+  "availableToAllPages": true,
+  "javascript": "AC-RightNowChat",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Analytics Cloud"
+}
