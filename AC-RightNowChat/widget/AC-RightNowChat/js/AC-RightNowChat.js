@@ -1,7 +1,7 @@
 /**
  * @fileoverview
  *
- * @author
+ * @author Chris Janning <chris.janning@oracle.com>
  */
 define(
     //-------------------------------------------------------------------
@@ -21,13 +21,6 @@ define(
             onLoad: function(widgetModel) {
 
                 var widget = widgetModel;
-
-                //if (!widget.site().extensionSiteSettings.CXIntegrationSettings) {
-                //    CCLogger.error(widget.displayName() + "-(" + widget.id() + ") - CX Integration Settings not found");
-                //    return;
-                //}
-
-                //var ss_settings = widget.site().extensionSiteSettings.CXIntegrationSettings;
 
                 CCLogger.info("Widget: " + widget.displayName() + "-(" + widget.id() + ")");
             },

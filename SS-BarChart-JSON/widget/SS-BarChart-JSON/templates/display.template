@@ -1,4 +1,8 @@
-<div data-bind="attr:{ id:'SS-BarChart-JSON-' + $data.id()}">
-    <div style="font-size:20px;font-weight:bold;text-align:left;"><span data-bind="text: $data.chartHeading "></span></div>
+<div data-bind="attr:{ id:'SS-BarChart-JSON-' + $data.id()}" class="data_viz_bar">
+    <div class="widget_header">
+        <div class="title_box"></div>
+        <div class="widget_title"><span data-bind="text: $data.chartHeading "></span></div>
+        <div class="widget_divider"></div>
+    </div>
     <canvas data-bind="css:{canvas1:$index()==0},attr:{ id:'canvas-'+ $data.id()}"></canvas>
 </div>

@@ -17,6 +17,8 @@
     "quotesTableLabel":"Quotes",
     "serviceTableLabel":"Service",
     "iotTableLabel":"IoT",
+      "gymTableLabel":"My Gym",
+      "furnitureTableLabel":"My Furniture",
     "custom1TableLabel":"CUSTOM 1",
     "custom2TableLabel":"CUSTOM 2",
     "custom3TableLabel":"CUSTOM 3",

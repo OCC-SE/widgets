@@ -53,7 +53,6 @@ define(
                             widget.tabData(result);
                             widget.tabTotal(result.items.length);
                             widget.tabDisplay(widget.tabTitle() + ' (' + result.items.length + ')');
-
                             for (var i = 0; i < result.items.length; i++) {
                                 if (result.items[i].Alert == 'true') { //Any alert column set to true
                                     $('#alert-' + widget.id()).attr('src', ss_images + 'tables/alert.png');
@@ -65,16 +64,17 @@ define(
                             if (widget.defaultTab()) {
                                 $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
                                 $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+                                $('#SS-DataTablesHeader').text(widget.tabTitle());
                                 if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                                     $('#listing').DataTable().clear().destroy();
                                     $('#listing').empty();
                                 }
                                 if (widget.dataDisplayType() == 'Table') {
-                                    $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
+                                    $('#SS-DataTables').append('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
                                     buildTable(widget);
                                 } else if (widget.dataDisplayType() == 'iFrame') {
                                     var url = widget.iFrameURL();
-                                    $('#SS-DataTables').html('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
+                                    $('#SS-DataTables').append('<iframe id="iframe" src="'+url+'" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
                                 }
                             }
                         },
@@ -96,18 +96,19 @@ define(
                 $('#tab-' + widget.id()).on('click', function() {
                     $('[id^=tab-]').attr('class', 'imglink'); //Set inactive tab(s) CSS
                     $('#tab-' + widget.id()).attr('class', 'imglink-selected'); //Set active tab CSS
+                    $('#SS-DataTablesHeader').text(widget.tabTitle());
                     if ($.fn.DataTable.isDataTable('#listing')) { //Empty out previous table
                         $('#listing').DataTable().clear().destroy();
                         $('#listing').empty();
                     }
 
                     if (widget.dataDisplayType() == 'Table') {
-                        $('#SS-DataTables').html('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
+                        $('#SS-DataTables').append('<table id="listing" class="display compact" style="width:100%;margin-bottom:15px;"></table>');
                         buildTable(widget);
                     } else if (widget.dataDisplayType() == 'Action') {
                         //TODO
                     } else if (widget.dataDisplayType() == 'iFrame') {
-                        $('#SS-DataTables').html('<iframe id="iframe" src="' + widget.iFrameURL() + '" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
+                        $('#SS-DataTables').append('<iframe id="iframe" src="' + widget.iFrameURL() + '" style="width:100%;height:1000px;border:0px;margin-bottom:15px;"></iframe>');
                     }
                 });
             }
@@ -231,21 +232,22 @@ define(
                     columnDefs: [
                         {title: "", targets: 0, orderable: false, render: function(data, type, row, meta) {if (data == 'true') {return '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';} else {return '';}}},
                         {title: "Status", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<img src="' + ss_images + '/tables/' + data + '.png" height="20px" widgth="20px">';}},
-                        {title: " ", targets: 2, orderable: false, render: function(data, type, row, meta) {return '<img width="60px" height="60px" src="/ccstore/v1/images/?source=/file/products/' + data + '">';}},
+                        {title: " ", targets: 2, orderable: false, render: function(data, type, row, meta) {return '<img width="60px" height="60px" src="' + ss_images + '/resources/' + data + '">';}},
                         {title: "Name", targets: 3, orderable: false},
                         {title: "Purchased", targets: 4, orderable: true},
                         {title: "Serviced", targets: 5, orderable: true},
                         {title: "Monthly (Hours)", targets: 6, orderable: false},
                         {title: "Total (Hours)", targets: 7, orderable: false},
-                        {title: "Temperature", targets: 8, orderable: false},
+                        {title: "Battery Life", targets: 8, orderable: false},
                         {title: "Cushion Pressure", targets: 9, orderable: false},
                         {title: " ", targets: 10, orderable: false, render: function(data, type, row, meta) {return '<a href="https://goo.gl/maps/WbtxQfnhNSTcLJPR8" target="_blank"><img src="' + ss_images + "/tables/geolocation.png" + '" height="30px" widgth="30px"></a>';}},
-                        {title: " ", targets: 11, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}}
+                        {title: " ", targets: 11, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Schedule">';}}
                     ],
                     language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
+                    searching: false
                     //scrollX: true,
                     //scrollCollapse: true
                 });
@@ -270,11 +272,11 @@ define(
                         {title: "Customer", targets: 2, orderable: false},
                         {title: "Master", targets: 3, orderable: false},
                         {title: "PO", targets: 4, orderable: false},
-                        {title: "Date", targets: 5, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}},
+                        {title: "Date", targets: 5, orderable: false, render: function(data, type, row, meta) {return formatDate(data)}},
                         {title: "Items", targets: 6, orderable: false},
                         {title: "POTotal", targets: 7, orderable: false},
                         {title: "Status", targets: 8, orderable: false},
-                        {title: "", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details">&nbsp;<input class="cc-button-primary" type="button" value="Reorder">';}}
+                        {title: "", targets: 9, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Details"> &nbsp;<input class="cc-button-primary" type="button" value="Reorder">';}}
                     ],
                     language: {emptyTable: 'No ' + widget.tabName() + ' found'},
                     lengthChange: false,
@@ -304,6 +306,7 @@ define(
                             targets: 8,
                             orderable: false,
                             data: "download_link",
+                            className: 'dt-body-right',
                             render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Pay">';}
                         }
                     ],
@@ -319,6 +322,7 @@ define(
                     data: widget.tabData().items,
                     order: [[ 4, "desc" ]],
                     columns: [
+                        {data: "Alert"},
                         {data: "SubscriptionNumber"},
                         {data: "PrimaryPartyName"},
                         {data: "TotalContractValue"},
@@ -330,15 +334,16 @@ define(
                         {data: "Status"}
                     ],
                     columnDefs: [
-                        {title: "Number", targets: 0, orderable: false},
-                        {title: "Customer", targets: 1, orderable: false},
-                        {title: "Total Contract Value", targets: 2, orderable: true, type: "num-fmt", render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
-                        {title: "Start Date", targets: 3, orderable: true},
-                        {title: "End Date", targets: 4, orderable: true},
-                        {title: "Status", targets: 5, orderable: false,
+                        {title: "", targets: 0, orderable: false, render: function(data, type, row, meta) {if (data == 'true') {return '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';} else {return '';}}},
+                        {title: "Number", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<a style="text-decoration:underline;color:blue" href="">' + data + '</a>'}},
+                        {title: "Name", targets: 2, orderable: false},
+                        {title: "Total Contract Value", targets: 3, orderable: true, type: "num-fmt", render: $.fn.dataTable.render.number( ',', '.', 2, '$' )},
+                        {title: "Start Date", targets: 4, orderable: true},
+                        {title: "End Date", targets: 5, orderable: true},
+                        {title: "Status", targets: 6, orderable: false,
                             render: function(data, type, row, meta) {
                                 var image;
-                                if (data == 'ORA_ACTIVE') {
+                                if (data == 'Active') {
                                     image = ss_images + "/tables/green_check.png";
                                 } else if (data == 'ORA_CLOSED') {
                                     image = ss_images + "/tables/red_x.png";
@@ -348,12 +353,12 @@ define(
                                 return '<img alt="' + data + '" src="' + image + '" height="20px" widgth="20px"> ' + data;
                             }
                         },
-                        {title: "Term", targets: 6, orderable: false},
-                        {title: "Period", targets: 7, orderable: false},
-                        {title: "", targets: 8, orderable: false,
+                        {title: "Term", targets: 7, orderable: false},
+                        {title: "Period", targets: 8, orderable: false},
+                        {title: "", targets: 9, orderable: false, className: 'dt-body-right',
                             render: function(data, type, row, meta) {
                                 var buttons;
-                                if (data == 'ORA_ACTIVE') {
+                                if (data == 'Active') {
                                     buttons = '<input class="cc-button-primary" type="button" value="Cancel">'
                                 } else if (data == 'ORA_CLOSED') {
                                     buttons = '<input class="cc-button-primary" type="button" value="Renew">&nbsp;<input class="cc-button-primary" type="button" value="Cancel">';
@@ -374,11 +379,13 @@ define(
                     data: widget.tabData().items,
                     order: [[ 7, "desc" ]],
                     columns: [
+                        {data: "Alert"},
                         {data: "transactionID_t"},
                         //{data: "version_number_versionTransaction_t"},
                         {data: "transactionName_t"},
                         {data: "status_t.displayValue"},
                         {data: "totalContractValue_t.value"},
+                        {data: "discount"},
                         {data: "owner_t"},
                         {data: "_customer_t_company_name"},
                         {data: "createdDate_t"},
@@ -386,21 +393,25 @@ define(
                         {data: "status_t.displayValue"}
                     ],
                     columnDefs: [
-                        {title: "Transaction", targets: 0, orderable: false, render: function(data, type, row, meta) {return '<a href=""><u>' + data + '</u></a>'}},
+                        {title: "", targets: 0, orderable: false, render: function(data, type, row, meta) {if (data == 'true') {return '<img alt="Critical" src="' + ss_images + '/tables/alert.png">';} else {return '';}}},
+                        {title: "Transaction", targets: 1, orderable: false, render: function(data, type, row, meta) {return '<a style="text-decoration:underline;color:blue" href=""><u>' + data + '</u></a>'}},
                         // {title: "Version", targets: 1, orderable: false},
-                        {title: "Description", targets: 1, orderable: false},
-                        {title: "Status", targets: 2, orderable: false},
-                        {title: "Amount", targets: 3, orderable: false},
-                        {title: "Prepared By", targets: 4, orderable: false},
-                        {title: "Account", targets: 5, orderable: false},
-                        {title: "Created", targets: 6, orderable: true},
-                        {title: "Updated", targets: 7, orderable: true},
-                        {title: "", targets: 8, orderable: false, render: function(data, type, row, meta) {
+                        {title: "Description", targets: 2, orderable: false},
+                        {title: "Status", targets: 3, orderable: false},
+                        {title: "Amount", targets: 4, orderable: false},
+                        {title: "Discount", targets: 5, orderable: false},
+                        {title: "Prepared By", targets: 6, orderable: false},
+                        {title: "Account", targets: 7, orderable: false},
+                        {title: "Created", targets: 8, orderable: true},
+                        {title: "Updated", targets: 9, orderable: true},
+                        {title: "", targets: 10, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {
                                 var buttons;
-                                if (data == 'Created') {
+                                if (data == 'Created' || data == 'Rejected') {
                                     buttons = '<input class="cc-button-primary" type="button" value="Cancel">';
-                                } else if (data == 'Quoted') {
-                                    buttons = '<input class="cc-button-primary" type="button" value="Accept">&nbsp;<input class="cc-button-primary" type="button" value="Reject">';
+                                } else if (data == 'Accepted') {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Add to Cart" style="white-space: nowrap;">';
+                                } else {
+                                    buttons = '<input class="cc-button-primary" type="button" value="Accept"> &nbsp;<input class="cc-button-primary" type="button" value="Reject">';
                                 }
                                 return buttons;
                             }}
@@ -444,7 +455,7 @@ define(
                         {title: "Last Updated", targets: 6, orderable: true, render: function(data, type, row, meta) {return formatDate(data)}, type: "date"},
                         {title: "Account", targets: 7, orderable: false},
                         {title: "Status", targets: 8, orderable: false},
-                        {title: "", targets: 9, orderable: false, render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Chat">';}
+                        {title: "", targets: 9, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {return '<input class="cc-button-primary" type="button" value="Chat">';}
                         }
                     ],
                     language: {

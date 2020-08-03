@@ -53,6 +53,16 @@
                 "value": "IoT",
                 "labelResourceId": "iotTableLabel"
             },
+          {
+            "id": "gymTable",
+            "value": "My Gym",
+            "labelResourceId": "gymTableLabel"
+          },
+          {
+            "id": "furnitureTable",
+            "value": "My Furniture",
+            "labelResourceId": "furnitureTableLabel"
+          },
             {
               "id": "custom1Table",
               "value": "CUSTOM1",

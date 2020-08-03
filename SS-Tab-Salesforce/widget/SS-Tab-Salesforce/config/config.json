@@ -2,6 +2,14 @@
   "widgetDescriptorName": "SS - Tab(Salesforce)",
   "properties": [
     {
+      "id": "defaultTab",
+      "type": "booleanType",
+      "name": "defaultTab",
+      "helpTextResourceId": "defaultTabHelpText",
+      "labelResourceId": "defaultTabLabel",
+      "defaultValue": false
+    },
+    {
       "id": "tabName",
       "type": "optionType",
       "name": "tabName",
@@ -10,7 +18,12 @@
       "defaultValue": "Leads",
       "required": true,
       "options": [
-          {
+        {
+          "id": "contactsTable",
+          "value": "Contacts",
+          "labelResourceId": "contactsTableLabel"
+        },
+        {
               "id": "leadsTable",
               "value": "Leads",
               "labelResourceId": "leadsTableLabel"
@@ -19,22 +32,26 @@
               "id": "oppsTable",
               "value": "Opportunities",
               "labelResourceId": "oppsTableLabel"
-          },
-          {
-              "id": "contactsTable",
-              "value": "Contacts",
-              "labelResourceId": "contactsTableLabel"
-          }                                                                                               
+          }
       ]
     },
     {
-     "id": "sfURL",
-     "type": "stringType",
-     "name": "sfURL",
-     "helpTextResourceId": "sfURLHelpText",
-     "labelResourceId": "sfURLLabel",
-     "defaultValue": "https://na114.salesforce.com",
-     "required": true
+      "id": "tabTitle",
+      "type": "stringType",
+      "name": "tabTitle",
+      "helpTextResourceId": "tabTitleHelpText",
+      "labelResourceId": "tabTitleLabel",
+      "defaultValue": "Contacts",
+      "required": true
+    },
+    {
+      "id": "tabImage",
+      "type": "stringType",
+      "name": "tabImage",
+      "helpTextResourceId": "tabImageHelpText",
+      "labelResourceId": "tabImageLabel",
+      "defaultValue": "contacts.png",
+      "required": true
     }
   ]
 }

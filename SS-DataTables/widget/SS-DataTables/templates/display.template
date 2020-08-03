@@ -6,12 +6,47 @@
     .dataTables_wrapper.no-footer .dataTables_scrollBody {
         border: 0px;
     }
-    th, td { white-space: nowrap; }
+    th, td {
+        white-space: nowrap;
+    }
     table.dataTable.compact th {
         border-bottom: 1px none #111111;
     }
     table.dataTable.no-footer {
         border-bottom: 0px solid #111;
     }
+    .widget_header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .title_box {
+      border: 1px solid #666;
+      background-color: #d92231;
+      margin-right: 10px;
+      height: 10px;
+      width: 15px;
+    }
+
+    .widget_title {
+      flex-grow: 0;
+      padding-right: 10px;
+      color: #666;
+      font-size: 18px;
+    }
+
+    .widget_divider {
+      flex-grow: 1;
+      height: 3px;
+      background-color: #666;
+    }
 </style>
-<div id="SS-DataTables" data-bind="attr:{style:'margin-top:' + $data.topMargin() + 'px;'}"></div>
+<div id="SS-DataTables">
+    <div class="widget_header">
+        <div class="title_box"></div>
+        <div class="widget_title"><span id="SS-DataTablesHeader"></span></div>
+        <div class="widget_divider"></div>
+    </div>
+</div>
