@@ -1,0 +1,36 @@
+{
+  "widgetDescriptorName": "SS - User Profile",
+  "properties": [
+    {
+        "id": "userType",
+        "type": "optionType",
+        "name": "userType",
+        "helpTextResourceId": "userTypeHelpText",
+        "labelResourceId": "userTypeLabel",
+        "defaultValue": "Customer",
+        "required": true,
+        "options": [
+            {
+                "id": "buyerUserType",
+                "value": "Buyer",
+                "labelResourceId": "buyerUserTypeLabel"
+            },
+            {
+                "id": "customerUserType",
+                "value": "Customer",
+                "labelResourceId": "customerUserTypeLabel"
+            },
+            {
+                "id": "salesRepUserType",
+                "value": "Sales Representative",
+                "labelResourceId": "salesRepUserTypeLabel"
+            },
+            {
+                "id": "ownerUserType",
+                "value": "Owner",
+                "labelResourceId": "ownerUserTypeLabel"
+            }
+        ]
+    }   
+  ]
+}

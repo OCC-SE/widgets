@@ -1,0 +1,18 @@
+{
+  "availableToAllPages": true,
+  "config": {"userType": "Customer"},
+  "global": false,
+  "globalEnabled": true,
+  "imports": [],
+  "javascript": "SS-UserProfile",
+  "jsEditable": true,
+  "minWidth": 1,
+  "source": 101,
+  "translations": [{
+    "language": "en",
+    "name": "SS - User Profile"
+  }],
+  "version": 1,
+  "widgetFamily": "Self-Service",
+  "widgetType": "Self-Service"
+}
