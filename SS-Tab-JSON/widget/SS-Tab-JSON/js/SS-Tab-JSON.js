@@ -377,7 +377,7 @@ define(
             } else if (widget.tabName() == 'Quotes') {
                 $('#listing').DataTable({
                     data: widget.tabData().items,
-                    order: [[ 7, "desc" ]],
+                    order: [[ 8, "desc" ]],
                     columns: [
                         {data: "Alert"},
                         {data: "transactionID_t"},
@@ -385,7 +385,7 @@ define(
                         {data: "transactionName_t"},
                         {data: "status_t.displayValue"},
                         {data: "totalContractValue_t.value"},
-                        {data: "discount"},
+                        //{data: "discount"},
                         {data: "owner_t"},
                         {data: "_customer_t_company_name"},
                         {data: "createdDate_t"},
@@ -399,12 +399,12 @@ define(
                         {title: "Description", targets: 2, orderable: false},
                         {title: "Status", targets: 3, orderable: false},
                         {title: "Amount", targets: 4, orderable: false},
-                        {title: "Discount", targets: 5, orderable: false},
-                        {title: "Prepared By", targets: 6, orderable: false},
-                        {title: "Account", targets: 7, orderable: false},
-                        {title: "Created", targets: 8, orderable: true},
-                        {title: "Updated", targets: 9, orderable: true},
-                        {title: "", targets: 10, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {
+                        //{title: "Discount", targets: 5, orderable: false},
+                        {title: "Prepared By", targets: 5, orderable: false},
+                        {title: "Account", targets: 6, orderable: false},
+                        {title: "Created", targets: 7, orderable: true},
+                        {title: "Updated", targets: 8, orderable: true},
+                        {title: "", targets: 9, orderable: false, className: 'dt-body-right', render: function(data, type, row, meta) {
                                 var buttons;
                                 if (data == 'Created' || data == 'Rejected') {
                                     buttons = '<input class="cc-button-primary" type="button" value="Cancel">';
@@ -420,8 +420,6 @@ define(
                     lengthChange: false,
                     pageLength: 5,
                     destroy: true,
-                    //scrollX: true,
-                    //scrollCollapse: true
                 });
             } else if (widget.tabName() == 'Service') {
                 $('#listing').DataTable( {
