@@ -1,0 +1,23 @@
+{
+  "config": {},
+  "global": true,
+  "globalEnabled": true,
+  "imports": [
+    "product",
+    "category",
+    "categoryId",
+    "billingCountries",
+    "confirmation"
+  ],
+  "javascript": "Infinity",
+  "jsEditable": true,
+  "minWidth": 1,
+  "source": 101,
+  "translations": [{
+    "language": "en",
+    "name": "OMC - Infinity"
+  }],
+  "version": 1,
+  "widgetFamily": "Marketing",
+  "widgetType": "Marketing"
+}

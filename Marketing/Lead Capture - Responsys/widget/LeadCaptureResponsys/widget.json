@@ -1,0 +1,19 @@
+{
+  "availableToAllPages": true,
+  "config": {"fullWidth": true},
+  "global": false,
+  "globalEnabled": true,
+  "i18nresources": "leadcapture",
+  "imports": [],
+  "javascript": "LeadCaptureResponsys",
+  "jsEditable": true,
+  "minWidth": 1,
+  "source": 101,
+  "translations": [{
+    "language": "en",
+    "name": "Lead Capture - Responsys"
+  }],
+  "version": 1,
+  "widgetFamily": "leadcapture",
+  "widgetType": "LeadCaptureResponsys"
+}

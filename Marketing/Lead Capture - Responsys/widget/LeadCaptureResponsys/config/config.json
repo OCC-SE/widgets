@@ -1,0 +1,11 @@
+{
+  "properties": [{
+    "defaultValue": false,
+    "helpTextResourceId": "fullWidthHelpText",
+    "id": "fullWidth",
+    "labelResourceId": "fullWidthLabel",
+    "name": "fullWidth",
+    "type": "booleanType"
+  }],
+  "widgetDescriptorName": "leadcapture"
+}

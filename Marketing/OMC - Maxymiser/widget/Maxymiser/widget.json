@@ -1,0 +1,17 @@
+{
+  "config": {},
+  "global": true,
+  "globalEnabled": true,
+  "imports": [],
+  "javascript": "Maxymiser",
+  "jsEditable": true,
+  "minWidth": 1,
+  "source": 101,
+  "translations": [{
+    "language": "en",
+    "name": "OMC - Maxymiser"
+  }],
+  "version": 1,
+  "widgetFamily": "Marketing",
+  "widgetType": "Marketing"
+}

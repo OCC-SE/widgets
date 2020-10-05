@@ -1,0 +1,23 @@
+<div class="leadcapture" data-bind="css: { 'full-width': $data.fullWidth }">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="form-cta stayInTouch"><span data-bind="widgetLocaleText : 'label1'"></span></h3>
+      <form>
+        <input value="UntitledForm-1586289965283" type="hidden" name="elqFormName">
+        <input value="1650439596" type="hidden" name="elqSiteId">
+        <input name="elqCampaignId" type="hidden">
+        <input type="hidden" name="elqCustomerGUID" value="">
+        <input type="hidden" name="elqCookieWrite" value="0">
+        <input id="stayInTouchValue" type="text" name="firstname" class="form-input" data-bind="widgetLocaleText : {value: 'placeholder1', attr: 'placeholder'} ">
+        <input id="stayInTouchButton" type="button" class="form-submit" data-bind="widgetLocaleText : {value: 'button1', attr: 'value'} ">
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3 class="form-cta findAStore"><span data-bind="widgetLocaleText : 'label2'"></span></h3>
+      <form>
+        <input type="text" name="firstname" class="form-input" data-bind="widgetLocaleText : {value: 'placeholder2', attr: 'placeholder'}">
+        <input type="submit" class="form-submit" data-bind="widgetLocaleText : {value: 'button2', attr: 'value'} ">
+      </form>
+    </div>
+  </div>
+</div>
