@@ -3,14 +3,11 @@
   "global": true,
   "globalEnabled": true,
   "imports": [],
-  "javascript": "BlueKai",
+  "javascript": "OMC-BlueKai",
   "jsEditable": true,
   "minWidth": 1,
   "source": 101,
-  "translations": [{
-    "language": "en",
-    "name": "OMC - BlueKai"
-  }],
+  "name": "OMC - BlueKai",
   "version": 1,
   "widgetFamily": "Marketing",
   "widgetType": "Marketing"
