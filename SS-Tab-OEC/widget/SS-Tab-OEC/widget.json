@@ -1,0 +1,11 @@
+{
+  "name": "SS - Tab (OEC)",
+  "availableToAllPages": true,
+  "javascript": "SS-Tab-OEC",
+  "jsEditable": true,
+  "global": false,
+  "imports": [],
+  "version": 1,
+  "widgetFamily": "Self-Service",
+  "widgetType": "Self-Service"
+}
